@@ -1,5 +1,5 @@
 
-/**
+/*
  * Created by Laszlo on 2016. 02. 18..
  */
 
@@ -14,8 +14,8 @@
  * void type methods have no return value.
  */
 public class TestMain {
-    public static void main(String[] args) {
+    //public static void main(String[] args) {
         // Anything which isn't evident at first glimpse, must be rigorously described in a comment beforehand.
-        System.out.println("Test method:" + System.lineSeparator() + "Starting one hell of a game from scratch!");
-    }
+        //System.out.println("Test method:" + System.lineSeparator() + "Starting one hell of a game from scratch!");
+    //}
 }
