@@ -28,14 +28,45 @@ public class GrabHandler {
 	public Box Grab(CVector interactfrom){
 		return null;
 	}
-
+	
 	/**
-	 * 
-	 * @param interactfrom: belÃ©pÃ©s irÃ¡nya
+	 * @author Mate
+	 * @param interactfrom: belépés iránya
+	 */
+	private boolean CanPut(CVector interactfrom){
+		if(data.fields.GetFieldObject(interactfrom).Steppable()){
+			if(!data.boxes.IsThere(interactfrom)){
+				if(!data.collectables.IsThere(interactfrom)){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * @author Mate
+	 * @param interactfrom: belépés iránya
 	 * @param carriedobject: doboz
 	 */
 	public boolean Put(CVector interactfrom, Box carriedobject){
-		return false;
+		System.out.println(">>GrabHandler::Put(CVectro interactfrom, Box carrieobject)");
+		if(data.stargates.IsThere(interactfrom)){
+			interactfrom = data.stargates.StepIn(interactfrom);
+		}
+		if(CanPut(interactfrom)){
+			data.boxes.PutBox(interactfrom, carriedobject);
+			if(!data.buttons.EventOn(interactfrom)){
+				if(data.fields.GetFieldObject(interactfrom).IsMortal()){
+					data.boxes.Delete(interactfrom);
+				}
+			}
+			System.out.println("<<GrabHandler::Put(CVectro interactfrom, Box carrieobject)");
+			return true;
+		} else {
+			System.out.println("<<GrabHandler::Put(CVectro interactfrom, Box carrieobject)");
+			return false;
+		}
 	}
 
 	/**

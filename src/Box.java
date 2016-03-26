@@ -5,7 +5,7 @@
  * @version 1.0
  * @created 20-márc.-2016 12:28:32
  */
-public class Box extends FieldObject {
+public class Box implements FieldObject {
 
 	public Box(){
 
@@ -13,6 +13,24 @@ public class Box extends FieldObject {
 
 	public void finalize() throws Throwable {
 
+	}
+
+	@Override
+	public boolean IsMortal() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean Shootable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean Steppable() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

@@ -19,10 +19,13 @@ public class FieldObjectInventory {
 
 	/**
 	 * 
-	 * @param coord: koordinÃ¡tÃ¡k
+	 * @author Mate
+	 * @param coord: koordináták
 	 */
 	public FieldObject GetFieldObject(Coordinate coord){
-		return null;
+		System.out.println(">>FieldObjectInventory::GetFieldObject(Coordinate coord)");
+		System.out.println("<<FieldObjectInventory::GetFieldObject(Coordinate coord)");
+		return new FieldObjectSample();
 	}
 
 	public FieldObject getFieldObject(){

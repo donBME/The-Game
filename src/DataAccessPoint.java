@@ -7,11 +7,11 @@
  */
 public class DataAccessPoint {
 
-	private BoxInventory boxes;
-	private ButtonInventory buttons;
-	private CollectableInventory collectables;
-	private StarGateInventory stargates;
-	private FieldObjectInventory fields;
+	public BoxInventory boxes;
+	public ButtonInventory buttons;
+	public CollectableInventory collectables;
+	public StarGateInventory stargates;
+	public FieldObjectInventory fields;
 
 	public DataAccessPoint(){
 
@@ -19,66 +19,6 @@ public class DataAccessPoint {
 
 	public void finalize() throws Throwable {
 
-	}
-
-	public BoxInventory getboxes(){
-		return boxes;
-	}
-
-	public ButtonInventory getbuttons(){
-		return buttons;
-	}
-
-	public CollectableInventory getcollectables(){
-		return collectables;
-	}
-
-	public FieldObjectInventory getfields(){
-		return fields;
-	}
-
-	public StarGateInventory getstargates(){
-		return stargates;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setboxes(BoxInventory newVal){
-		boxes = newVal;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setbuttons(ButtonInventory newVal){
-		buttons = newVal;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setcollectables(CollectableInventory newVal){
-		collectables = newVal;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setfields(FieldObjectInventory newVal){
-		fields = newVal;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setstargates(StarGateInventory newVal){
-		stargates = newVal;
 	}
 
 }

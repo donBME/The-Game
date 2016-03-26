@@ -14,7 +14,7 @@ public class Player {
 	private ShotHandler gun;
 
 	public Player(){
-
+		
 	}
 
 	public void finalize() throws Throwable {
@@ -40,10 +40,13 @@ public class Player {
 
 	/**
 	 * 
-	 * @param toDir: irÃ¡ny
+	 * @author Mate
+	 * @param toDir: irány
 	 */
 	public void Interact(Direction toDir){
-
+		System.out.println(">>Player::Interact(Direction toDir)");
+		hand.Put(null, handfull);
+		System.out.println("<<Player::Interact(Direction toDir)");
 	}
 
 	/**

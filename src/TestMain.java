@@ -14,8 +14,19 @@
  * void type methods have no return value.
  */
 public class TestMain {
-    //public static void main(String[] args) {
+    public static void main(String[] args) {
         // Anything which isn't evident at first glimpse, must be rigorously described in a comment beforehand.
         //System.out.println("Test method:" + System.lineSeparator() + "Starting one hell of a game from scratch!");
-    //}
+    	Player p = new Player();
+    	GrabHandler gh = new GrabHandler();
+    	DataAccessPoint dap = new DataAccessPoint();
+    	dap.boxes = new BoxInventory();
+    	dap.buttons = new ButtonInventory();
+    	dap.collectables = new CollectableInventory();
+    	dap.fields = new FieldObjectInventory();
+    	dap.stargates = new StarGateInventory();
+    	gh.setdata(dap);
+    	p.sethand(gh);
+    	p.Interact(null);
+    }
 }

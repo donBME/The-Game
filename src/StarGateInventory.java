@@ -1,4 +1,6 @@
-
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * @author Laszlo
@@ -10,7 +12,7 @@ public class StarGateInventory {
 	private StarGate m_StarGate;
 
 	public StarGateInventory(){
-
+		
 	}
 
 	public void finalize() throws Throwable {
@@ -39,11 +41,31 @@ public class StarGateInventory {
 	}
 
 	/**
-	 * 
-	 * @param from: irány
+	 * @author Mate
+	 * @param from: ir�ny
 	 */
 	public boolean IsThere(CVector from){
-		return false;
+		System.out.println(">>StarGateInventoy::IsThere(CVectro from)");
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+		String line = null;
+		do{
+			System.out.println("Is there a StarGate? (y/n)");
+			try {
+				line = br.readLine();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}while(!(line.equals("y")|| line.equals("n")));
+		/*try {
+			br.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		System.out.println("<<StarGateInventoy::IsThere(CVectro from)");
+		return line.equals("y");
 	}
 
 	/**
@@ -59,6 +81,8 @@ public class StarGateInventory {
 	 * @param from: irány
 	 */
 	public CVector StepIn(CVector from){
+		System.out.println(">>StarGateInventory::StepIn(CVector from)");
+		System.out.println("<<StarGateInventory::StepIn(CVector from)");
 		return null;
 	}
 

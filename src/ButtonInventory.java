@@ -19,7 +19,7 @@ public class ButtonInventory {
 
 	/**
 	 * 
-	 * @param coord: koordin√°t√°k
+	 * @param coord: koordin·t·k
 	 */
 	public boolean EventOn(Coordinate coord){
 		return false;

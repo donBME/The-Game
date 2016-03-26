@@ -1,4 +1,6 @@
-
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * @author Laszlo
@@ -18,11 +20,12 @@ public class BoxInventory {
 	}
 
 	/**
-	 * 
-	 * @param coord: koordinÃ¡tÃ¡k
+	 * @author Mate
+	 * @param coord: koordináták
 	 */
 	public void Delete(Coordinate coord){
-
+		System.out.println(">>BoxInventory::Delete(Coordinate coord)");
+		System.out.println("<<BoxInventory::Delete(Coordinate coord)");
 	}
 
 	/**
@@ -38,20 +41,41 @@ public class BoxInventory {
 	}
 
 	/**
-	 * 
-	 * @param coord: koordinÃ¡tÃ¡k
+	 * @author Mate
+	 * @param coord: koordináták
 	 */
 	public boolean IsThere(Coordinate coord){
-		return false;
+		System.out.println(">>BoxInventory::IsThere(Coordinate coord)");
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+		String line = null;
+		do{
+			System.out.println("Is there a box? (y/n)");
+			try {
+				line = br.readLine();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}while(!(line.equals("y")|| line.equals("n")));
+		/*try {
+			br.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		System.out.println("<<BoxInventory::IsThere(Coordinate coord)");
+		return line.equals("y");
 	}
 
 	/**
-	 * 
-	 * @param coord: koordinÃ¡tÃ¡k
+	 * @author Mate
+	 * @param coord: koordináták
 	 * @param carriedobject: doboz
 	 */
 	public void PutBox(Coordinate coord, Box carriedobject){
-
+		System.out.println(">>BoxInventory::PutBox(Coordinate coord, Box carriedobject)");
+		System.out.println("<<BoxInventory::PutBox(Coordinate coord, Box carriedobject)");
 	}
 
 	/**
