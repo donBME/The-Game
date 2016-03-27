@@ -13,8 +13,4 @@ public class ZPM extends Collectable {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
-
 }

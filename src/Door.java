@@ -9,29 +9,22 @@ public class Door implements FieldObject {
 
 	private boolean open;
 
-	public Door(){
-
-	}
-
 	public void Statechanged(){
-
+		open = !open;
 	}
 
 	@Override
 	public boolean IsMortal() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean Shootable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean Steppable() {
-		// TODO Auto-generated method stub
 		return open;
 	}
 

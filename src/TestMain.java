@@ -17,8 +17,8 @@ public class TestMain {
     public static void main(String[] args) {
         // Anything which isn't evident at first glimpse, must be rigorously described in a comment beforehand.
         //System.out.println("Test method:" + System.lineSeparator() + "Starting one hell of a game from scratch!");
-        TestMain mivelnincsmenüezéreztkellhasználni = new TestMain();
-        mivelnincsmenüezéreztkellhasználni.Put();
+        TestMain mivelnincsmenuezureztkellhasznalni = new TestMain();
+        mivelnincsmenuezureztkellhasznalni.Put();
     }
 
 	private void Init(){

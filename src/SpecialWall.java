@@ -7,12 +7,8 @@
  */
 public class SpecialWall extends Wall {
 
-	public SpecialWall(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-
+    @Override
+    public boolean Shootable() {
+        return true;
+    }
 }

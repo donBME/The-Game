@@ -19,7 +19,7 @@ public class FieldObjectSample implements FieldObject{
      *  0 - undefined
     */
     private int mortality=0,shootability=0, stepability=0;
-    private QuestionAssistant questionAssistant;
+    private QuestionAssistant questionAssistant = new QuestionAssistant();
 
 
 	@Override

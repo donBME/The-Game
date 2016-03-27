@@ -3,22 +3,14 @@
 /**
  * @author Laszlo
  * @version 1.0
- * @created 20-m�rc.-2016 12:28:33
+ * @created 20-márc.-2016 12:28:33
  */
 public class StepHandler {
 
 	private boolean pushed;
 	private DataAccessPoint data;
 
-	public StepHandler(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
-
-	public DataAccessPoint getdata(){
+	public DataAccessPoint getData(){
 		return data;
 	}
 
@@ -35,7 +27,7 @@ public class StepHandler {
 	 * 
 	 * @param newVal
 	 */
-	public void setdata(DataAccessPoint newVal){
+	public void setData(DataAccessPoint newVal){
 		data = newVal;
 	}
 

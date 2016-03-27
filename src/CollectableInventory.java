@@ -5,19 +5,12 @@ import java.io.InputStreamReader;
 /**
  * @author Laszlo
  * @version 1.0
- * @created 20-mï¿½rc.-2016 12:28:32
+ * @created 20-márc.-2016 12:28:32
  */
 public class CollectableInventory {
 
 	private Collectable m_Collectable;
-
-	public CollectableInventory(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
+	private QuestionAssistant questionAssistant = new QuestionAssistant();
 
 	public Collectable getCollectable(){
 		return m_Collectable;
@@ -25,7 +18,7 @@ public class CollectableInventory {
 
 	/**
 	 * 
-	 * @param coord: koordinÃ¡tÃ¡k
+	 * @param coord: koordináták
 	 */
 	public Collectable GetCollectableAt(Coordinate coord){
 		return null;
@@ -37,26 +30,9 @@ public class CollectableInventory {
 	 */
 	public boolean IsThere(Coordinate coord){
 		System.out.println(">>CollectableInventory::IsThere(Coordinate coord)");
-		InputStreamReader isr = new InputStreamReader(System.in);
-		BufferedReader br = new BufferedReader(isr);
-		String line = null;
-		do{
-			System.out.println("Is there a collectable item? (y/n)");
-			try {
-				line = br.readLine();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}while(!(line.equals("y")|| line.equals("n")));
-		/*try {
-			br.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+        boolean thereis = questionAssistant.ask("Is there a collectable item? (y/n)");
 		System.out.println("<<CollectableInventory::IsThere(Coordinate coord)");
-		return line.equals("y");
+		return thereis;
 	}
 
 	/**

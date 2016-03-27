@@ -7,25 +7,18 @@
  */
 public class Box implements FieldObject {
 
-	public Box(){
-
-	}
-
 	@Override
 	public boolean IsMortal() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean Shootable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean Steppable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

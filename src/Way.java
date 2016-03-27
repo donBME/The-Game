@@ -7,30 +7,19 @@
  */
 public class Way implements FieldObject {
 
-	public Way(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
-
 	@Override
 	public boolean IsMortal() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean Shootable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean Steppable() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }

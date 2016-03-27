@@ -46,7 +46,7 @@ public class GrabHandler {
 	
 	/**
 	 * @author Mate
-	 * @param interactfrom: bel�p�s ir�nya
+	 * @param interactfrom: belépés iránya
 	 * @param carriedobject: doboz
 	 */
 	public boolean Put(CVector interactfrom, Box carriedobject){

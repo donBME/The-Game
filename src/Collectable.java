@@ -11,10 +11,6 @@ public class Collectable {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
-
 	public void Collect(){
 
 	}

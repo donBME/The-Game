@@ -10,14 +10,6 @@ public class Coordinate {
 	private int x;
 	private int y;
 
-	public Coordinate(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
-
 	public int GetX(){
 		return x;
 	}
@@ -32,7 +24,8 @@ public class Coordinate {
 	 * @param sy: y koordináta
 	 */
 	public void Set(int sx, int sy){
-
+		x = sx;
+		y = sy;
 	}
 
 }

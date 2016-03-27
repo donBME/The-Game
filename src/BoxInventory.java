@@ -5,19 +5,12 @@ import java.io.InputStreamReader;
 /**
  * @author Laszlo
  * @version 1.0
- * @created 20-mï¿½rc.-2016 12:28:32
+ * @created 20-márc.-2016 12:28:32
  */
 public class BoxInventory {
 
 	private Box m_Box;
-
-	public BoxInventory(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
+	QuestionAssistant questionAssistant = new QuestionAssistant();
 
 	/**
 	 * @author Mate
@@ -30,7 +23,7 @@ public class BoxInventory {
 
 	/**
 	 * 
-	 * @param coord: koordinÃ¡tÃ¡k
+	 * @param coord: koordináták
 	 */
 	public Box GetBox(Coordinate coord){
 		return null;
@@ -46,26 +39,9 @@ public class BoxInventory {
 	 */
 	public boolean IsThere(Coordinate coord){
 		System.out.println(">>BoxInventory::IsThere(Coordinate coord)");
-		InputStreamReader isr = new InputStreamReader(System.in);
-		BufferedReader br = new BufferedReader(isr);
-		String line = null;
-		do{
-			System.out.println("Is there a box? (y/n)");
-			try {
-				line = br.readLine();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}while(!(line.equals("y")|| line.equals("n")));
-		/*try {
-			br.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+        boolean isThere = questionAssistant.ask("Is there a box? (y/n)");
 		System.out.println("<<BoxInventory::IsThere(Coordinate coord)");
-		return line.equals("y");
+		return isThere;
 	}
 
 	/**

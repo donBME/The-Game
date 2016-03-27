@@ -12,13 +12,4 @@ public class DataAccessPoint {
 	public CollectableInventory collectables;
 	public StarGateInventory stargates;
 	public FieldObjectInventory fields;
-
-	public DataAccessPoint(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
-
 }

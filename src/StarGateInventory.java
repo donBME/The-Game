@@ -1,28 +1,23 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 /**
  * @author Laszlo
  * @version 1.0
- * @created 20-mï¿½rc.-2016 12:28:33
+ * @created 20-márc.-2016 12:28:33
  */
 public class StarGateInventory {
 
 	private StarGate m_StarGate;
-
-	public StarGateInventory(){
-		
-	}
-
-	public void finalize() throws Throwable {
-
-	}
+    private List<StarGate> starGates;
+	private QuestionAssistant questionAssistant = new QuestionAssistant();
 
 	/**
 	 * 
 	 * @param portalpos: csillagkapu helye
-	 * @param color: szÃ­n
+	 * @param color: szín
 	 */
 	public void Create(CVector portalpos, StarGateColor color){
 
@@ -30,7 +25,7 @@ public class StarGateInventory {
 
 	/**
 	 * 
-	 * @param color: szÃ­n
+	 * @param color: szín
 	 */
 	public void Delete(StarGateColor color){
 
@@ -46,26 +41,9 @@ public class StarGateInventory {
 	 */
 	public boolean IsThere(CVector from){
 		System.out.println(">>StarGateInventoy::IsThere(CVectro from)");
-		InputStreamReader isr = new InputStreamReader(System.in);
-		BufferedReader br = new BufferedReader(isr);
-		String line = null;
-		do{
-			System.out.println("Is there a StarGate? (y/n)");
-			try {
-				line = br.readLine();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}while(!(line.equals("y")|| line.equals("n")));
-		/*try {
-			br.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+        boolean thereIs = questionAssistant.ask("Is there a StarGate? (y/n)");
 		System.out.println("<<StarGateInventoy::IsThere(CVectro from)");
-		return line.equals("y");
+		return thereIs;
 	}
 
 	/**
@@ -78,7 +56,7 @@ public class StarGateInventory {
 
 	/**
 	 * 
-	 * @param from: irÃ¡ny
+	 * @param from: irány
 	 */
 	public CVector StepIn(CVector from){
 		System.out.println(">>StarGateInventory::StepIn(CVector from)");

@@ -3,22 +3,14 @@
 /**
  * @author Laszlo
  * @version 1.0
- * @created 20-m�rc.-2016 12:28:32
+ * @created 20-márc.-2016 12:28:32
  */
 public class CVector extends Coordinate {
 
 	private Direction dir;
 
-	public CVector(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-
 	public Direction GetDir(){
-		return null;
+		return dir;
 	}
 
 	/**
@@ -28,7 +20,8 @@ public class CVector extends Coordinate {
 	 * @param sd: irány
 	 */
 	public void SetD(int sx, int sy, Direction sd){
-
+		Set(sx,sy);
+		dir = sd;
 	}
 
 }

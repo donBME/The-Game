@@ -13,10 +13,6 @@ public class FieldObjectInventory {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
-
 	/**
 	 * 
 	 * @author Mate

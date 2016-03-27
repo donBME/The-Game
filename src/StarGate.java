@@ -10,12 +10,9 @@ public class StarGate {
 	private StarGateColor color;
 	private CVector pos;
 
-	public StarGate(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
+	StarGate(CVector starGatePosition, StarGateColor starGateColor){
+        pos = starGatePosition;
+        color = starGateColor;
+    }
 
 }
