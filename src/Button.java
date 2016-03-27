@@ -10,8 +10,9 @@ public class Button {
 	private Door wire;
 
 	public Button(Door door){
+		System.out.println(">>Button::Button(Door door)");
 		wire = door;
-		System.out.println("<<Button::Create()");
+		System.out.println("<<Button::Button(Door door)");
 	}
 
 	public void Action(){

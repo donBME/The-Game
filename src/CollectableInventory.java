@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Laszlo
@@ -9,15 +11,13 @@ import java.io.InputStreamReader;
  */
 public class CollectableInventory {
 
-	private Collectable m_Collectable;
+	private List<Collectable> collectables;
 	private QuestionAssistant questionAssistant = new QuestionAssistant();
 
 	public CollectableInventory(){
-		System.out.println("<<CollectableInventory::Create()");
-	}
-	
-	public Collectable getCollectable(){
-		return m_Collectable;
+		System.out.println(">>CollectableInventory::CollectableInventory()");
+        collectables = new ArrayList<>();
+		System.out.println("<<CollectableInventory::CollectableInventory()");
 	}
 
 	/**
@@ -25,7 +25,9 @@ public class CollectableInventory {
 	 * @param coord: koordináták
 	 */
 	public Collectable GetCollectableAt(Coordinate coord){
-		return null;
+        System.out.println(">>CollectableInventory::GetCollectableAt(Coordinate coord)");
+        System.out.println("<<CollectableInventory::GetCollectableAt(Coordinate coord)");
+        return collectables.get(0);
 	}
 
 	/**
@@ -43,9 +45,10 @@ public class CollectableInventory {
 	 * 
 	 * @param newVal: collectable
 	 */
-	public void setCollectable(Collectable newVal){
-		m_Collectable = newVal;
-		System.out.println("<<CollectableInventory::setCollectable(Collectable newVal)");
+	public void addCollectable(Collectable newVal){
+        System.out.println(">>CollectableInventory::addCollectable(Collectable newVal)");
+		collectables.add(newVal);
+		System.out.println("<<CollectableInventory::addCollectable(Collectable newVal)");
 	}
 
 }

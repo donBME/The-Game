@@ -25,7 +25,7 @@ public class FieldObjectSample implements FieldObject{
 	@Override
 	public boolean IsMortal() {
 		System.out.println(">>FieldObject::IsMortal()");
-        if (questionAssistant.ask("Is the FieldObject mortal? (y/n)"))
+        if (questionAssistant.ask("Is the FieldObject deadly? (y/n)"))
             mortality = 1;
         else
             mortality = -1;

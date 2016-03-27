@@ -8,24 +8,28 @@
 public class Abyss implements FieldObject {
 
 	public Abyss(){
-		System.out.println("<<Abyss::Create()");
+		System.out.println(">>Abyss::Abyss()");
+		System.out.println("<<Abyss::Abyss()");
 	}
 
 	@Override
 	public boolean IsMortal() {
-		// TODO Auto-generated method stub
+        System.out.println(">>Abyss::IsMortal()");
+        System.out.println("<<Abyss::IsMortal()");
 		return true;
 	}
 
 	@Override
 	public boolean Shootable() {
-		// TODO Auto-generated method stub
+        System.out.println(">>Abyss::Shootable()");
+        System.out.println("<<Abyss::Shootable()");
 		return false;
 	}
 
 	@Override
 	public boolean Steppable() {
-		// TODO Auto-generated method stub
+        System.out.println(">>Abyss::Steppable()");
+        System.out.println("<<Abyss::Steppable()");
 		return true;
 	}
 

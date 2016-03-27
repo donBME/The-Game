@@ -1,4 +1,5 @@
-
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Laszlo
@@ -7,10 +8,12 @@
  */
 public class FieldObjectInventory {
 
-	private FieldObject m_FieldObject;
+	private List<FieldObject> fieldObjects;
 
 	public FieldObjectInventory(){
-		System.out.println("<<FieldObjectInventory::Create()");
+        System.out.println(">>FieldObjectInventory::Create()");
+		fieldObjects = new ArrayList<>();
+        System.out.println("<<FieldObjectInventory::Create()");
 	}
 
 	/**
@@ -24,17 +27,14 @@ public class FieldObjectInventory {
 		return new FieldObjectSample();
 	}
 
-	public FieldObject getFieldObject(){
-		return m_FieldObject;
-	}
-
 	/**
 	 * 
 	 * @param newVal
 	 */
-	public void setFieldObject(FieldObject newVal){
-		m_FieldObject = newVal;
-		System.out.println("<<FieldObjectInventory::setFieldObject(FieldObject newVal)");
+	public void addFieldObject(FieldObject newVal){
+        System.out.println(">>FieldObjectInventory::addFieldObject(FieldObject newVal)");
+		fieldObjects.add(newVal);
+		System.out.println("<<FieldObjectInventory::addFieldObject(FieldObject newVal)");
 	}
 
 }

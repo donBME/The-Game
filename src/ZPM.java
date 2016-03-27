@@ -10,7 +10,8 @@ public class ZPM extends Collectable {
 	private static int count;
 
 	public ZPM(){
-		System.out.println("<<ZPM::Create()");
+		System.out.println(">>ZPM::ZPM()");
+		System.out.println("<<ZPM::ZPM()");
 	}
 
 }

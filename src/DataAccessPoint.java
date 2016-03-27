@@ -15,7 +15,7 @@ public class DataAccessPoint {
 	
 	public DataAccessPoint(StarGateInventory stargates, FieldObjectInventory fields,
 			BoxInventory boxes, ButtonInventory buttons, CollectableInventory collectables) {
-		// TODO Auto-generated constructor stub
+		System.out.println(">>DataAccesspoint::Create(StarGateInventory stargates, FieldObjectInventory fields,BoxInventory boxes, ButtonInventory buttons, CollectableInventory collectables)");
 		this.boxes = boxes;
 		this.buttons = buttons;
 		this.collectables = collectables;

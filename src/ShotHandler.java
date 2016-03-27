@@ -10,21 +10,9 @@ public class ShotHandler {
 	private DataAccessPoint data;
 	
 	public ShotHandler(DataAccessPoint data) {
-		// TODO Auto-generated constructor stub
+		System.out.println(">>ShotHandler::Create(DataAccessPoint data)");
 		this.data = data;
 		System.out.println("<<ShotHandler::Create(DataAccessPoint data)");
-	}
-
-	public DataAccessPoint getdata(){
-		return data;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setdata(DataAccessPoint newVal){
-		data = newVal;
 	}
 
 	/**
@@ -33,7 +21,8 @@ public class ShotHandler {
 	 * @param color: szín
 	 */
 	public void Shoot(CVector shootfrom, StarGateColor color){
-
+        System.out.println(">>ShotHandler::Shoot(CVector shootfrom, StarGateColor color)");
+        System.out.println("<<ShotHandler::Shoot(CVector shootfrom, StarGateColor color)");
 	}
 
 }

@@ -10,7 +10,8 @@ public class Door implements FieldObject {
 	private boolean open;
 	
 	public Door(){
-		System.out.println("<<Door::Create()");
+		System.out.println(">>Door::Door()");
+		System.out.println("<<Door::Door()");
 	}
 
 	public void Statechanged(){
@@ -20,18 +21,25 @@ public class Door implements FieldObject {
 	}
 
 	@Override
-	public boolean IsMortal() {
-		return false;
+	public boolean IsMortal()
+    {
+        System.out.println(">>Door::IsMortal()");
+        System.out.println("<<Door::IsMortal()");
+        return false;
 	}
 
 	@Override
 	public boolean Shootable() {
-		return false;
+        System.out.println(">>Door::Shootable()");
+        System.out.println("<<Door::Shootable()");
+        return false;
 	}
 
 	@Override
 	public boolean Steppable() {
-		return open;
+        System.out.println(">>Door::Steppable()");
+        System.out.println("<<Door::Steppable()");
+        return open;
 	}
 
 }

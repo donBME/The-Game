@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,16 +9,18 @@ import java.util.List;
 public class ButtonInventory {
 
 	private QuestionAssistant questionAssistant = new QuestionAssistant();
-	Door m_door = new Door();
-	Button m_button = new Button(m_door);
+	private List<Button> buttons;
 
 	public ButtonInventory(){
-		System.out.println("<<ButtonInventory::Create()");
+		System.out.println(">>ButtonInventory::ButtonInventory()");
+        buttons = new ArrayList<>();
+		System.out.println("<<ButtonInventory::ButtonInventory()");
 	}
 	
-	public void setButton(Button newVal){
-		m_button = newVal;
-		System.out.println("<<ButtonInventory::setButton(Button newVal)");
+	public void addButton(Button newVal){
+        System.out.println(">>ButtonInventory::addButton(Button newVal)");
+		buttons.add(newVal);
+		System.out.println("<<ButtonInventory::addButton(Button newVal)");
 	}
 
 	/**
@@ -28,10 +31,10 @@ public class ButtonInventory {
         System.out.println(">>ButtonInventory::EventOn(Coordinate coord)");
 
 		boolean thereis = questionAssistant.ask("Is there a button item? (y/n)");
-		if(thereis== true)
+		if(thereis == true)
 		{
 
-			m_button.Action();
+			buttons.get(0).Action();
 			System.out.println("<<ButtonInventory::EventOn(Coordinate coord)");
 			return true;
 		}

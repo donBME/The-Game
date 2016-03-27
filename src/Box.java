@@ -8,22 +8,29 @@
 public class Box implements FieldObject {
 
 	public Box(){
-		System.out.println("<<Box::Create()");
+		System.out.println(">>Box::Box()");
+		System.out.println("<<Box::Box()");
 	}
 	
 	@Override
 	public boolean IsMortal() {
-		return false;
+        System.out.println(">>Box::IsMortal()");
+        System.out.println("<<Box::IsMortal()");
+        return false;
 	}
 
 	@Override
 	public boolean Shootable() {
-		return false;
+        System.out.println(">>Box::Shootable()");
+        System.out.println("<<Box::Shootable()");
+        return false;
 	}
 
 	@Override
 	public boolean Steppable() {
-		return false;
+        System.out.println(">>Box::Steppable()");
+        System.out.println("<<Box::Steppable()");
+        return false;
 	}
 
 }

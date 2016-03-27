@@ -15,7 +15,7 @@ public class Player {
     private QuestionAssistant questionAssistant = new QuestionAssistant();
 
     public Player(ShotHandler shothandler, GrabHandler grabhandler, StepHandler stephandler) {
-		// TODO Auto-generated constructor stub
+		System.out.println(">>Player::Create(ShotHandler shothandler, GrabHandler grabhandler, StepHandler stephandler)");
 		gun = shothandler;
 		hand = grabhandler;
 		leg = stephandler;
@@ -26,23 +26,6 @@ public class Player {
 		pos  = new CVector(sx, sy, dir);
 		System.out.println("<<Player::Create(ShotHandler shothandler, GrabHandler grabhandler, StepHandler stephandler)");
 	}
-
-	public ShotHandler getgun(){
-		return gun;
-	}
-
-	public GrabHandler gethand(){
-		return hand;
-	}
-
-	public StepHandler getleg(){
-		return leg;
-	}
-
-	public CVector getpos(){
-		return pos;
-	}
-
 
 	/**
 	 * 
@@ -59,37 +42,6 @@ public class Player {
 		System.out.println("<<Player::Interact(Direction toDir)");
 	}
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setgun(ShotHandler newVal){
-		gun = newVal;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void sethand(GrabHandler newVal){
-		hand = newVal;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setleg(StepHandler newVal){
-		leg = newVal;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setpos(CVector newVal){
-		pos = newVal;
-	}
 
 	/**
 	 * 
@@ -97,7 +49,8 @@ public class Player {
 	 * @param color: szín
 	 */
 	public void Shoot(Direction toDir, StarGateColor color){
-
+        System.out.println(">>Player::Shoot(Direction toDir, StarGateColor color)");
+        System.out.println("<<Player::Shoot(Direction toDir, StarGateColor color)");
 	}
 
 	/**

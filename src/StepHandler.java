@@ -11,13 +11,9 @@ public class StepHandler {
 	private DataAccessPoint data;
 
 	public StepHandler(DataAccessPoint data) {
-		// TODO Auto-generated constructor stub
+		System.out.println(">>StepHandler::Create(DataAccessPoint data)");
 		this.data = data;
 		System.out.println("<<StepHandler::Create(DataAccessPoint data)");
-	}
-	
-	public DataAccessPoint getData(){
-		return data;
 	}
 
 	private boolean CanStep(CVector interactfrom){
@@ -46,14 +42,6 @@ public class StepHandler {
 			System.out.println("<<StepHandler::NextStep(CVectro playerpos, Direction dir)");
 		}
 		return null;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setData(DataAccessPoint newVal){
-		data = newVal;
 	}
 
 }

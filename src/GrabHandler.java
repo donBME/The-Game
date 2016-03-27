@@ -10,16 +10,9 @@ public class GrabHandler {
 	private DataAccessPoint data;
 
 	public GrabHandler(DataAccessPoint data){
+		System.out.println(">>GrabHandler::Create(DataAccessPoint data)");
 		this.data = data;
 		System.out.println("<<GrabHandler::Create(DataAccessPoint data)");
-	}
-
-	public void finalize() throws Throwable {
-
-	}
-
-	public DataAccessPoint getdata(){
-		return data;
 	}
 
 	/**
@@ -78,14 +71,6 @@ public class GrabHandler {
 			System.out.println("<<GrabHandler::Put(CVectro interactfrom, Box carrieobject)");
 			return false;
 		}
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setData(DataAccessPoint newVal){
-		data = newVal;
 	}
 
 }

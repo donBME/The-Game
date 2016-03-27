@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Laszlo
@@ -10,10 +12,12 @@ import java.io.InputStreamReader;
 public class BoxInventory {
 
 	QuestionAssistant questionAssistant = new QuestionAssistant();
-	private Box m_Box;
+	private List<Box> boxList;
 
 	public BoxInventory(){
-		System.out.println("<<BoxInventory::Create()");
+		System.out.println(">>BoxInventory::BoxInventory()");
+        boxList = new ArrayList<>();
+		System.out.println("<<BoxInventory::BoxInventory()");
 	}
 	
 	/**
@@ -35,9 +39,10 @@ public class BoxInventory {
 		return null;
 	}
 	
-	public void setBox(Box newVal){
-		m_Box = newVal;
-		System.out.println("<<BoxInventory::setBox(Box newVal)");
+	public void addBox(Box newVal){
+        System.out.println(">>BoxInventory::addBox(Box newVal)");
+		boxList.add(newVal);
+		System.out.println("<<BoxInventory::addBox(Box newVal)");
 	}
 
 	/**
