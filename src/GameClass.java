@@ -124,8 +124,6 @@ public class GameClass {
         stepHandler = new StepHandler(dataAccesspoint);
 
         player = new Player(shotHandler, grabHandler, stepHandler);
-
-        System.out.println("<<Game::Create()");
     }
 
     private void Interact(){
@@ -137,7 +135,7 @@ public class GameClass {
     }
 
     private void Shoot(){
-
+        player.Shoot(null,null);
     }
 
 }

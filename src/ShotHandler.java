@@ -8,6 +8,7 @@
 public class ShotHandler {
 
 	private DataAccessPoint data;
+    private QuestionAssistant questionAssistant = new QuestionAssistant();
 	
 	public ShotHandler(DataAccessPoint data) {
 		System.out.println(">>ShotHandler::Create(DataAccessPoint data)");
@@ -22,6 +23,11 @@ public class ShotHandler {
 	 */
 	public void Shoot(CVector shootfrom, StarGateColor color){
         System.out.println(">>ShotHandler::Shoot(CVector shootfrom, StarGateColor color)");
+		data.stargates.Delete(null);
+        FieldObject fieldObject;
+        while ((fieldObject = data.fields.GetFieldObject(null)).Steppable() && !data.boxes.IsThere(null));
+        if(fieldObject.Shootable())
+            data.stargates.Create(null,null);
         System.out.println("<<ShotHandler::Shoot(CVector shootfrom, StarGateColor color)");
 	}
 

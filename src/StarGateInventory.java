@@ -26,10 +26,6 @@ public class StarGateInventory {
 	 */
 	public void Create(CVector portalpos, StarGateColor color){
         System.out.println(">>StarGateInventory::Create(CVector portalpos, StarGateColor color)");
-        if(color == StarGateColor.Yellow)
-            yellow = new StarGate(portalpos,StarGateColor.Yellow);
-        else
-            blue = new StarGate(portalpos,StarGateColor.Blue);
         System.out.println("<<StarGateInventory::Create(CVector portalpos, StarGateColor color)");
 	}
 
@@ -39,10 +35,6 @@ public class StarGateInventory {
 	 */
 	public void Delete(StarGateColor color){
         System.out.println(">>StarGateInventory::Delete(StarGateColor color)");
-        if(color == StarGateColor.Blue)
-            blue = null;
-        else
-            yellow = null;
         System.out.println("<<StarGateInventory::Delete(StarGateColor color)");
 	}
 

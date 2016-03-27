@@ -50,6 +50,10 @@ public class Player {
 	 */
 	public void Shoot(Direction toDir, StarGateColor color){
         System.out.println(">>Player::Shoot(Direction toDir, StarGateColor color)");
+        boolean hasBox = questionAssistant.ask("Does the player have a box in hand? (y/n)");
+        if(!hasBox){
+            gun.Shoot(null,null);
+        }
         System.out.println("<<Player::Shoot(Direction toDir, StarGateColor color)");
 	}
 

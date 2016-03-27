@@ -33,7 +33,6 @@ public class ButtonInventory {
 		boolean thereis = questionAssistant.ask("Is there a button item? (y/n)");
 		if(thereis == true)
 		{
-
 			buttons.get(0).Action();
 			System.out.println("<<ButtonInventory::EventOn(Coordinate coord)");
 			return true;

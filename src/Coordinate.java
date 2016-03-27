@@ -11,11 +11,15 @@ public class Coordinate {
 	private int y;
 
 	public int GetX(){
+		System.out.println(">>Coordinate::GetX()");
+		System.out.println("<<Coordinate::GetX()");
 		return x;
 	}
 
 	public int GetY(){
-		return y;
+        System.out.println(">>Coordinate::GetY()");
+        System.out.println("<<Coordinate::GetY()");
+        return y;
 	}
 
 	/**
@@ -24,8 +28,10 @@ public class Coordinate {
 	 * @param sy: y koordináta
 	 */
 	public void Set(int sx, int sy){
+        System.out.println(">>Coordinate::Set(int sx, int sy)");
 		x = sx;
 		y = sy;
+        System.out.println("<<Coordinate::Set(int sx, int sy)");
 	}
 
 }
