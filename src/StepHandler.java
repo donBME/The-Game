@@ -14,12 +14,6 @@ public class StepHandler {
 		return data;
 	}
 
-	/**
-	 * 
-	 * @param playerpos: helyzet
-	 * @param dir: irány
-	 */
-
 	private boolean CanStep(CVector interactfrom){
 		if(data.fields.GetFieldObject(interactfrom).Steppable()){
 			if(!data.boxes.IsThere(interactfrom)){

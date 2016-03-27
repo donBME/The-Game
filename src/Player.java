@@ -12,9 +12,9 @@ public class Player {
 	private GrabHandler hand;
 	private StepHandler leg;
 	private ShotHandler gun;
+    private QuestionAssistant questionAssistant = new QuestionAssistant();
 
-	public Player(Box box){
-        handfull = box;
+	public Player(){
 		pos = new CVector();
 	}
 
@@ -42,7 +42,8 @@ public class Player {
 	 */
 	public void Interact(Direction toDir){
 		System.out.println(">>Player::Interact(Direction toDir)");
-		if(handfull==null)
+        boolean hasBox = questionAssistant.ask("Does the player have a box in hand? (y/n)");
+        if(!hasBox)
             handfull = hand.Grab(null);
         else
             hand.Put(null, handfull);

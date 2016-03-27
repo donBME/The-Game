@@ -37,7 +37,7 @@ public class TestMain {
 
     private void Put(){
         // Initialization
-        Player player = new Player(new Box());
+        Player player = new Player();
         GrabHandler grabHandler = new GrabHandler();
         DataAccessPoint dataAccessPoint = new DataAccessPoint();
         dataAccessPoint.boxes = new BoxInventory();
@@ -53,7 +53,7 @@ public class TestMain {
 
     private void Grab(){
         // Initialization
-        Player player = new Player(null);
+        Player player = new Player();
         GrabHandler grabHandler = new GrabHandler();
         DataAccessPoint dataAccessPoint = new DataAccessPoint();
         dataAccessPoint.boxes = new BoxInventory();
@@ -69,7 +69,7 @@ public class TestMain {
 
     private void Step(){
         // Initialization
-        Player player = new Player(null);
+        Player player = new Player();
         StepHandler leg = new StepHandler();
         DataAccessPoint dataAccessPoint = new DataAccessPoint();
         dataAccessPoint.boxes = new BoxInventory();
