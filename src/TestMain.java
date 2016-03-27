@@ -1,4 +1,4 @@
-
+﻿
 /*
  * Created by Laszlo on 2016. 02. 18..
  */
@@ -17,20 +17,45 @@ public class TestMain {
     public static void main(String[] args) {
         // Anything which isn't evident at first glimpse, must be rigorously described in a comment beforehand.
         //System.out.println("Test method:" + System.lineSeparator() + "Starting one hell of a game from scratch!");
-
-        // Egy menüt rakjunk már ide srácok!
-
-        /*TestMain mivelnincsmenuezureztkellhasznalni = new TestMain();
-        mivelnincsmenuezureztkellhasznalni.Grab();*/
-        
-         /* TestMain mivelnincsmenuezureztkellhasznalni = new TestMain();
-            mivelnincsmenuezureztkellhasznalni.Step();
-          */  
             System.out.println(">>Menu::Create()");
         	TestMain menu = new TestMain();
-        	
+
         	System.out.println(">>Game::Create()");
             Game game = new Game();
+
+	InputStreamReader inputStreamReader = new InputStreamReader(System.in);
+        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+        String line = new String();
+            System.out.println("I wait command!");
+
+        TestMain menu = new TestMain();
+        while(line != "q"){
+            try {
+                line = bufferedReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        switch (line) {
+		case "1":
+			menu.Step();
+			System.out.println("I wait command!");
+			break;
+		case "2":
+			menu.Shoot();
+			System.out.println("I wait command!");
+			break;
+		case "3":
+			menu.Grab();
+			System.out.println("I wait command!");
+			break;
+		case "4":
+			menu.Put();
+			System.out.println("I wait command!");
+			break;
+		default:
+			break;
+		}
+        }
 
     }
 
