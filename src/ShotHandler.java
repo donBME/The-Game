@@ -8,6 +8,12 @@
 public class ShotHandler {
 
 	private DataAccessPoint data;
+	
+	public ShotHandler(DataAccessPoint data) {
+		// TODO Auto-generated constructor stub
+		this.data = data;
+		System.out.println("<<ShotHandler::Create(DataAccessPoint data)");
+	}
 
 	public DataAccessPoint getdata(){
 		return data;

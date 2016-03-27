@@ -11,6 +11,7 @@ public class Button {
 
 	public Button(Door door){
 		wire = door;
+		System.out.println("<<Button::Create()");
 	}
 
 	public void Action(){

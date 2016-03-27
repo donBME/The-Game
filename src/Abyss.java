@@ -8,7 +8,7 @@
 public class Abyss implements FieldObject {
 
 	public Abyss(){
-
+		System.out.println("<<Abyss::Create()");
 	}
 
 	@Override

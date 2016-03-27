@@ -14,8 +14,17 @@ public class Player {
 	private ShotHandler gun;
     private QuestionAssistant questionAssistant = new QuestionAssistant();
 
-	public Player(){
-		pos = new CVector();
+    public Player(ShotHandler shothandler, GrabHandler grabhandler, StepHandler stephandler) {
+		// TODO Auto-generated constructor stub
+		gun = shothandler;
+		hand = grabhandler;
+		leg = stephandler;
+		
+		System.out.println(">>CVector::Create(int sx, int sy, Direction dir)");
+		int sx=0, sy=0;
+		Direction dir = Direction.North;
+		pos  = new CVector(sx, sy, dir);
+		System.out.println("<<Player::Create(ShotHandler shothandler, GrabHandler grabhandler, StepHandler stephandler)");
 	}
 
 	public ShotHandler getgun(){

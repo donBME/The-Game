@@ -10,6 +10,12 @@ public class StepHandler {
 	private boolean pushed;
 	private DataAccessPoint data;
 
+	public StepHandler(DataAccessPoint data) {
+		// TODO Auto-generated constructor stub
+		this.data = data;
+		System.out.println("<<StepHandler::Create(DataAccessPoint data)");
+	}
+	
 	public DataAccessPoint getData(){
 		return data;
 	}

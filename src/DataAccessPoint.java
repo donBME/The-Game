@@ -12,4 +12,15 @@ public class DataAccessPoint {
 	public CollectableInventory collectables;
 	public StarGateInventory stargates;
 	public FieldObjectInventory fields;
+	
+	public DataAccessPoint(StarGateInventory stargates, FieldObjectInventory fields,
+			BoxInventory boxes, ButtonInventory buttons, CollectableInventory collectables) {
+		// TODO Auto-generated constructor stub
+		this.boxes = boxes;
+		this.buttons = buttons;
+		this.collectables = collectables;
+		this.stargates = stargates;
+		this.fields = fields;
+		System.out.println("<<DataAccesspoint::Create(StarGateInventory stargates, FieldObjectInventory fields,BoxInventory boxes, ButtonInventory buttons, CollectableInventory collectables)");
+	}
 }

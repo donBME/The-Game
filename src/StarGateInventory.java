@@ -13,6 +13,10 @@ public class StarGateInventory {
     private List<StarGate> starGates;
 	private QuestionAssistant questionAssistant = new QuestionAssistant();
 
+	
+	public StarGateInventory(){
+		System.out.println("<<StarGateInventory::Create()");
+	}
 	/**
 	 * 
 	 * @param portalpos: csillagkapu helye

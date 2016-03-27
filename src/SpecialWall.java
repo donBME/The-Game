@@ -6,7 +6,11 @@
  * @created 20-márc.-2016 12:28:33
  */
 public class SpecialWall extends Wall {
-
+	
+	public SpecialWall(){
+		System.out.println("<<SpecialWall::Create()");
+	}
+	
     @Override
     public boolean Shootable() {
         return true;
