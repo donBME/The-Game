@@ -28,7 +28,6 @@ public class TestMain {
         String line = new String();
             System.out.println("I wait command!");
 
-        TestMain menu = new TestMain();
         while(line != "q"){
             try {
                 line = bufferedReader.readLine();
