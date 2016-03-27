@@ -22,8 +22,15 @@ public class TestMain {
 
         /*TestMain mivelnincsmenuezureztkellhasznalni = new TestMain();
         mivelnincsmenuezureztkellhasznalni.Grab();*/
-        TestMain mivelnincsmenuezureztkellhasznalni = new TestMain();
+        
+         /* TestMain mivelnincsmenuezureztkellhasznalni = new TestMain();
             mivelnincsmenuezureztkellhasznalni.Step();
+          */  
+            System.out.println(">>Menu::Create()");
+        	TestMain menu = new TestMain();
+        	
+        	System.out.println(">>Game::Create()");
+            Game game = new Game();
 
     }
 

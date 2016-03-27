@@ -12,6 +12,10 @@ public class CollectableInventory {
 	private Collectable m_Collectable;
 	private QuestionAssistant questionAssistant = new QuestionAssistant();
 
+	public CollectableInventory(){
+		System.out.println("<<CollectableInventory::Create()");
+	}
+	
 	public Collectable getCollectable(){
 		return m_Collectable;
 	}
@@ -41,6 +45,7 @@ public class CollectableInventory {
 	 */
 	public void setCollectable(Collectable newVal){
 		m_Collectable = newVal;
+		System.out.println("<<CollectableInventory::setCollectable(Collectable newVal)");
 	}
 
 }

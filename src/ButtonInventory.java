@@ -11,6 +11,14 @@ public class ButtonInventory {
 	Door m_door = new Door();
 	Button m_button = new Button(m_door);
 
+	public ButtonInventory(){
+		System.out.println("<<ButtonInventory::Create()");
+	}
+	
+	public void setButton(Button newVal){
+		m_button = newVal;
+		System.out.println("<<ButtonInventory::setButton(Button newVal)");
+	}
 
 	/**
 	 *

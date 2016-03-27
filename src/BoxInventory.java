@@ -10,7 +10,12 @@ import java.io.InputStreamReader;
 public class BoxInventory {
 
 	QuestionAssistant questionAssistant = new QuestionAssistant();
+	private Box m_Box;
 
+	public BoxInventory(){
+		System.out.println("<<BoxInventory::Create()");
+	}
+	
 	/**
 	 * @author Mate
 	 * @param coord: koordináták
@@ -28,6 +33,11 @@ public class BoxInventory {
         System.out.println(">>BoxInventory::GetBox(Coordinate coord)");
         System.out.println("<<BoxInventory::GetBox(Coordinate coord)");
 		return null;
+	}
+	
+	public void setBox(Box newVal){
+		m_Box = newVal;
+		System.out.println("<<BoxInventory::setBox(Box newVal)");
 	}
 
 	/**

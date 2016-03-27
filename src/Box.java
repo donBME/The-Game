@@ -7,6 +7,10 @@
  */
 public class Box implements FieldObject {
 
+	public Box(){
+		System.out.println("<<Box::Create()");
+	}
+	
 	@Override
 	public boolean IsMortal() {
 		return false;

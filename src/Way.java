@@ -6,7 +6,11 @@
  * @created 20-márc.-2016 12:28:33
  */
 public class Way implements FieldObject {
-
+	
+	public Way(){
+		System.out.println("<<Way::Create()");
+	}
+	
 	@Override
 	public boolean IsMortal() {
 		return false;

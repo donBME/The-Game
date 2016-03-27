@@ -8,6 +8,10 @@
 public class Door implements FieldObject {
 
 	private boolean open;
+	
+	public Door(){
+		System.out.println("<<Door::Create()");
+	}
 
 	public void Statechanged(){
 		System.out.println(">>Door::Statechanged()");

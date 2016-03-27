@@ -10,7 +10,7 @@ public class FieldObjectInventory {
 	private FieldObject m_FieldObject;
 
 	public FieldObjectInventory(){
-
+		System.out.println("<<FieldObjectInventory::Create()");
 	}
 
 	/**
@@ -34,6 +34,7 @@ public class FieldObjectInventory {
 	 */
 	public void setFieldObject(FieldObject newVal){
 		m_FieldObject = newVal;
+		System.out.println("<<FieldObjectInventory::setFieldObject(FieldObject newVal)");
 	}
 
 }

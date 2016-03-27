@@ -9,8 +9,9 @@ public class GrabHandler {
 
 	private DataAccessPoint data;
 
-	public GrabHandler(){
-
+	public GrabHandler(DataAccessPoint data){
+		this.data = data;
+		System.out.println("<<GrabHandler::Create(DataAccessPoint data)");
 	}
 
 	public void finalize() throws Throwable {

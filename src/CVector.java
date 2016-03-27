@@ -9,6 +9,13 @@ public class CVector extends Coordinate {
 
 	private Direction dir;
 
+	public CVector(int sx, int sy, Direction sd) {
+		// TODO Auto-generated constructor stub
+		Set(sx,sy);
+		dir = sd;
+		System.out.println("<<CVector::Create(int sx, int sy, Direction dir)");
+	}
+	
 	public Direction GetDir(){
 		return dir;
 	}

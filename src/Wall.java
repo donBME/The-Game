@@ -7,6 +7,10 @@
  */
 public class Wall implements FieldObject {
 
+	public Wall(){
+		System.out.println("<<Wall::Create()");
+	}
+	
 	@Override
 	public boolean IsMortal() {
 		return false;
