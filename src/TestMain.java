@@ -20,8 +20,11 @@ public class TestMain {
 
         // Egy menüt rakjunk már ide srácok!
 
+        /*TestMain mivelnincsmenuezureztkellhasznalni = new TestMain();
+        mivelnincsmenuezureztkellhasznalni.Grab();*/
         TestMain mivelnincsmenuezureztkellhasznalni = new TestMain();
-        mivelnincsmenuezureztkellhasznalni.Grab();
+            mivelnincsmenuezureztkellhasznalni.Step();
+
     }
 
 	private void Init(){
@@ -64,6 +67,22 @@ public class TestMain {
         player.Interact(null);
     }
 
+    private void Step(){
+        // Initialization
+        Player player = new Player(null);
+        StepHandler leg = new StepHandler();
+        DataAccessPoint dataAccessPoint = new DataAccessPoint();
+        dataAccessPoint.boxes = new BoxInventory();
+        dataAccessPoint.buttons = new ButtonInventory();
+        dataAccessPoint.collectables = new CollectableInventory();
+        dataAccessPoint.fields = new FieldObjectInventory();
+        dataAccessPoint.stargates = new StarGateInventory();
+        player.setleg(leg);
+        leg.setData(dataAccessPoint);
+        // Real interaction
+        player.Step(Direction.North);
+    }
+
     private void Shoot(){
 
     }
@@ -72,7 +91,5 @@ public class TestMain {
 
     }
 
-    private void Step(){
 
-    }
 }

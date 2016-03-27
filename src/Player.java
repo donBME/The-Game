@@ -15,6 +15,7 @@ public class Player {
 
 	public Player(Box box){
         handfull = box;
+		pos = new CVector();
 	}
 
 	public ShotHandler getgun(){
@@ -95,8 +96,11 @@ public class Player {
 	 * 
 	 * @param toDir: irány
 	 */
-	public void Step(Direction toDir){
-
+	public void Step(Direction toDir)
+	{
+		System.out.println(">>Player::Step(Direction toDir)");
+		leg.NextStep(pos,toDir);
+		System.out.println("<<Player::Step(Direction toDir)");
 	}
 
 }

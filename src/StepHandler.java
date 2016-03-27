@@ -19,7 +19,32 @@ public class StepHandler {
 	 * @param playerpos: helyzet
 	 * @param dir: irány
 	 */
+
+	private boolean CanStep(CVector interactfrom){
+		if(data.fields.GetFieldObject(interactfrom).Steppable()){
+			if(!data.boxes.IsThere(interactfrom)){
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public CVector NextStep(CVector playerpos, Direction dir){
+		System.out.println(">>StepHandler::NextStep(CVectro playerpos, Direction dir)");
+		if (data.stargates.IsThere(playerpos)) {
+			playerpos = data.stargates.StepIn(playerpos);
+		}
+		if (CanStep(playerpos))
+		{
+			data.buttons.EventOn(playerpos);// old pos
+			if(data.fields.GetFieldObject(playerpos).IsMortal())
+			{
+				return null;
+			}
+			data.collectables.IsThere(playerpos);
+			data.buttons.EventOn(playerpos);// new pos
+			System.out.println("<<StepHandler::NextStep(CVectro playerpos, Direction dir)");
+		}
 		return null;
 	}
 

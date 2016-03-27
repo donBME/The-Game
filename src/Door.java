@@ -10,7 +10,9 @@ public class Door implements FieldObject {
 	private boolean open;
 
 	public void Statechanged(){
+		System.out.println(">>Door::Statechanged()");
 		open = !open;
+		System.out.println("<<Door::Statechanged()");
 	}
 
 	@Override

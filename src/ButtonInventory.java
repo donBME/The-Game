@@ -7,14 +7,27 @@ import java.util.List;
  */
 public class ButtonInventory {
 
-    private List<Button> buttons;
+	private QuestionAssistant questionAssistant = new QuestionAssistant();
+	Door m_door = new Door();
+	Button m_button = new Button(m_door);
+
 
 	/**
-	 * 
+	 *
 	 * @param coord: koordináták
 	 */
 	public boolean EventOn(Coordinate coord){
         System.out.println(">>ButtonInventory::EventOn(Coordinate coord)");
+
+		boolean thereis = questionAssistant.ask("Is there a button item? (y/n)");
+		if(thereis== true)
+		{
+
+			m_button.Action();
+			System.out.println("<<ButtonInventory::EventOn(Coordinate coord)");
+			return true;
+		}
+
         System.out.println("<<ButtonInventory::EventOn(Coordinate coord)");
 		return false;
 	}
