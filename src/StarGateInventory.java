@@ -10,7 +10,6 @@ import java.util.List;
  */
 public class StarGateInventory {
 
-	private StarGate m_StarGate;
     private List<StarGate> starGates;
 	private QuestionAssistant questionAssistant = new QuestionAssistant();
 
@@ -31,10 +30,6 @@ public class StarGateInventory {
 
 	}
 
-	public StarGate getStarGate(){
-		return m_StarGate;
-	}
-
 	/**
 	 * @author Mate
 	 * @param from: irány
@@ -44,14 +39,6 @@ public class StarGateInventory {
         boolean thereIs = questionAssistant.ask("Is there a StarGate? (y/n)");
 		System.out.println("<<StarGateInventoy::IsThere(CVectro from)");
 		return thereIs;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setStarGate(StarGate newVal){
-		m_StarGate = newVal;
 	}
 
 	/**

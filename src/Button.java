@@ -9,24 +9,13 @@ public class Button {
 
 	private Door wire;
 
-	public Button(){
-
+	public Button(Door door){
+		wire = door;
 	}
 
 	public void Action(){
-
+		System.out.println(">>Button::Action()");
+		wire.Statechanged();
+        System.out.println("<<Button::Action()");
 	}
-
-	public Door getwire(){
-		return wire;
-	}
-
-	/**
-	 * 
-	 * @param newVal: ajtó
-	 */
-	public void setwire(Door newVal){
-		wire = newVal;
-	}
-
 }

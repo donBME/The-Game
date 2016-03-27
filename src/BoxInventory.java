@@ -9,7 +9,6 @@ import java.io.InputStreamReader;
  */
 public class BoxInventory {
 
-	private Box m_Box;
 	QuestionAssistant questionAssistant = new QuestionAssistant();
 
 	/**
@@ -26,11 +25,9 @@ public class BoxInventory {
 	 * @param coord: koordináták
 	 */
 	public Box GetBox(Coordinate coord){
+        System.out.println(">>BoxInventory::GetBox(Coordinate coord)");
+        System.out.println("<<BoxInventory::GetBox(Coordinate coord)");
 		return null;
-	}
-
-	public Box getBox(){
-		return m_Box;
 	}
 
 	/**
@@ -52,14 +49,6 @@ public class BoxInventory {
 	public void PutBox(Coordinate coord, Box carriedobject){
 		System.out.println(">>BoxInventory::PutBox(Coordinate coord, Box carriedobject)");
 		System.out.println("<<BoxInventory::PutBox(Coordinate coord, Box carriedobject)");
-	}
-
-	/**
-	 * 
-	 * @param newVal: doboz
-	 */
-	public void setBox(Box newVal){
-		m_Box = newVal;
 	}
 
 }

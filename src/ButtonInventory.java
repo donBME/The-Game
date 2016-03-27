@@ -1,4 +1,4 @@
-
+import java.util.List;
 
 /**
  * @author Laszlo
@@ -7,34 +7,16 @@
  */
 public class ButtonInventory {
 
-	private Button m_Button;
-
-	public ButtonInventory(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
+    private List<Button> buttons;
 
 	/**
 	 * 
 	 * @param coord: koordináták
 	 */
 	public boolean EventOn(Coordinate coord){
+        System.out.println(">>ButtonInventory::EventOn(Coordinate coord)");
+        System.out.println("<<ButtonInventory::EventOn(Coordinate coord)");
 		return false;
-	}
-
-	public Button getButton(){
-		return m_Button;
-	}
-
-	/**
-	 * 
-	 * @param newVal: gomb
-	 */
-	public void setButton(Button newVal){
-		m_Button = newVal;
 	}
 
 }

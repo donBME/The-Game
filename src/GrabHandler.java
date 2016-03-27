@@ -26,7 +26,17 @@ public class GrabHandler {
 	 * @param interactfrom: belépés iránya
 	 */
 	public Box Grab(CVector interactfrom){
-		return null;
+        System.out.println(">>GrabHandler::Grab(CVector interactfrom)");
+        if(data.stargates.IsThere(interactfrom)){
+            interactfrom = data.stargates.StepIn(interactfrom);
+        }
+        if(data.boxes.IsThere(interactfrom)){
+            data.buttons.EventOn(interactfrom);
+            System.out.println("<<GrabHandler::Grab(CVector interactfrom)");
+            return data.boxes.GetBox(interactfrom);
+        }
+        System.out.println("<<GrabHandler::Grab(CVector interactfrom)");
+        return null;
 	}
 	
 	/**
@@ -73,7 +83,7 @@ public class GrabHandler {
 	 * 
 	 * @param newVal
 	 */
-	public void setdata(DataAccessPoint newVal){
+	public void setData(DataAccessPoint newVal){
 		data = newVal;
 	}
 

@@ -17,8 +17,11 @@ public class TestMain {
     public static void main(String[] args) {
         // Anything which isn't evident at first glimpse, must be rigorously described in a comment beforehand.
         //System.out.println("Test method:" + System.lineSeparator() + "Starting one hell of a game from scratch!");
+
+        // Egy menüt rakjunk már ide srácok!
+
         TestMain mivelnincsmenuezureztkellhasznalni = new TestMain();
-        mivelnincsmenuezureztkellhasznalni.Put();
+        mivelnincsmenuezureztkellhasznalni.Grab();
     }
 
 	private void Init(){
@@ -39,14 +42,26 @@ public class TestMain {
         dataAccessPoint.collectables = new CollectableInventory();
         dataAccessPoint.fields = new FieldObjectInventory();
         dataAccessPoint.stargates = new StarGateInventory();
-        grabHandler.setdata(dataAccessPoint);
+        grabHandler.setData(dataAccessPoint);
         player.sethand(grabHandler);
         // Real interaction
         player.Interact(null);
     }
 
     private void Grab(){
-
+        // Initialization
+        Player player = new Player(null);
+        GrabHandler grabHandler = new GrabHandler();
+        DataAccessPoint dataAccessPoint = new DataAccessPoint();
+        dataAccessPoint.boxes = new BoxInventory();
+        dataAccessPoint.buttons = new ButtonInventory();
+        dataAccessPoint.collectables = new CollectableInventory();
+        dataAccessPoint.fields = new FieldObjectInventory();
+        dataAccessPoint.stargates = new StarGateInventory();
+        grabHandler.setData(dataAccessPoint);
+        player.sethand(grabHandler);
+        // Real interaction
+        player.Interact(null);
     }
 
     private void Shoot(){
