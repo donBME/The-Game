@@ -3,7 +3,7 @@
 /**
  * @author Laszlo
  * @version 1.0
- * @created 20-m·rc.-2016 12:28:32
+ * @created 20-m√°rc.-2016 12:28:32
  */
 public class Abyss implements FieldObject {
 
@@ -11,14 +11,10 @@ public class Abyss implements FieldObject {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
-
 	@Override
 	public boolean IsMortal() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -30,7 +26,7 @@ public class Abyss implements FieldObject {
 	@Override
 	public boolean Steppable() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }

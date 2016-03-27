@@ -3,7 +3,7 @@
 /**
  * @author Laszlo
  * @version 1.0
- * @created 20-m�rc.-2016 12:28:33
+ * @created 20-márc.-2016 12:28:33
  */
 public class Player {
 
@@ -13,12 +13,8 @@ public class Player {
 	private StepHandler leg;
 	private ShotHandler gun;
 
-	public Player(){
-		
-	}
-
-	public void finalize() throws Throwable {
-
+	public Player(Box box){
+        handfull = box;
 	}
 
 	public ShotHandler getgun(){
@@ -41,11 +37,14 @@ public class Player {
 	/**
 	 * 
 	 * @author Mate
-	 * @param toDir: ir�ny
+	 * @param toDir: irány
 	 */
 	public void Interact(Direction toDir){
 		System.out.println(">>Player::Interact(Direction toDir)");
-		hand.Put(null, handfull);
+		if(handfull==null)
+            handfull = hand.Grab(null);
+        else
+            hand.Put(null, handfull);
 		System.out.println("<<Player::Interact(Direction toDir)");
 	}
 

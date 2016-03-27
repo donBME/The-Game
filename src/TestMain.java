@@ -17,16 +17,47 @@ public class TestMain {
     public static void main(String[] args) {
         // Anything which isn't evident at first glimpse, must be rigorously described in a comment beforehand.
         //System.out.println("Test method:" + System.lineSeparator() + "Starting one hell of a game from scratch!");
-    	Player p = new Player();
-    	GrabHandler gh = new GrabHandler();
-    	DataAccessPoint dap = new DataAccessPoint();
-    	dap.boxes = new BoxInventory();
-    	dap.buttons = new ButtonInventory();
-    	dap.collectables = new CollectableInventory();
-    	dap.fields = new FieldObjectInventory();
-    	dap.stargates = new StarGateInventory();
-    	gh.setdata(dap);
-    	p.sethand(gh);
-    	p.Interact(null);
+        TestMain mivelnincsmenüezéreztkellhasználni = new TestMain();
+        mivelnincsmenüezéreztkellhasználni.Put();
+    }
+
+	private void Init(){
+
+    }
+
+    private void CanPut(){
+
+    }
+
+    private void Put(){
+        // Initialization
+        Player player = new Player(new Box());
+        GrabHandler grabHandler = new GrabHandler();
+        DataAccessPoint dataAccessPoint = new DataAccessPoint();
+        dataAccessPoint.boxes = new BoxInventory();
+        dataAccessPoint.buttons = new ButtonInventory();
+        dataAccessPoint.collectables = new CollectableInventory();
+        dataAccessPoint.fields = new FieldObjectInventory();
+        dataAccessPoint.stargates = new StarGateInventory();
+        grabHandler.setdata(dataAccessPoint);
+        player.sethand(grabHandler);
+        // Real interaction
+        player.Interact(null);
+    }
+
+    private void Grab(){
+
+    }
+
+    private void Shoot(){
+
+    }
+
+    private void Push(){
+
+    }
+
+    private void Step(){
+
     }
 }

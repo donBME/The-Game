@@ -3,7 +3,7 @@
 /**
  * @author Laszlo
  * @version 1.0
- * @created 20-mï¿½rc.-2016 12:28:33
+ * @created 20-mÃ¡rc.-2016 12:28:33
  */
 public class GrabHandler {
 
@@ -31,7 +31,7 @@ public class GrabHandler {
 	
 	/**
 	 * @author Mate
-	 * @param interactfrom: belépés iránya
+	 * @param interactfrom: belÃ©pÃ©s irÃ¡nya
 	 */
 	private boolean CanPut(CVector interactfrom){
 		if(data.fields.GetFieldObject(interactfrom).Steppable()){
@@ -46,7 +46,7 @@ public class GrabHandler {
 	
 	/**
 	 * @author Mate
-	 * @param interactfrom: belépés iránya
+	 * @param interactfrom: belï¿½pï¿½s irï¿½nya
 	 * @param carriedobject: doboz
 	 */
 	public boolean Put(CVector interactfrom, Box carriedobject){

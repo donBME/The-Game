@@ -11,10 +11,6 @@ public class Box implements FieldObject {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
-
 	@Override
 	public boolean IsMortal() {
 		// TODO Auto-generated method stub

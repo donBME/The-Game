@@ -13,10 +13,6 @@ public class Door implements FieldObject {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
-
 	public void Statechanged(){
 
 	}
@@ -36,7 +32,7 @@ public class Door implements FieldObject {
 	@Override
 	public boolean Steppable() {
 		// TODO Auto-generated method stub
-		return false;
+		return open;
 	}
 
 }

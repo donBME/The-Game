@@ -9,60 +9,50 @@ import java.io.InputStreamReader;
  */
 public class FieldObjectSample implements FieldObject{
 
+	/**
+	* Hence there is no specified object map, this sample-class is intended to simulate all structural behaviour.
+	*/
+
+    /**
+     *  1 - true
+     * -1 - false
+     *  0 - undefined
+    */
+    private int mortality=0,shootability=0, stepability=0;
+    private QuestionAssistant questionAssistant;
+
+
 	@Override
 	public boolean IsMortal() {
 		System.out.println(">>FieldObject::IsMortal()");
-		InputStreamReader isr = new InputStreamReader(System.in);
-		BufferedReader br = new BufferedReader(isr);
-		String line = null;
-		do{
-			System.out.println("Is the FieldObject mortal? (y/n)");
-			try {
-				line = br.readLine();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}while(!(line.equals("y")|| line.equals("n")));
-		/*try {
-			br.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+        if (questionAssistant.ask("Is the FieldObject mortal? (y/n)"))
+            mortality = 1;
+        else
+            mortality = -1;
 		System.out.println("<<FieldObject::IsMortal()");
-		return line.equals("y");
+		return mortality == 1;
 	}
 
 	@Override
 	public boolean Shootable() {
-		// TODO Auto-generated method stub
-		return false;
+        System.out.println(">>FieldObject::Shootable()");
+        if(questionAssistant.ask("Is the FieldObject shootable? (y/n)"))
+            shootability = 1;
+        else
+            shootability = -1;
+        System.out.println("<<FieldObject::Shootable()");
+        return shootability == 1;
 	}
 
 	@Override
 	public boolean Steppable() {
-		System.out.println(">>FieldObject::Steppable()");
-		InputStreamReader isr = new InputStreamReader(System.in);
-		BufferedReader br = new BufferedReader(isr);
-		String line = null;
-		do{
-			System.out.println("Is the FieldObject steppable? (y/n)");
-			try {
-				line = br.readLine();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}while(!(line.equals("y")|| line.equals("n")));
-		System.out.println("<<FieldObject::Steppable()");
-		/*try {
-			br.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		return line.equals("y");
+        System.out.println(">>FieldObject::Steppable()");
+        if(questionAssistant.ask("Is the FieldObject steppable? (y/n)"))
+            stepability = 1;
+        else
+            stepability = -1;
+        System.out.println("<<FieldObject::Steppable()");
+        return stepability == 1;
 	}
 
 }
