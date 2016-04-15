@@ -24,9 +24,9 @@ public class CVector extends Coordinate {
 
 	/**
 	 * 
-	 * @param sx: x koordináta
-	 * @param sy: y koordináta
-	 * @param sd: irány
+	 * @param sx x koordináta
+	 * @param sy y koordináta
+	 * @param sd irány
 	 */
 	public void SetD(int sx, int sy, Direction sd){
         System.out.println(">>CVector::SetD(int sx, int sy, Direction sd)");

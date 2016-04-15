@@ -22,7 +22,7 @@ public class BoxInventory {
 	
 	/**
 	 * @author Mate
-	 * @param coord: koordináták
+	 * @param coord koordináták
 	 */
 	public void Delete(Coordinate coord){
 		System.out.println(">>BoxInventory::Delete(Coordinate coord)");
@@ -31,7 +31,7 @@ public class BoxInventory {
 
 	/**
 	 * 
-	 * @param coord: koordináták
+	 * @param coord koordináták
 	 */
 	public Box GetBox(Coordinate coord){
         System.out.println(">>BoxInventory::GetBox(Coordinate coord)");
@@ -47,7 +47,7 @@ public class BoxInventory {
 
 	/**
 	 * @author Mate
-	 * @param coord: koordináták
+	 * @param coord koordináták
 	 */
 	public boolean IsThere(Coordinate coord){
 		System.out.println(">>BoxInventory::IsThere(Coordinate coord)");
@@ -58,8 +58,8 @@ public class BoxInventory {
 
 	/**
 	 * @author Mate
-	 * @param coord: koordináták
-	 * @param carriedobject: doboz
+	 * @param coord koordináták
+	 * @param carriedobject doboz
 	 */
 	public void PutBox(Coordinate coord, Box carriedobject){
 		System.out.println(">>BoxInventory::PutBox(Coordinate coord, Box carriedobject)");

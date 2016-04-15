@@ -7,29 +7,20 @@
  */
 public class Way implements FieldObject {
 	
-	public Way(){
-		System.out.println(">>Way::Way()");
-		System.out.println("<<Way::Way()");
-	}
+	public Way(){}
 	
 	@Override
 	public boolean IsMortal() {
-        System.out.println(">>Way::IsMortal()");
-        System.out.println("<<Way::IsMortal()");
         return false;
 	}
 
 	@Override
 	public boolean Shootable() {
-        System.out.println(">>Way::Shootable()");
-        System.out.println("<<Way::Shootable()");
         return false;
 	}
 
 	@Override
 	public boolean Steppable() {
-        System.out.println(">>Way::Steppable()");
-        System.out.println("<<Way::Steppable()");
         return true;
 	}
 

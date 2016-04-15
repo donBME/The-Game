@@ -7,6 +7,8 @@
  */
 public class Player {
 
+	private boolean canGenerateZPM;
+	private int ZPMs;
 	private Box handfull;
 	private CVector pos;
 	private GrabHandler hand;
@@ -14,11 +16,13 @@ public class Player {
 	private ShotHandler gun;
     private QuestionAssistant questionAssistant = new QuestionAssistant();
 
-    public Player(ShotHandler shothandler, GrabHandler grabhandler, StepHandler stephandler) {
+    public Player(ShotHandler shothandler, GrabHandler grabhandler, StepHandler stephandler, boolean canGenerateZPM) {
 		System.out.println(">>Player::Create(ShotHandler shothandler, GrabHandler grabhandler, StepHandler stephandler)");
 		gun = shothandler;
 		hand = grabhandler;
 		leg = stephandler;
+		this.canGenerateZPM = canGenerateZPM;
+		ZPMs = 0;
 		
 		System.out.println(">>CVector::Create(int sx, int sy, Direction dir)");
 		int sx=0, sy=0;
@@ -30,7 +34,7 @@ public class Player {
 	/**
 	 * 
 	 * @author Mate
-	 * @param toDir: irány
+	 * @param toDir ir�ny
 	 */
 	public void Interact(Direction toDir){
 		System.out.println(">>Player::Interact(Direction toDir)");
@@ -45,8 +49,8 @@ public class Player {
 
 	/**
 	 * 
-	 * @param toDir: irány
-	 * @param color: szín
+	 * @param toDir irány
+	 * @param color szín
 	 */
 	public void Shoot(Direction toDir, StarGateColor color){
         System.out.println(">>Player::Shoot(Direction toDir, StarGateColor color)");
@@ -58,16 +62,17 @@ public class Player {
 	}
 
 	/**
-	 * mozgás iránnyal hívódik meg, tovobbátja a vezérlést a StepHandlernek, aki
-	 * válaszul megadja melyik mezőn, milyen irányba nézve kell a játékosnak lennie
-	 * 
-	 * @param toDir: irány
+	 * @author Mate
+	 * @param toDir a l�p�s ir�nya
 	 */
 	public void Step(Direction toDir)
 	{
-		System.out.println(">>Player::Step(Direction toDir)");
-		leg.NextStep(pos,toDir);
-		System.out.println("<<Player::Step(Direction toDir)");
+		pos = leg.NextStep(pos, toDir, canGenerateZPM, ZPMs);
+		if(pos == null){
+			// FIXME 
+			// ezt majd �t kell �rni csak nem tudom, hogy hogyan fog ez m�k�dni
+			System.out.println("You are dead! Game over!"); 
+		}
 	}
 
 }

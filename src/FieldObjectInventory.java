@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Laszlo
@@ -8,33 +8,31 @@ import java.util.List;
  */
 public class FieldObjectInventory {
 
-	private List<FieldObject> fieldObjects;
-
+	private Map<Coordinate, FieldObject> fieldObjects;
+	
+	/**
+	 * @author Mate
+	 */
 	public FieldObjectInventory(){
-        System.out.println(">>FieldObjectInventory::Create()");
-		fieldObjects = new ArrayList<>();
-        System.out.println("<<FieldObjectInventory::Create()");
+		fieldObjects = new HashMap<>();
 	}
 
 	/**
 	 * 
 	 * @author Mate
-	 * @param coord: koordináták
+	 * @param coord ahonnan la a karjuk kérni, hogy ott van-e FeildObject
+	 * @return A koordinátán található FieldObject
 	 */
 	public FieldObject GetFieldObject(Coordinate coord){
-		System.out.println(">>FieldObjectInventory::GetFieldObject(Coordinate coord)");
-		System.out.println("<<FieldObjectInventory::GetFieldObject(Coordinate coord)");
-		return new FieldObjectSample();
+		return fieldObjects.get(coord);
 	}
 
 	/**
-	 * 
-	 * @param newVal
+	 * @author Mate
+	 * @param newFeildObject új FieldObject
 	 */
-	public void addFieldObject(FieldObject newVal){
-        System.out.println(">>FieldObjectInventory::addFieldObject(FieldObject newVal)");
-		fieldObjects.add(newVal);
-		System.out.println("<<FieldObjectInventory::addFieldObject(FieldObject newVal)");
+	public void AddFieldObject(Coordinate coord, FieldObject newFeildObject){
+        fieldObjects.put(coord, newFeildObject);
 	}
 
 }

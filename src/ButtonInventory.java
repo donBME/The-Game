@@ -25,7 +25,7 @@ public class ButtonInventory {
 
 	/**
 	 *
-	 * @param coord: koordináták
+	 * @param coord koordináták
 	 */
 	public boolean EventOn(Coordinate coord){
         System.out.println(">>ButtonInventory::EventOn(Coordinate coord)");

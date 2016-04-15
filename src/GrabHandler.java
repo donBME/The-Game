@@ -17,7 +17,7 @@ public class GrabHandler {
 
 	/**
 	 * 
-	 * @param interactfrom: belépés iránya
+	 * @param interactfrom belépés iránya
 	 */
 	public Box Grab(CVector interactfrom){
         System.out.println(">>GrabHandler::Grab(CVector interactfrom)");
@@ -35,7 +35,7 @@ public class GrabHandler {
 	
 	/**
 	 * @author Mate
-	 * @param interactfrom: belépés iránya
+	 * @param interactfrom belépés iránya
 	 */
 	private boolean CanPut(CVector interactfrom){
 		if(data.fields.GetFieldObject(interactfrom).Steppable()){
@@ -50,8 +50,8 @@ public class GrabHandler {
 	
 	/**
 	 * @author Mate
-	 * @param interactfrom: belépés iránya
-	 * @param carriedobject: doboz
+	 * @param interactfrom belépés iránya
+	 * @param carriedobject doboz
 	 */
 	public boolean Put(CVector interactfrom, Box carriedobject){
 		System.out.println(">>GrabHandler::Put(CVectro interactfrom, Box carrieobject)");

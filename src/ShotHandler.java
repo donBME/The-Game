@@ -18,8 +18,8 @@ public class ShotHandler {
 
 	/**
 	 * 
-	 * @param shootfrom: lövés iránya
-	 * @param color: szín
+	 * @param shootfrom lövés iránya
+	 * @param color szín
 	 */
 	public void Shoot(CVector shootfrom, StarGateColor color){
         System.out.println(">>ShotHandler::Shoot(CVector shootfrom, StarGateColor color)");

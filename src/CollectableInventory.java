@@ -2,7 +2,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Laszlo
@@ -11,44 +13,53 @@ import java.util.List;
  */
 public class CollectableInventory {
 
-	private List<Collectable> collectables;
-	private QuestionAssistant questionAssistant = new QuestionAssistant();
-
-	public CollectableInventory(){
-		System.out.println(">>CollectableInventory::CollectableInventory()");
-        collectables = new ArrayList<>();
-		System.out.println("<<CollectableInventory::CollectableInventory()");
-	}
+	private Map<Coordinate, Collectable> collectables;
 
 	/**
-	 * 
-	 * @param coord: koordináták
+	 * @author Mate
 	 */
-	public Collectable GetCollectableAt(Coordinate coord){
-        System.out.println(">>CollectableInventory::GetCollectableAt(Coordinate coord)");
-        System.out.println("<<CollectableInventory::GetCollectableAt(Coordinate coord)");
-        return collectables.get(0);
+	public CollectableInventory(){
+        collectables = new HashMap<>();
 	}
 
 	/**
 	 * @author Mate
-	 * @param coord: koordináták
+	 * @param coord Koordináták, ahonnan felvesszük a Collactable-t
+	 * @param count Az eddig összegyûjtöttek száma
 	 */
-	public boolean IsThere(Coordinate coord){
-		System.out.println(">>CollectableInventory::IsThere(Coordinate coord)");
-        boolean thereis = questionAssistant.ask("Is there a collectable item? (y/n)");
-		System.out.println("<<CollectableInventory::IsThere(Coordinate coord)");
-		return thereis;
+	public void GetCollectableAt(Coordinate coord, int count){
+		collectables.get(coord).Collect(count);
+        collectables.remove(coord);
 	}
 
 	/**
-	 * 
-	 * @param newVal: collectable
+	 * @author Mate
+	 * @param coord Ahol megnézzük, hogy van-e Collectable
 	 */
-	public void addCollectable(Collectable newVal){
-        System.out.println(">>CollectableInventory::addCollectable(Collectable newVal)");
-		collectables.add(newVal);
-		System.out.println("<<CollectableInventory::addCollectable(Collectable newVal)");
+	public boolean IsThere(Coordinate coord){
+		if(collectables.get(coord)!= null){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * @author Mate
+	 * @param coord Ahova tesszük
+	 * @param newCollectable új collectable
+	 */
+	public void addCollectable(Coordinate coord, Collectable newCollectable){
+		collectables.put(coord, newCollectable);
+	}
+	
+	/**
+	 * @author Mate
+	 */
+	public void addToRandomCoord(){
+		// FIXME
+		// Kell hozzá a pálya mérete, anélkül nem lehet megírni
+		// A DataAccessPoint-ot ismernie kell, emrt csak Way-re lehet tenni ZPM-et
 	}
 
 }
