@@ -107,7 +107,7 @@ public class GameClass {
 
         boxInventory = new BoxInventory();
 
-        boxInventory.addBox(box);
+        boxInventory.addBox(testCoord,box);
 
         button = new Button(door);
 
