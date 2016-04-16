@@ -34,11 +34,27 @@ public class BoxInventory {
     /**
      * Dobozok lekérése a tárolóból.
      * @param coord A lekérdezni kívánt mezö koordinátája.
-     * @return Megváltoztattam a visszatérési értéket egy listára,
-     * mivel nem csak egy objektum lehet egy mezön.
+     * @return A dobozlista elsö eleme.
      */
-	public List<Box> GetBox(Coordinate coord){
-        return boxList.get(coord);
+	public Box GetBox(Coordinate coord){
+
+        // Visszatér a lista legfelsö elemével.
+        if(boxList.containsKey(coord)){
+            if(boxList.get(coord).size()>0){
+                return boxList.get(coord).get(0);
+            }
+            else {
+
+                // Ha üres a lista, töröljük a hozzá tartotó kulcsot is.
+                boxList.remove(coord);
+                return null;
+            }
+        }
+        else {
+
+            // Egyébként legyen NULL a visszatérési érték.
+            return null;
+        }
 	}
 
     /**
