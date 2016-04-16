@@ -7,29 +7,30 @@
  */
 public class Box implements FieldObject {
 
-	public Box(){
-		System.out.println(">>Box::Box()");
-		System.out.println("<<Box::Box()");
-	}
-	
+    /**
+     *
+     * @return Hamissal tér vissza. A doboz nem öl meg.
+     */
 	@Override
 	public boolean IsMortal() {
-        System.out.println(">>Box::IsMortal()");
-        System.out.println("<<Box::IsMortal()");
         return false;
 	}
 
+    /**
+     *
+     * @return Hamissal tér vissza. A dobozra nem löhetö csillagkapu.
+     */
 	@Override
 	public boolean Shootable() {
-        System.out.println(">>Box::Shootable()");
-        System.out.println("<<Box::Shootable()");
         return false;
 	}
 
+    /**
+     *
+     * @return Hamissal tér vissza. A dobozra nem is lehet rálépni.
+     */
 	@Override
 	public boolean Steppable() {
-        System.out.println(">>Box::Steppable()");
-        System.out.println("<<Box::Steppable()");
         return false;
 	}
 

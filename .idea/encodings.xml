@@ -11,6 +11,7 @@
     <file url="file://$PROJECT_DIR$/src/Door.java" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/src/FieldObject.java" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/src/FieldObjectInventory.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/Player.java" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/src/SpecialWall.java" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/src/StarGate.java" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/src/StarGateColor.java" charset="ISO-8859-1" />

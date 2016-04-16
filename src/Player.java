@@ -3,7 +3,7 @@
 /**
  * @author Laszlo
  * @version 1.0
- * @created 20-mÃ¡rc.-2016 12:28:33
+ * @created 20-márc.-2016 12:28:33
  */
 public class Player {
 
@@ -34,7 +34,7 @@ public class Player {
 	/**
 	 * 
 	 * @author Mate
-	 * @param toDir irány
+	 * @param toDir ir?ny
 	 */
 	public void Interact(Direction toDir){
 		System.out.println(">>Player::Interact(Direction toDir)");
@@ -49,8 +49,8 @@ public class Player {
 
 	/**
 	 * 
-	 * @param toDir irÃ¡ny
-	 * @param color szÃ­n
+	 * @param toDir irány
+	 * @param color szín
 	 */
 	public void Shoot(Direction toDir, StarGateColor color){
         System.out.println(">>Player::Shoot(Direction toDir, StarGateColor color)");
@@ -63,14 +63,14 @@ public class Player {
 
 	/**
 	 * @author Mate
-	 * @param toDir a lépés iránya
+	 * @param toDir a l?p?s ir?nya
 	 */
 	public void Step(Direction toDir)
 	{
 		pos = leg.NextStep(pos, toDir, canGenerateZPM, ZPMs);
 		if(pos == null){
 			// FIXME 
-			// ezt majd át kell írni csak nem tudom, hogy hogyan fog ez mûködni
+			// ezt majd ?t kell ?rni csak nem tudom, hogy hogyan fog ez m?k?dni
 			System.out.println("You are dead! Game over!"); 
 		}
 	}
