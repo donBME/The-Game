@@ -40,8 +40,8 @@ public class StarGateInventory {
 	
 	/**
 	 * @author Mate
-	 * @param pos A player lépéséek helye
-	 * @return A belépés irányának megfelelõ irányú pozícó
+	 * @param pos A player lépésének helye
+	 * @return A belépés irányának megfelelõ irányú pozíció
 	 * Amikor Belépünk egy csillagkapuba
 	 * akkor az a lépés irányának
 	 * ellenkezõ irányból nyílik.

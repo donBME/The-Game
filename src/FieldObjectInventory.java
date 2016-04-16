@@ -31,7 +31,7 @@ public class FieldObjectInventory {
 	 * @author Mate
 	 * @param newFeildObject új FieldObject
 	 */
-	public void AddFieldObject(Coordinate coord, FieldObject newFeildObject){
+	public void addFieldObject(Coordinate coord, FieldObject newFeildObject){
         fieldObjects.put(coord, newFeildObject);
 	}
 

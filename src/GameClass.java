@@ -83,24 +83,25 @@ public class GameClass {
 
     private void Init(){
         fieldObjectInventory = new FieldObjectInventory();
+        Coordinate testCoord = new Coordinate();
 
         wall = new Wall();
-        fieldObjectInventory.addFieldObject(wall);
+        fieldObjectInventory.addFieldObject(testCoord,wall);
 
         specialWall = new SpecialWall();
-        fieldObjectInventory.addFieldObject(specialWall);
+        fieldObjectInventory.addFieldObject(testCoord,specialWall);
 
         abyss = new Abyss();
-        fieldObjectInventory.addFieldObject(abyss);
+        fieldObjectInventory.addFieldObject(testCoord,abyss);
 
         way = new Way();
-        fieldObjectInventory.addFieldObject(way);
+        fieldObjectInventory.addFieldObject(testCoord,way);
 
         door = new Door();
-        fieldObjectInventory.addFieldObject(door);
+        fieldObjectInventory.addFieldObject(testCoord,door);
 
         box = new Box();
-        fieldObjectInventory.addFieldObject(box);
+        fieldObjectInventory.addFieldObject(testCoord,box);
 
         stargateInventory = new StarGateInventory();
 
@@ -116,14 +117,14 @@ public class GameClass {
         collectableInventory = new CollectableInventory();
 
         zpm = new ZPM();
-        collectableInventory.addCollectable(zpm);
+        collectableInventory.addCollectable(testCoord,zpm);
 
         dataAccesspoint = new DataAccessPoint(stargateInventory, fieldObjectInventory, boxInventory, buttonInventory, collectableInventory);
         shotHandler = new ShotHandler(dataAccesspoint);
         grabHandler = new GrabHandler(dataAccesspoint);
         stepHandler = new StepHandler(dataAccesspoint);
 
-        player = new Player(shotHandler, grabHandler, stepHandler);
+        player = new Player(shotHandler, grabHandler, stepHandler,true);
     }
 
     private void Interact(){
