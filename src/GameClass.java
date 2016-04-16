@@ -109,7 +109,7 @@ public class GameClass {
 
         boxInventory.addBox(testCoord,box);
 
-        button = new Button(door);
+        button = new Button(door,1);
 
         buttonInventory = new ButtonInventory();
         buttonInventory.addButton(button);

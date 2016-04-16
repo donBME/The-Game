@@ -7,8 +7,6 @@
  */
 public class Abyss implements FieldObject {
 
-	public Abyss(){}
-
 	@Override
 	public boolean IsMortal() {
 		return true;
