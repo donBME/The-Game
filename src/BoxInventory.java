@@ -1,9 +1,6 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Laszlo
@@ -13,13 +10,13 @@ import java.util.List;
 public class BoxInventory {
 
     // Dobozok tárolója
-	private HashMap<Coordinate,List<Box>> boxList;
+	private Map<Coordinate,List<Box>> boxList;
 
     /**
      * Tároló konstruktor
      */
 	public BoxInventory(){
-        boxList = new HashMap<>();
+        boxList = new CustomHashMap();
 	}
 
     /**
@@ -41,7 +38,15 @@ public class BoxInventory {
         // Visszatér a lista legfelsö elemével.
         if(boxList.containsKey(coord)){
             if(boxList.get(coord).size()>0){
-                return boxList.get(coord).get(0);
+                Box returnValue =  boxList.get(coord).get(0);
+                boxList.get(coord).remove(returnValue);
+
+                // Töröljük a kulcsot is, ha nincs alatta már doboz.
+                if(boxList.get(coord).size()==0){
+                    boxList.remove(coord);
+                }
+
+                return returnValue;
             }
             else {
 
@@ -75,7 +80,6 @@ public class BoxInventory {
 
     /**
      * Megadja, hogy a keresett koordniátán van-e doboz.
-     * Lehet inkább a keresett koordinátán lévö dobozok összsúlyát kellene visszaadni.
      * @param coord Mezö koordinátája.
      * @return Igazzal tér vissza, ha van a mezön doboz, hamissal ha nincs.
      */

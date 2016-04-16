@@ -16,7 +16,7 @@ public class Player {
 	private ShotHandler gun;
     private QuestionAssistant questionAssistant = new QuestionAssistant();
 
-    public Player(ShotHandler shothandler, GrabHandler grabhandler, StepHandler stephandler, boolean canGenerateZPM) {
+    public Player(ShotHandler shothandler, GrabHandler grabhandler, StepHandler stephandler, boolean canGenerateZPM, int sx, int sy) {
 		System.out.println(">>Player::Create(ShotHandler shothandler, GrabHandler grabhandler, StepHandler stephandler)");
 		gun = shothandler;
 		hand = grabhandler;
@@ -25,25 +25,23 @@ public class Player {
 		ZPMs = 0;
 		
 		System.out.println(">>CVector::Create(int sx, int sy, Direction dir)");
-		int sx=0, sy=0;
 		Direction dir = Direction.North;
 		pos  = new CVector(sx, sy, dir);
 		System.out.println("<<Player::Create(ShotHandler shothandler, GrabHandler grabhandler, StepHandler stephandler)");
 	}
 
-	/**
-	 * 
-	 * @author Mate
-	 * @param toDir ir?ny
-	 */
-	public void Interact(Direction toDir){
-		System.out.println(">>Player::Interact(Direction toDir)");
-        boolean hasBox = questionAssistant.ask("Does the player have a box in hand? (y/n)");
-        if(!hasBox)
-            handfull = hand.Grab(null);
-        else
-            hand.Put(null, handfull);
-		System.out.println("<<Player::Interact(Direction toDir)");
+    /**
+     * Müvelet végrehajtása
+     * @param fromThisPosition Erröl a pozícióról akarunk müveletet végrehajtani.
+     */
+	public void Interact(CVector fromThisPosition){
+        if(handfull == null) {
+            handfull = hand.Grab(fromThisPosition);
+        }
+        else {
+            hand.Put(fromThisPosition, handfull);
+            handfull = null;
+        }
 	}
 
 
@@ -73,6 +71,16 @@ public class Player {
 			// ezt majd ?t kell ?rni csak nem tudom, hogy hogyan fog ez m?k?dni
 			System.out.println("You are dead! Game over!"); 
 		}
+        else {
+            System.out.println(pos.GetX() + " " + pos.GetY());
+        }
 	}
 
+    /**
+     * Player helyének lekérésére
+     * @return Player pozíciója és iránya
+     */
+    public CVector getPos() {
+        return pos;
+    }
 }

@@ -14,7 +14,7 @@ public class FieldObjectInventory {
 	 * @author Mate
 	 */
 	public FieldObjectInventory(){
-		fieldObjects = new HashMap<>();
+		fieldObjects = new CustomHashMap();
 	}
 
 	/**
@@ -29,10 +29,10 @@ public class FieldObjectInventory {
 
 	/**
 	 * @author Mate
-	 * @param newFeildObject új FieldObject
+	 * @param newFieldObject új FieldObject
 	 */
-	public void addFieldObject(Coordinate coord, FieldObject newFeildObject){
-        fieldObjects.put(coord, newFeildObject);
+	public void addFieldObject(Coordinate coord, FieldObject newFieldObject){
+        fieldObjects.put(coord, newFieldObject);
 	}
 
 }

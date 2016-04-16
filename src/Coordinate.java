@@ -11,15 +11,26 @@ public class Coordinate {
 	private int y;
 
 	public int GetX(){
-		System.out.println(">>Coordinate::GetX()");
-		System.out.println("<<Coordinate::GetX()");
 		return x;
 	}
 
 	public int GetY(){
-        System.out.println(">>Coordinate::GetY()");
-        System.out.println("<<Coordinate::GetY()");
         return y;
+	}
+
+	/**
+	 * Üres konstruktor
+	 */
+	public Coordinate(){}
+
+	/**
+	 * Egyböl értékadó konstruktor
+	 * @param sx x koordináta
+	 * @param sy y koordináta
+     */
+	public Coordinate(int sx, int sy){
+		x = sx;
+		y = sy;
 	}
 
 	/**
@@ -28,10 +39,18 @@ public class Coordinate {
 	 * @param sy: y koordináta
 	 */
 	public void Set(int sx, int sy){
-        System.out.println(">>Coordinate::Set(int sx, int sy)");
 		x = sx;
 		y = sy;
-        System.out.println("<<Coordinate::Set(int sx, int sy)");
 	}
 
+	/**
+	 * Hashmap összehasonlításhoz.
+	 * @param obj Összehasonlítandó érték
+	 * @return igaz/hamis
+     */
+	@Override
+	public boolean equals(Object obj) {
+		Coordinate comparing = (Coordinate)obj;
+		return x == comparing.GetX() && y == comparing.GetY();
+	}
 }

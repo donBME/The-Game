@@ -44,6 +44,8 @@ public class GameClass {
         //System.out.println("Test method:" + System.lineSeparator() + "Starting one hell of a game from scratch!");
         GameClass menu = new GameClass();
 
+        menu.Init();
+
 
         InputStreamReader inputStreamReader = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -82,57 +84,40 @@ public class GameClass {
     }
 
     private void Init(){
+
         fieldObjectInventory = new FieldObjectInventory();
-        Coordinate testCoord = new Coordinate();
-
-        wall = new Wall();
-        fieldObjectInventory.addFieldObject(testCoord,wall);
-
-        specialWall = new SpecialWall();
-        fieldObjectInventory.addFieldObject(testCoord,specialWall);
-
-        abyss = new Abyss();
-        fieldObjectInventory.addFieldObject(testCoord,abyss);
-
-        way = new Way();
-        fieldObjectInventory.addFieldObject(testCoord,way);
-
-        door = new Door();
-        fieldObjectInventory.addFieldObject(testCoord,door);
-
-        box = new Box();
-        fieldObjectInventory.addFieldObject(testCoord,box);
-
         stargateInventory = new StarGateInventory();
-
         boxInventory = new BoxInventory();
-
-        boxInventory.addBox(testCoord,box);
-
-        button = new Button(door,1);
-
         buttonInventory = new ButtonInventory();
-        buttonInventory.addButton(button);
-
         collectableInventory = new CollectableInventory();
 
-        zpm = new ZPM();
-        collectableInventory.addCollectable(testCoord,zpm);
-
         dataAccesspoint = new DataAccessPoint(stargateInventory, fieldObjectInventory, boxInventory, buttonInventory, collectableInventory);
+
         shotHandler = new ShotHandler(dataAccesspoint);
         grabHandler = new GrabHandler(dataAccesspoint);
         stepHandler = new StepHandler(dataAccesspoint);
 
-        player = new Player(shotHandler, grabHandler, stepHandler,true);
+        player = new Player(shotHandler, grabHandler, stepHandler,true, 0, 0);
+
+        fieldObjectInventory.addFieldObject(new Coordinate(0,0),new Way());
+        fieldObjectInventory.addFieldObject(new Coordinate(1,0),new Way());
+        boxInventory.addBox(new Coordinate(1,0),new Box());
+        fieldObjectInventory.addFieldObject(new Coordinate(2,0),new Wall());
+
     }
 
     private void Interact(){
-        player.Interact(null);
+        player.Interact(player.getPos());
     }
 
     private void Step(){
-        player.Step(Direction.North);
+        player.Step(Direction.East);
+        player.Interact(player.getPos());
+        player.Step(Direction.East);
+        player.Step(Direction.West);
+        player.Interact(player.getPos());
+        player.Step(Direction.West);
+
     }
 
     private void Shoot(){

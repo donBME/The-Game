@@ -3,7 +3,7 @@
 /**
  * @author Laszlo
  * @version 1.0
- * @created 20-mÃ¡rc.-2016 12:28:33
+ * @created 20-márc.-2016 12:28:33
  */
 public class StepHandler {
 
@@ -12,7 +12,7 @@ public class StepHandler {
 
 	/**
 	 * @author Mate
-	 * @param data Ahonan eléri a többi adatot.
+	 * @param data Ahonan el?ri a t?bbi adatot.
 	 */
 	public StepHandler(DataAccessPoint data) {
 		this.data = data;
@@ -20,8 +20,8 @@ public class StepHandler {
 	
 	/**
 	 * @author Mate
-	 * @param where Ahova a játékos szeretne lépni
-	 * @return Ráléphet-e az adott koordinátára
+	 * @param where Ahova a j?t?kos szeretne l?pni
+	 * @return R?l?phet-e az adott koordin?t?ra
 	 */
 	private boolean CanStep(CVector where){
 		FieldObject fieldObject = data.fields.GetFieldObject(where);
@@ -35,9 +35,9 @@ public class StepHandler {
 	
 	/**
 	 * @author Mate
-	 * @param playerpos A játékos pozíciója
-	 * @param dir A lépés iránya
-	 * @retun A player pozíciojánka és a lépés irányának megfelelõ CVectort, ahova szeretne lépni.
+	 * @param playerpos A j?t?kos poz?ci?ja
+	 * @param dir A l?p?s ir?nya
+	 * @retun A player poz?cioj?nka ?s a l?p?s ir?ny?nak megfelel? CVectort, ahova szeretne l?pni.
 	 */
 	private CVector NextPos(CVector playerpos, Direction dir){
 		switch (dir) {
@@ -56,15 +56,15 @@ public class StepHandler {
 	
 	/**
 	 * @author Mate
-	 * @param playerpos A játékos pozíciója
-	 * @param dir A lépés iránya
-	 * @param canGenerateZPM kiválthat-e a lépéssel új ZPM létrejöttét
-	 * @param ZPMs eddig felvett ZPM-ek száma
-	 * @return A lépés utánai pozíció
+	 * @param playerpos A j?t?kos poz?ci?ja
+	 * @param dir A l?p?s ir?nya
+	 * @param canGenerateZPM kiv?lthat-e a l?p?ssel ?j ZPM l?trej?tt?t
+	 * @param ZPMs eddig felvett ZPM-ek sz?ma
+	 * @return A l?p?s ut?nai poz?ci?
 	 */
 	public CVector NextStep(CVector playerpos, Direction dir, boolean canGenerateZPM, int ZPMs){
 		if(playerpos.GetDir() != dir){
-			// Ha nem a lépés irányába néz a palyer, akkor arra fordul
+			// Ha nem a l?p?s ir?ny?ba n?z a palyer, akkor arra fordul
 			return new CVector(playerpos.GetX(), playerpos.GetY(), dir); 
 		}
 		
@@ -74,14 +74,13 @@ public class StepHandler {
 			nextpos = data.stargates.StepIn(nextpos);
 		}
 		
-		if (CanStep(nextpos))
-		{
-			// Gombról való lelépés figyelése
+		if (CanStep(nextpos)) {
+			// Gombr?l val? lel?p?s figyel?se
 			data.buttons.EventOn(playerpos);
 			if(data.fields.GetFieldObject(nextpos).IsMortal()){
 				return null;
 			}
-			// ZPM felvétel figyelése
+			// ZPM felv?tel figyel?se
 			if(data.collectables.IsThere(nextpos)){
 				if(canGenerateZPM && (ZPMs + 1) % 2 == 0 ){
 					data.collectables.addToRandomCoord();

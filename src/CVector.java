@@ -35,4 +35,22 @@ public class CVector extends Coordinate {
         System.out.println("<<CVector::SetD(int sx, int sy, Direction sd)");
 	}
 
+	/**
+	 * CVector -> Coordinate átalakító
+	 * @return az irány alapján következő koordináták
+     */
+	public Coordinate toNextCoord() {
+		switch (dir) {
+			case North:
+				return new Coordinate(GetX(), GetY()+1);
+			case South:
+				return new Coordinate(GetX(), GetY()-1);
+			case East:
+				return new Coordinate(GetX()+1, GetY());
+			case West:
+				return new Coordinate(GetX()-1, GetY());
+		}
+		return this;
+	}
+
 }
