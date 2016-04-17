@@ -18,17 +18,22 @@ public class GrabHandler {
 	 * @param interactfrom belépés iránya
 	 */
 	public Box Grab(CVector interactfrom){
-		//TODO Csillagkapu kezelése
-        //if(data.stargates.IsThere(interactfrom)){
-        //    interactfrom = data.stargates.StepIn(interactfrom);
-        //}
-        if(data.boxes.IsThere(interactfrom.toNextCoord())){
+		Coordinate checkedPos = interactfrom.toNextCoord();
+
+        if(data.stargates.IsThere(interactfrom.toNextCoord())){
+            checkedPos = data.stargates.StepIn(interactfrom.toNextCoord());
+        }
+        if(data.boxes.IsThere(checkedPos)){
             Box returnBox;
 
             returnBox =  data.boxes.GetBox(interactfrom.toNextCoord());
 
+			if (returnBox != null){
+				System.out.println("Box grabbed at: " + checkedPos.GetX() + "," + checkedPos.GetY());
+			}
+
 			// Gomb felengedés kezelése
-			data.buttons.EventOn(interactfrom.toNextCoord(), data.boxes.isThereV2(interactfrom.toNextCoord()));
+			data.buttons.EventOn(checkedPos, data.boxes.isThereV2(checkedPos));
 
 			return returnBox;
         }
@@ -40,9 +45,9 @@ public class GrabHandler {
 	 * @param interactfrom belépés iránya
 	 */
 	private boolean CanPut(CVector interactfrom){
-		if(data.fields.GetFieldObject(interactfrom.toNextCoord()).Steppable()){
-			if(!data.boxes.IsThere(interactfrom.toNextCoord())){
-				if(!data.collectables.IsThere(interactfrom.toNextCoord())){
+		if(data.fields.GetFieldObject(interactfrom).Steppable()){
+			if(!data.boxes.IsThere(interactfrom)){
+				if(!data.collectables.IsThere(interactfrom)){
 					return true;
 				}
 			}
@@ -56,19 +61,22 @@ public class GrabHandler {
 	 * @param carriedobject doboz
 	 */
 	public boolean Put(CVector interactfrom, Box carriedobject){
-		//TODO Csillagkapu
-		//if(data.stargates.IsThere(interactfrom)){
-		//	interactfrom = data.stargates.StepIn(interactfrom);
-		//}
-		if(CanPut(interactfrom)){
-			data.boxes.PutBox(interactfrom.toNextCoord(), carriedobject);
+		CVector checkedPos = interactfrom.toNextCoord();
 
-			if(data.fields.GetFieldObject(interactfrom.toNextCoord()).IsMortal()){
-				data.boxes.Delete(interactfrom.toNextCoord());
+		if(data.stargates.IsThere(checkedPos)){
+			checkedPos = data.stargates.StepIn(checkedPos);
+		}
+		if(CanPut(checkedPos)){
+			data.boxes.PutBox(checkedPos, carriedobject);
+
+			if(data.fields.GetFieldObject(checkedPos).IsMortal()){
+				data.boxes.Delete(checkedPos);
 			}
 
+			System.out.println("Box put to: " + checkedPos.GetX() + "," + checkedPos.GetY());
+
 			// Ajtónyitás kezelése
-			data.buttons.EventOn(interactfrom.toNextCoord(),data.boxes.isThereV2(interactfrom.toNextCoord()));
+			data.buttons.EventOn(checkedPos,data.boxes.isThereV2(checkedPos));
 
 			return true;
 		} else {

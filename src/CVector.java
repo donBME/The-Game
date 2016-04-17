@@ -33,18 +33,23 @@ public class CVector extends Coordinate {
 	 * CVector -> Coordinate átalakító
 	 * @return az irány alapján következő koordináták
      */
-	public Coordinate toNextCoord() {
+	public CVector toNextCoord() {
 		switch (dir) {
 			case North:
-				return new Coordinate(GetX(), GetY()+1);
+				return new CVector(GetX(), GetY()+1, dir);
 			case South:
-				return new Coordinate(GetX(), GetY()-1);
+				return new CVector(GetX(), GetY()-1, dir);
 			case East:
-				return new Coordinate(GetX()+1, GetY());
+				return new CVector(GetX()+1, GetY(), dir);
 			case West:
-				return new Coordinate(GetX()-1, GetY());
+				return new CVector(GetX()-1, GetY(), dir);
 		}
 		return this;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		CVector comparing = (CVector)obj;
+		return super.equals(obj) && comparing.dir == dir;
+	}
 }

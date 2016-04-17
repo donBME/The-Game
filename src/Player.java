@@ -34,15 +34,11 @@ public class Player {
 	public void Interact(CVector fromThisPosition){
         if(handfull == null) {
             handfull = hand.Grab(fromThisPosition);
-			if (handfull != null) {
-				System.out.println("Box grabbed at: " + fromThisPosition.toNextCoord().GetX() + "," + fromThisPosition.toNextCoord().GetY());
-			}
         }
         else {
             boolean success = hand.Put(fromThisPosition, handfull);
             if (success) {
 				handfull = null;
-				System.out.println("Box put to: " + fromThisPosition.toNextCoord().GetX() + "," + fromThisPosition.toNextCoord().GetY());
 			}
         }
 	}

@@ -11,10 +11,8 @@ public class StarGate {
 	private CVector pos;
 
 	StarGate(CVector starGatePosition, StarGateColor starGateColor){
-        System.out.println(">>StarGate::StarGate(CVector starGatePosition, StarGateColor starGateColor)");
         pos = starGatePosition;
         color = starGateColor;
-        System.out.println("<<StarGate::StarGate(CVector starGatePosition, StarGateColor starGateColor)");
     }
 	
 	public CVector GetPos(){

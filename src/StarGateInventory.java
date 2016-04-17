@@ -12,30 +12,55 @@ import java.util.List;
 public class StarGateInventory {
 	
     private StarGate yellow, blue, red, green;
-	private QuestionAssistant questionAssistant = new QuestionAssistant();
 
 	
-	public StarGateInventory(){
-		System.out.println(">>StarGateInventory::StarGateInventory()");
-		System.out.println("<<StarGateInventory::StarGateInventory()");
-	}
+	public StarGateInventory(){}
+
 	/**
-	 * 
-	 * @param portalpos csillagkapu helye
-	 * @param color szín
-	 */
+	 * Adott színü csillagkapu létrehozása, adott pozíción.
+	 * @param portalpos Csillagkapu helye
+	 * @param color Csillagkapu színe
+     */
 	public void Create(CVector portalpos, StarGateColor color){
-        System.out.println(">>StarGateInventory::Create(CVector portalpos, StarGateColor color)");
-        System.out.println("<<StarGateInventory::Create(CVector portalpos, StarGateColor color)");
+		switch (color){
+			case Yellow:
+				Delete(StarGateColor.Yellow);
+				yellow = new StarGate(EnterPos(portalpos),color);
+				break;
+			case Blue:
+				Delete(StarGateColor.Blue);
+				blue = new StarGate(EnterPos(portalpos),color);
+				break;
+			case Red:
+				Delete(StarGateColor.Red);
+				red = new StarGate(EnterPos(portalpos),color);
+				break;
+			case Green:
+				Delete(StarGateColor.Green);
+				green = new StarGate(EnterPos(portalpos),color);
+				break;
+		}
 	}
 
 	/**
-	 * 
-	 * @param color szín
-	 */
+	 * Adott színü csillagkapu törlése
+	 * @param color Törölni kívánt csillagkapu színe
+     */
 	public void Delete(StarGateColor color){
-        System.out.println(">>StarGateInventory::Delete(StarGateColor color)");
-        System.out.println("<<StarGateInventory::Delete(StarGateColor color)");
+		switch (color){
+			case Yellow:
+				yellow = null;
+				break;
+			case Blue:
+				blue = null;
+				break;
+			case Red:
+				red = null;
+				break;
+			case Green:
+				green = null;
+				break;
+		}
 	}
 	
 	/**
@@ -55,7 +80,7 @@ public class StarGateInventory {
 		case East:
 			return new CVector(pos.GetX(), pos.GetY(), Direction.West);
 		case West:
-			return new CVector(pos.GetX()-1, pos.GetY(), Direction.East);
+			return new CVector(pos.GetX(), pos.GetY(), Direction.East);
 		default: return null;
 		}
 	}
@@ -67,13 +92,13 @@ public class StarGateInventory {
 	 */
 	public boolean IsThere(CVector from){
 		CVector f = EnterPos(from);
-		if(yellow != null && yellow.GetPos() == f){
+		if(yellow != null && yellow.GetPos().equals(f)){
 			return true;
-		} else if(blue != null && blue.GetPos() == f){
+		} else if(blue != null && blue.GetPos().equals(f)){
 			return true;
-		} else if(red != null && red.GetPos() == f){
+		} else if(red != null && red.GetPos().equals(f)){
 			return true;
-		} else if(green != null && green.GetPos() == f){
+		} else if(green != null && green.GetPos().equals(f)){
 			return true;
 		} else {
 			return false;
@@ -107,19 +132,19 @@ public class StarGateInventory {
 	 */
 	public CVector StepIn(CVector from){
 		CVector f = EnterPos(from);
-		if(yellow != null && yellow.GetPos() == f){
+		if(yellow != null && yellow.GetPos().equals(f)){
 			if(blue != null){
 				return ExitPos(blue.GetPos());
 			} else return from;
-		} else if(blue != null && blue.GetPos() == f){
+		} else if(blue != null && blue.GetPos().equals(f)){
 			if(yellow != null){
 				return ExitPos(yellow.GetPos());
 			} else return from;
-		} else if(red != null && red.GetPos() == f){
+		} else if(red != null && red.GetPos().equals(f)){
 			if(green != null){
 				return ExitPos(green.GetPos());
 			} else return from;
-		} else if(green != null && green.GetPos() == f){
+		} else if(green != null && green.GetPos().equals(f)){
 			if(red != null){
 				return ExitPos(red.GetPos());
 			} else return from;
