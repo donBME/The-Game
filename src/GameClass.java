@@ -140,9 +140,10 @@ public class GameClass {
         collectableInventory.addCollectable(new Coordinate(5, 5), new ZPM());
         collectableInventory.addCollectable(new Coordinate(5, 6), new ZPM());
         boxInventory.addBox(new Coordinate(6, 2), new Box());
+        boxInventory.addBox(new Coordinate(6, 1), new Box());
         Door door = new Door();
         fieldObjectInventory.addFieldObject(new Coordinate(7, 5), door);
-        buttonInventory.addButton(new Coordinate(3, 1), new Button(door, 1));
+        buttonInventory.addButton(new Coordinate(3, 1), new Button(door, 2));
 
     }
 
@@ -174,23 +175,23 @@ public class GameClass {
             for (int x = 0; x < 10; x++) {
                 Coordinate thisCoord = new Coordinate(x, y);
                 if (player.getPos().toCoord().equals(thisCoord)) {
-                    System.out.print((player.hasBox()) ? "|F| " : "|E| ");
+                    System.out.print((player.hasBox()) ? "|F " : "|E ");
                 } else if (boxInventory.IsThere(thisCoord)) {
-                    System.out.print("|B| ");
+                    System.out.print("|B ");
                 } else if (collectableInventory.IsThere(thisCoord)) {
-                    System.out.print("|Z| ");
+                    System.out.print("|Z ");
                 } else if (buttonInventory.isThere(thisCoord)) {
-                    System.out.print("|_| ");
+                    System.out.print("|_ ");
                 } else if (stargateInventory.IsThere(new CVector(x, y, Direction.North))
                         || stargateInventory.IsThere(new CVector(x, y, Direction.East))
                         || stargateInventory.IsThere(new CVector(x, y, Direction.South))
                         || stargateInventory.IsThere(new CVector(x, y, Direction.West))) {
-                    System.out.print("|O| ");
+                    System.out.print("|O ");
                 } else if (fieldObjectInventory.GetFieldObject(thisCoord).Steppable()
                         && !fieldObjectInventory.GetFieldObject(thisCoord).IsMortal()) {
-                    System.out.print("| | ");
+                    System.out.print("|  ");
                 } else if (!fieldObjectInventory.GetFieldObject(thisCoord).Steppable()) {
-                    System.out.print("|X| ");
+                    System.out.print("|X ");
                 }
             }
             System.out.println();

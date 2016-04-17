@@ -46,10 +46,10 @@ public class GrabHandler {
 	 */
 	private boolean CanPut(CVector interactfrom){
 		if(data.fields.GetFieldObject(interactfrom).Steppable()){
-			if(!data.boxes.IsThere(interactfrom)){
+//			if(!data.boxes.IsThere(interactfrom)){
 				if(!data.collectables.IsThere(interactfrom)){
 					return true;
-				}
+//				}
 			}
 		}
 		return false;
