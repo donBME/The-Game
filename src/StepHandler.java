@@ -37,27 +37,6 @@ public class StepHandler {
 	 * @author Mate
 	 * @param playerpos A j?t?kos poz?ci?ja
 	 * @param dir A l?p?s ir?nya
-	 * @retun A player poz?cioj?nka ?s a l?p?s ir?ny?nak megfelel? CVectort, ahova szeretne l?pni.
-	 */
-	private CVector NextPos(CVector playerpos, Direction dir){
-		switch (dir) {
-		case North:
-			return new CVector(playerpos.GetX(), playerpos.GetY()+1, dir);
-		case South:
-			return new CVector(playerpos.GetX(), playerpos.GetY()-1, dir);
-		case East:
-			return new CVector(playerpos.GetX()+1, playerpos.GetY(), dir);
-		case West:
-			return new CVector(playerpos.GetX()-1, playerpos.GetY(), dir);
-		default:
-			return playerpos;
-		}
-	}
-	
-	/**
-	 * @author Mate
-	 * @param playerpos A j?t?kos poz?ci?ja
-	 * @param dir A l?p?s ir?nya
 	 * @param canGenerateZPM kiv?lthat-e a l?p?ssel ?j ZPM l?trej?tt?t
 	 * @param ZPMs eddig felvett ZPM-ek sz?ma
 	 * @return A l?p?s ut?nai poz?ci?
@@ -68,7 +47,7 @@ public class StepHandler {
 			return new CVector(playerpos.GetX(), playerpos.GetY(), dir); 
 		}
 		
-		CVector nextpos = NextPos(playerpos, dir);
+		CVector nextpos = playerpos.toNextCoord();
 		
 		if (data.stargates.IsThere(nextpos)) {
 			nextpos = data.stargates.StepIn(nextpos);
@@ -76,7 +55,7 @@ public class StepHandler {
 		
 		if (CanStep(nextpos)) {
 			// Gombr?l val? lel?p?s figyel?se
-			data.buttons.EventOn(playerpos, 1);
+			data.buttons.EventOn(playerpos, 0);
 			if(data.fields.GetFieldObject(nextpos).IsMortal()){
 				return null;
 			}

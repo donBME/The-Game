@@ -20,17 +20,9 @@ import java.io.InputStreamReader;
 public class GameClass {
 
     private FieldObjectInventory fieldObjectInventory;
-    private Wall wall;
-    private SpecialWall specialWall;
-    private Abyss abyss;
-    private Way way;
-    private Door door;
-    private Box box;
     private StarGateInventory stargateInventory;
     private BoxInventory boxInventory;
-    private Button button;
     private ButtonInventory buttonInventory;
-    private ZPM zpm;
     private CollectableInventory collectableInventory;
     private DataAccessPoint dataAccesspoint;
     private ShotHandler shotHandler;
@@ -101,9 +93,12 @@ public class GameClass {
 
         fieldObjectInventory.addFieldObject(new Coordinate(0,0),new Way());
         fieldObjectInventory.addFieldObject(new Coordinate(1,0),new Way());
-        fieldObjectInventory.addFieldObject(new Coordinate(2,0),new SpecialWall());
-        fieldObjectInventory.addFieldObject(new Coordinate(0,1),new SpecialWall());
-        //boxInventory.addBox(new Coordinate(1,0),new Box());
+        fieldObjectInventory.addFieldObject(new Coordinate(2,0),new Way());
+        fieldObjectInventory.addFieldObject(new Coordinate(4,0),new Way());
+        Door door = new Door();
+        fieldObjectInventory.addFieldObject(new Coordinate(3,0),door);
+        buttonInventory.addButton(new Coordinate(1,0),new Button(door,1));
+        boxInventory.addBox(new Coordinate(2,0), new Box());
 
     }
 
@@ -112,11 +107,16 @@ public class GameClass {
     }
 
     private void Step(){
-        player.Shoot(StarGateColor.Blue);
-        player.Step(Direction.East);
-        player.Shoot(StarGateColor.Yellow);
         player.Step(Direction.East);
         player.Step(Direction.East);
+        player.Interact(player.getPos());
+        player.Step(Direction.East);
+        player.Step(Direction.West);
+        player.Interact(player.getPos());
+        player.Step(Direction.East);
+        player.Step(Direction.East);
+        player.Step(Direction.East);
+
     }
 
     private void Shoot(){}

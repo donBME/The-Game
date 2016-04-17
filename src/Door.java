@@ -13,6 +13,12 @@ public class Door implements FieldObject {
 
 	public void Statechanged(){
 		open = !open;
+		if (open){
+			System.out.println("door opened");
+		}
+		else {
+			System.out.println("door closed");
+		}
 	}
 
 	@Override
