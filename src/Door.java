@@ -9,18 +9,14 @@ public class Door implements FieldObject {
 
 	private boolean open;
 	
-	public Door(){}
+	public Door(){ open = false; }
 
 	public void Statechanged(){
 		open = !open;
 	}
 
 	@Override
-	public boolean IsMortal()
-    {
-        System.out.println("<<Door::IsMortal()");
-        return false;
-	}
+	public boolean IsMortal() { return false; }
 
 	@Override
 	public boolean Shootable() {

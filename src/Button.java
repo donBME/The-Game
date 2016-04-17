@@ -28,6 +28,24 @@ public class Button {
 		wire.Statechanged();
 	}
 
+	/**
+	 * Ajtó zárása
+	 */
+	public void lockDoor(){
+		if (wire.Steppable()){
+			wire.Statechanged();
+		}
+	}
+
+	/**
+	 * Ajtó nyitása
+	 */
+	public void unlockDoor(){
+		if (!wire.Steppable()){
+			wire.Statechanged();
+		}
+	}
+
     /**
      *
      * @return Visszatér a nyitáshoz szükséges súllyal.

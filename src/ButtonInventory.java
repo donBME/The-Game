@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Laszlo
@@ -9,37 +10,49 @@ import java.util.List;
 public class ButtonInventory {
 
 	private QuestionAssistant questionAssistant = new QuestionAssistant();
-	private List<Button> buttons;
+	private Map<Coordinate,Button> buttonList;
 
 	public ButtonInventory(){
-		System.out.println(">>ButtonInventory::ButtonInventory()");
-        buttons = new ArrayList<>();
-		System.out.println("<<ButtonInventory::ButtonInventory()");
-	}
-	
-	public void addButton(Button newVal){
-        System.out.println(">>ButtonInventory::addButton(Button newVal)");
-		buttons.add(newVal);
-		System.out.println("<<ButtonInventory::addButton(Button newVal)");
+        buttonList = new CustomHashMap();
 	}
 
 	/**
-	 *
-	 * @param coord koordináták
-	 */
-	public boolean EventOn(Coordinate coord){
-        System.out.println(">>ButtonInventory::EventOn(Coordinate coord)");
+	 * Nyomólap hozzáadása a listához
+	 * @param coord Nyomólap helye
+	 * @param button A Nyomólap
+     */
+	public void addButton(Coordinate coord, Button button){
+		buttonList.put(coord, button);
+	}
 
-		boolean thereis = questionAssistant.ask("Is there a button item? (y/n)");
-		if(thereis == true)
-		{
-			buttons.get(0).Action();
-			System.out.println("<<ButtonInventory::EventOn(Coordinate coord)");
-			return true;
+	/**
+	 * Nyomólapra történö dobozrarakás vagy rálépés esetén lefutó függvény.
+	 * @param coord A nyomólap koordinátája
+	 * @param weightOnCoord A koordinátán található összsúly
+     */
+	public void EventOn(Coordinate coord, int weightOnCoord){
+		Button button;
+
+		if (buttonList.containsKey(coord)){
+			button = buttonList.get(coord);
+
+			// Ajtónyitás kezelése
+			if (button.getRequiredWeight() > weightOnCoord){
+				button.lockDoor();
+			}
+			else {
+				button.unlockDoor();
+			}
 		}
+	}
 
-        System.out.println("<<ButtonInventory::EventOn(Coordinate coord)");
-		return false;
+	/**
+	 * Megmondja, hogy van-e egy adott koordinátájú ponton nyomólap.
+	 * @param coord A keresett koordinátájú mezö.
+	 * @return igaz / hamis
+     */
+	public boolean isThere(Coordinate coord){
+		return buttonList.containsKey(coord);
 	}
 
 }

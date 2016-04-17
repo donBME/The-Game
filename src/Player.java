@@ -17,17 +17,14 @@ public class Player {
     private QuestionAssistant questionAssistant = new QuestionAssistant();
 
     public Player(ShotHandler shothandler, GrabHandler grabhandler, StepHandler stephandler, boolean canGenerateZPM, int sx, int sy) {
-		System.out.println(">>Player::Create(ShotHandler shothandler, GrabHandler grabhandler, StepHandler stephandler)");
 		gun = shothandler;
 		hand = grabhandler;
 		leg = stephandler;
 		this.canGenerateZPM = canGenerateZPM;
 		ZPMs = 0;
-		
-		System.out.println(">>CVector::Create(int sx, int sy, Direction dir)");
+
 		Direction dir = Direction.North;
 		pos  = new CVector(sx, sy, dir);
-		System.out.println("<<Player::Create(ShotHandler shothandler, GrabHandler grabhandler, StepHandler stephandler)");
 	}
 
     /**
@@ -37,10 +34,16 @@ public class Player {
 	public void Interact(CVector fromThisPosition){
         if(handfull == null) {
             handfull = hand.Grab(fromThisPosition);
+			if (handfull != null) {
+				System.out.println("Box grabbed at: " + fromThisPosition.toNextCoord().GetX() + "," + fromThisPosition.toNextCoord().GetY());
+			}
         }
         else {
-            hand.Put(fromThisPosition, handfull);
-            handfull = null;
+            boolean success = hand.Put(fromThisPosition, handfull);
+            if (success) {
+				handfull = null;
+				System.out.println("Box put to: " + fromThisPosition.toNextCoord().GetX() + "," + fromThisPosition.toNextCoord().GetY());
+			}
         }
 	}
 
@@ -72,7 +75,7 @@ public class Player {
 			System.out.println("You are dead! Game over!"); 
 		}
         else {
-            System.out.println(pos.GetX() + " " + pos.GetY());
+            System.out.println("Player position: " + pos.GetX() + "," + pos.GetY() + " " + toDir);
         }
 	}
 

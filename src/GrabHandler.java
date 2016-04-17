@@ -10,9 +10,7 @@ public class GrabHandler {
 	private DataAccessPoint data;
 
 	public GrabHandler(DataAccessPoint data){
-		System.out.println(">>GrabHandler::Create(DataAccessPoint data)");
 		this.data = data;
-		System.out.println("<<GrabHandler::Create(DataAccessPoint data)");
 	}
 
 	/**
@@ -25,8 +23,14 @@ public class GrabHandler {
         //    interactfrom = data.stargates.StepIn(interactfrom);
         //}
         if(data.boxes.IsThere(interactfrom.toNextCoord())){
-            //TODO Nyomólap kezelése
-            return data.boxes.GetBox(interactfrom.toNextCoord());
+            Box returnBox;
+
+            returnBox =  data.boxes.GetBox(interactfrom.toNextCoord());
+
+			// Gomb felengedés kezelése
+			data.buttons.EventOn(interactfrom.toNextCoord(), data.boxes.isThereV2(interactfrom.toNextCoord()));
+
+			return returnBox;
         }
         return null;
 	}
@@ -58,10 +62,14 @@ public class GrabHandler {
 		//}
 		if(CanPut(interactfrom)){
 			data.boxes.PutBox(interactfrom.toNextCoord(), carriedobject);
-			//TODO Nyomólap
+
 			if(data.fields.GetFieldObject(interactfrom.toNextCoord()).IsMortal()){
 				data.boxes.Delete(interactfrom.toNextCoord());
 			}
+
+			// Ajtónyitás kezelése
+			data.buttons.EventOn(interactfrom.toNextCoord(),data.boxes.isThereV2(interactfrom.toNextCoord()));
+
 			return true;
 		} else {
 			return false;

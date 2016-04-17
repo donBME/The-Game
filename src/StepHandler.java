@@ -76,7 +76,7 @@ public class StepHandler {
 		
 		if (CanStep(nextpos)) {
 			// Gombr?l val? lel?p?s figyel?se
-			data.buttons.EventOn(playerpos);
+			data.buttons.EventOn(playerpos, 1);
 			if(data.fields.GetFieldObject(nextpos).IsMortal()){
 				return null;
 			}
@@ -87,7 +87,7 @@ public class StepHandler {
 				}
 				data.collectables.GetCollectableAt(nextpos, ZPMs);
 			}
-			data.buttons.EventOn(nextpos);
+			data.buttons.EventOn(nextpos, 1);
 			return nextpos;
 		} else{
 			return playerpos;
