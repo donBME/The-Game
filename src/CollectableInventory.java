@@ -19,7 +19,7 @@ public class CollectableInventory {
 	 * @author Mate
 	 */
 	public CollectableInventory(){
-        collectables = new HashMap<>();
+        collectables = new CustomHashMap();
 	}
 
 	/**

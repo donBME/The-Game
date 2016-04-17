@@ -99,6 +99,7 @@ public class GameClass {
         fieldObjectInventory.addFieldObject(new Coordinate(3,0),door);
         buttonInventory.addButton(new Coordinate(1,0),new Button(door,1));
         boxInventory.addBox(new Coordinate(2,0), new Box());
+        collectableInventory.addCollectable(new Coordinate(4,0),new ZPM());
 
     }
 

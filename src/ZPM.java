@@ -3,7 +3,7 @@
 /**
  * @author Laszlo
  * @version 1.0
- * @created 20-mÃ¡rc.-2016 12:28:33
+ * @created 20-márc.-2016 12:28:33
  */
 public class ZPM implements Collectable {
 
@@ -13,7 +13,7 @@ public class ZPM implements Collectable {
 
 	/**
 	 * @author Mate
-	 * @param c ZPMek száma
+	 * @param c ZPMek sz?ma
 	 */
 	public static void setCount(int c){
 		count = c;
@@ -21,7 +21,7 @@ public class ZPM implements Collectable {
 	
 	/**
 	 * @author Mate
-	 * @return A pályán található ZPM-ek száma
+	 * @return A p?ly?n tal?lhat? ZPM-ek sz?ma
 	 */
 	public static int GetCount() {
 		return count;
@@ -29,12 +29,12 @@ public class ZPM implements Collectable {
 	
 	/**
 	 * @author Mate
-	 * @param collected Az eddig összegyûjtött ZPM-ek száma
+	 * @param collected Az eddig ?sszegy?jt?tt ZPM-ek sz?ma
 	 */
 	@Override
 	public void Collect(int collected) {
 		collected++;
 		count--;
-		
+		System.out.println("ZPM collected");
 	}
 }
