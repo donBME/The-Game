@@ -85,22 +85,30 @@ public class GameClass {
 
         dataAccesspoint = new DataAccessPoint(stargateInventory, fieldObjectInventory, boxInventory, buttonInventory, collectableInventory);
 
+        collectableInventory.setData(dataAccesspoint);
+
         shotHandler = new ShotHandler(dataAccesspoint);
         grabHandler = new GrabHandler(dataAccesspoint);
         stepHandler = new StepHandler(dataAccesspoint);
 
         player = new Colonel(shotHandler, grabHandler, stepHandler, 0, 0);
 
-        fieldObjectInventory.addFieldObject(new Coordinate(0,0),new Way());
-        fieldObjectInventory.addFieldObject(new Coordinate(1,0),new Way());
-        fieldObjectInventory.addFieldObject(new Coordinate(2,0),new Way());
-        fieldObjectInventory.addFieldObject(new Coordinate(4,0),new Way());
-        Door door = new Door();
-        fieldObjectInventory.addFieldObject(new Coordinate(3,0),door);
-        buttonInventory.addButton(new Coordinate(1,0),new Button(door,1));
-        boxInventory.addBox(new Coordinate(2,0), new Box());
-        collectableInventory.addCollectable(new Coordinate(4,0),new ZPM());
+//        fieldObjectInventory.addFieldObject(new Coordinate(0,0),new Way());
+//        fieldObjectInventory.addFieldObject(new Coordinate(1,0),new Way());
+//        fieldObjectInventory.addFieldObject(new Coordinate(2,0),new Way());
+//        fieldObjectInventory.addFieldObject(new Coordinate(4,0),new Way());
+//        Door door = new Door();
+//        fieldObjectInventory.addFieldObject(new Coordinate(3,0),door);
+//        buttonInventory.addButton(new Coordinate(1,0),new Button(door,1));
+//        boxInventory.addBox(new Coordinate(2,0), new Box());
+//        collectableInventory.addCollectable(new Coordinate(4,0),new ZPM());
 
+        fieldObjectInventory.addFieldObject(new Coordinate(0,0), new Way());
+        fieldObjectInventory.addFieldObject(new Coordinate(1,0), new Way());
+        fieldObjectInventory.addFieldObject(new Coordinate(2,0), new Way());
+
+        collectableInventory.addCollectable(new Coordinate(1,0), new ZPM());
+        collectableInventory.addCollectable(new Coordinate(2,0), new ZPM());
     }
 
     private void Interact(){
@@ -108,12 +116,16 @@ public class GameClass {
     }
 
     private void Step(){
-        player.Step(Direction.East);
-        player.Step(Direction.East);
-        player.Interact(player.getPos());
-        player.Step(Direction.East);
-        player.Step(Direction.West);
-        player.Interact(player.getPos());
+//        player.Step(Direction.East);
+//        player.Step(Direction.East);
+//        player.Interact(player.getPos());
+//        player.Step(Direction.East);
+//        player.Step(Direction.West);
+//        player.Interact(player.getPos());
+//        player.Step(Direction.East);
+//        player.Step(Direction.East);
+//        player.Step(Direction.East);
+
         player.Step(Direction.East);
         player.Step(Direction.East);
         player.Step(Direction.East);

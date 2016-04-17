@@ -59,6 +59,9 @@ public class Player {
 	 */
 	public void Step(Direction toDir) {
 		pos = leg.NextStep(pos, toDir, canGenerateZPM, ZPMs);
+        if (leg.isZPMcollected()){
+            ZPMs++;
+        }
 		if(pos == null){
 			// FIXME 
 			// ezt majd ?t kell ?rni csak nem tudom, hogy hogyan fog ez m?k?dni

@@ -8,6 +8,7 @@
 public class StepHandler {
 
 	private boolean pushed;
+	private boolean isCollected;
 	private DataAccessPoint data;
 
 	/**
@@ -16,6 +17,7 @@ public class StepHandler {
 	 */
 	public StepHandler(DataAccessPoint data) {
 		this.data = data;
+		isCollected = false;
 	}
 	
 	/**
@@ -38,7 +40,6 @@ public class StepHandler {
 	 * @param playerpos A j?t?kos poz?ci?ja
 	 * @param dir A l?p?s ir?nya
 	 * @param canGenerateZPM kiv?lthat-e a l?p?ssel ?j ZPM l?trej?tt?t
-	 * @param ZPMs eddig felvett ZPM-ek sz?ma
 	 * @return A l?p?s ut?nai poz?ci?
 	 */
 	public CVector NextStep(CVector playerpos, Direction dir, boolean canGenerateZPM, int ZPMs){
@@ -64,13 +65,20 @@ public class StepHandler {
 				if(canGenerateZPM && (ZPMs + 1) % 2 == 0 ){
 					data.collectables.addToRandomCoord();
 				}
-				data.collectables.GetCollectableAt(nextpos, ZPMs);
+				data.collectables.GetCollectableAt(nextpos);
+				isCollected = true;
 			}
 			data.buttons.EventOn(nextpos, 1);
 			return nextpos;
 		} else{
 			return playerpos;
 		}
+	}
+
+	public boolean isZPMcollected(){
+		boolean returnVal = isCollected;
+		isCollected = false;
+		return returnVal;
 	}
 
 }

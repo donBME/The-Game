@@ -1,10 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Laszlo
@@ -14,6 +11,7 @@ import java.util.Map;
 public class CollectableInventory {
 
 	private Map<Coordinate, Collectable> collectables;
+	DataAccessPoint data;
 
 	/**
 	 * @author Mate
@@ -23,12 +21,19 @@ public class CollectableInventory {
 	}
 
 	/**
+	 * A ZPM generáláshoz ismernie kell a fieldObjectek és box-ok helyét.
+	 * @param dataAccessPoint Központi adattároló
+     */
+	public void setData(DataAccessPoint dataAccessPoint){
+		data = dataAccessPoint;
+	}
+
+	/**
 	 * @author Mate
 	 * @param coord Koordináták, ahonnan felvesszük a Collactable-t
-	 * @param count Az eddig összegyûjtöttek száma
 	 */
-	public void GetCollectableAt(Coordinate coord, int count){
-		collectables.get(coord).Collect(count);
+	public void GetCollectableAt(Coordinate coord){
+		collectables.get(coord).Collect();
         collectables.remove(coord);
 	}
 
@@ -57,9 +62,25 @@ public class CollectableInventory {
 	 * @author Mate
 	 */
 	public void addToRandomCoord(){
-		// FIXME
 		// Kell hozzá a pálya mérete, anélkül nem lehet megírni
 		// A DataAccessPoint-ot ismernie kell, emrt csak Way-re lehet tenni ZPM-et
-	}
 
+		Coordinate maxCoords = data.fields.getMaxCoords();
+		int maxX = maxCoords.GetX();
+		int maxY = maxCoords.GetY();
+		int x,y;
+		Random random = new Random();
+
+		x = random.nextInt(maxX+1);
+		y = random.nextInt(maxY+1);
+		Coordinate coordinate = new Coordinate(x,y);
+
+		while (!data.fields.GetFieldObject(coordinate).Steppable() || collectables.containsKey(coordinate)){
+			x = random.nextInt(maxX+1);
+			y = random.nextInt(maxY+1);
+			coordinate.Set(x,y);
+		}
+
+		collectables.put(coordinate, new ZPM());
+	}
 }

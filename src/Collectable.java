@@ -7,6 +7,6 @@
  */
 public interface Collectable {
 
-	public void Collect(int collected);
+	public void Collect();
 
 }

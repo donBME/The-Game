@@ -35,4 +35,24 @@ public class FieldObjectInventory {
         fieldObjects.put(coord, newFieldObject);
 	}
 
+	/**
+	 * Pálya maximális méretét megadó függvény
+	 * @return Pálya max mérete
+     */
+	public Coordinate getMaxCoords(){
+		int tmpMaxX = 0, tmpMaxY = 0;
+
+		for (Coordinate key : fieldObjects.keySet()){
+			if (key.GetX() > tmpMaxX){
+				tmpMaxX = key.GetX();
+			}
+			if (key.GetY() > tmpMaxY){
+				tmpMaxY = key.GetY();
+			}
+		}
+
+		return new Coordinate(tmpMaxX,tmpMaxY);
+
+	}
+
 }

@@ -29,11 +29,9 @@ public class ZPM implements Collectable {
 	
 	/**
 	 * @author Mate
-	 * @param collected Az eddig ?sszegy?jt?tt ZPM-ek sz?ma
 	 */
 	@Override
-	public void Collect(int collected) {
-		collected++;
+	public void Collect() {
 		count--;
 		System.out.println("ZPM collected");
 	}
