@@ -14,7 +14,6 @@ public class Player {
 	private GrabHandler hand;
 	private StepHandler leg;
 	private ShotHandler gun;
-    private QuestionAssistant questionAssistant = new QuestionAssistant();
 
     public Player(ShotHandler shothandler, GrabHandler grabhandler, StepHandler stephandler, boolean canGenerateZPM, int sx, int sy) {
 		gun = shothandler;
@@ -45,25 +44,20 @@ public class Player {
 
 
 	/**
-	 * 
-	 * @param toDir irány
+	 *
 	 * @param color szín
 	 */
-	public void Shoot(Direction toDir, StarGateColor color){
-        System.out.println(">>Player::Shoot(Direction toDir, StarGateColor color)");
-        boolean hasBox = questionAssistant.ask("Does the player have a box in hand? (y/n)");
-        if(!hasBox){
-            gun.Shoot(null,null);
+	public void Shoot(StarGateColor color){
+        if(handfull == null){
+            gun.Shoot(pos,color);
         }
-        System.out.println("<<Player::Shoot(Direction toDir, StarGateColor color)");
 	}
 
 	/**
 	 * @author Mate
 	 * @param toDir a l?p?s ir?nya
 	 */
-	public void Step(Direction toDir)
-	{
+	public void Step(Direction toDir) {
 		pos = leg.NextStep(pos, toDir, canGenerateZPM, ZPMs);
 		if(pos == null){
 			// FIXME 

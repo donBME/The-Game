@@ -11,9 +11,7 @@ public class ShotHandler {
     private QuestionAssistant questionAssistant = new QuestionAssistant();
 	
 	public ShotHandler(DataAccessPoint data) {
-		System.out.println(">>ShotHandler::Create(DataAccessPoint data)");
 		this.data = data;
-		System.out.println("<<ShotHandler::Create(DataAccessPoint data)");
 	}
 
 	/**
@@ -22,13 +20,17 @@ public class ShotHandler {
 	 * @param color szín
 	 */
 	public void Shoot(CVector shootfrom, StarGateColor color){
-        System.out.println(">>ShotHandler::Shoot(CVector shootfrom, StarGateColor color)");
-		data.stargates.Delete(null);
         FieldObject fieldObject;
-        while ((fieldObject = data.fields.GetFieldObject(null)).Steppable() && !data.boxes.IsThere(null));
-        if(fieldObject.Shootable())
-            data.stargates.Create(null,null);
-        System.out.println("<<ShotHandler::Shoot(CVector shootfrom, StarGateColor color)");
+		CVector checkedPos = shootfrom.toNextCoord();
+
+        while ((fieldObject = data.fields.GetFieldObject(checkedPos)).Steppable() && !data.boxes.IsThere(checkedPos)) {
+			checkedPos = checkedPos.toNextCoord();
+		}
+
+        if(fieldObject.Shootable()) {
+			data.stargates.Create(checkedPos,color);
+			System.out.println("created " + color.toString() + " stargate at " + checkedPos.GetX() + "," + checkedPos.GetY());
+		}
 	}
 
 }

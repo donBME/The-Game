@@ -102,10 +102,8 @@ public class GameClass {
         fieldObjectInventory.addFieldObject(new Coordinate(0,0),new Way());
         fieldObjectInventory.addFieldObject(new Coordinate(1,0),new Way());
         fieldObjectInventory.addFieldObject(new Coordinate(2,0),new SpecialWall());
-        stargateInventory.Create(new CVector(2,0,Direction.East),StarGateColor.Yellow);
         fieldObjectInventory.addFieldObject(new Coordinate(0,1),new SpecialWall());
-        stargateInventory.Create(new CVector(0,1,Direction.North),StarGateColor.Blue);
-        boxInventory.addBox(new Coordinate(1,0),new Box());
+        //boxInventory.addBox(new Coordinate(1,0),new Box());
 
     }
 
@@ -114,14 +112,13 @@ public class GameClass {
     }
 
     private void Step(){
+        player.Shoot(StarGateColor.Blue);
         player.Step(Direction.East);
-        player.Interact(player.getPos());
+        player.Shoot(StarGateColor.Yellow);
         player.Step(Direction.East);
-        player.Interact(player.getPos());
+        player.Step(Direction.East);
     }
 
-    private void Shoot(){
-        player.Shoot(null,null);
-    }
+    private void Shoot(){}
 
 }
