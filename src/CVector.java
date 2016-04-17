@@ -3,7 +3,6 @@
 /**
  * @author Laszlo
  * @version 1.0
- * @created 20-márc.-2016 12:28:32
  */
 public class CVector extends Coordinate {
 
@@ -29,6 +28,10 @@ public class CVector extends Coordinate {
 		dir = sd;
 	}
 
+	public Coordinate toCoord() {
+		return new Coordinate(GetX(), GetY());
+	}
+
 	/**
 	 * CVector -> Coordinate átalakító
 	 * @return az irány alapján következő koordináták
@@ -47,9 +50,9 @@ public class CVector extends Coordinate {
 		return this;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		CVector comparing = (CVector)obj;
-		return super.equals(obj) && comparing.dir == dir;
-	}
+//	@Override
+//	public boolean equals(Object obj) {
+//		CVector comparing = (CVector)obj;
+//		return super.equals(obj) && comparing.dir == dir;
+//	}
 }

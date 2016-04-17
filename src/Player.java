@@ -3,7 +3,6 @@
 /**
  * @author Laszlo
  * @version 1.0
- * @created 20-márc.-2016 12:28:33
  */
 public class Player {
 
@@ -54,7 +53,6 @@ public class Player {
 	}
 
 	/**
-	 * @author Mate
 	 * @param toDir a l?p?s ir?nya
 	 */
 	public void Step(Direction toDir) {
@@ -79,4 +77,8 @@ public class Player {
     public CVector getPos() {
         return pos;
     }
+
+	public boolean hasBox() {
+		return (handfull != null);
+	}
 }

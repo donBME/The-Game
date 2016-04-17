@@ -41,32 +41,45 @@ public class GameClass {
 
         InputStreamReader inputStreamReader = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-        String line = new String();
-        System.out.println("1: Init\n" +
-                "2: Box put/grab\n" +
-                "3: Shoot\n" +
-                "4: Step\n" +
-                "q: Quit");
+        String line = "";
+        System.out.println("w: Elore\n" +
+                "a: Balra\n" +
+                "s: Hatra\n" +
+                "d: Jobbra\n" +
+                "f: Sarga portal\n" +
+                "g: Kek portal\n" +
+                "e: Doboz felvetel/learkas");
 
         while(!line.equals("q")){
-            System.out.println("Waitin' for command!");
+
+            menu.drawMap();
+
             try {
                 line = bufferedReader.readLine();
             } catch (IOException e) {
                 e.printStackTrace();
             }
             switch (line) {
-                case "1":
-                    menu.Init();
+                case "w":
+                    menu.Step(Direction.North);
                     break;
-                case "2":
+                case "a":
+                    menu.Step(Direction.West);
+                    break;
+                case "s":
+                    menu.Step(Direction.South);
+                    break;
+                case "d":
+                    menu.Step(Direction.East);
+                    break;
+                case "f":
+                    menu.Shoot(StarGateColor.Yellow);
+                    break;
+                case "g":
+                    menu.Shoot(StarGateColor.Blue);
+                    break;
+                case "e":
                     menu.Interact();
-                    break;
-                case "3":
-                    menu.Shoot();
-                    break;
-                case "4":
-                    menu.Step();
                     break;
                 default:
                     break;
@@ -91,7 +104,9 @@ public class GameClass {
         grabHandler = new GrabHandler(dataAccesspoint);
         stepHandler = new StepHandler(dataAccesspoint);
 
-        player = new Colonel(shotHandler, grabHandler, stepHandler, 0, 0);
+        player = new Colonel(shotHandler, grabHandler, stepHandler, 1, 1);
+
+        dataAccesspoint.players.add(player);
 
 //        fieldObjectInventory.addFieldObject(new Coordinate(0,0),new Way());
 //        fieldObjectInventory.addFieldObject(new Coordinate(1,0),new Way());
@@ -103,19 +118,39 @@ public class GameClass {
 //        boxInventory.addBox(new Coordinate(2,0), new Box());
 //        collectableInventory.addCollectable(new Coordinate(4,0),new ZPM());
 
-        fieldObjectInventory.addFieldObject(new Coordinate(0,0), new Way());
-        fieldObjectInventory.addFieldObject(new Coordinate(1,0), new Way());
-        fieldObjectInventory.addFieldObject(new Coordinate(2,0), new Way());
+//        fieldObjectInventory.addFieldObject(new Coordinate(0,0), new Way());
+//        fieldObjectInventory.addFieldObject(new Coordinate(1,0), new Way());
+//        fieldObjectInventory.addFieldObject(new Coordinate(2,0), new Way());
+//
+//        collectableInventory.addCollectable(new Coordinate(1,0), new ZPM());
+//        collectableInventory.addCollectable(new Coordinate(2,0), new ZPM());
 
-        collectableInventory.addCollectable(new Coordinate(1,0), new ZPM());
-        collectableInventory.addCollectable(new Coordinate(2,0), new ZPM());
+
+        for (int x = 0; x < 10; x++) {
+            for (int y = 0; y < 10; y++) {
+                if (x == 0 || x == 9 || y == 0 || y == 9) {
+                    fieldObjectInventory.addFieldObject(new Coordinate(x, y), new SpecialWall());
+                } else if (x == 7) {
+                    fieldObjectInventory.addFieldObject(new Coordinate(x, y), new Wall());
+                } else {
+                    fieldObjectInventory.addFieldObject(new Coordinate(x, y), new Way());
+                }
+            }
+        }
+        collectableInventory.addCollectable(new Coordinate(5, 5), new ZPM());
+        collectableInventory.addCollectable(new Coordinate(5, 6), new ZPM());
+        boxInventory.addBox(new Coordinate(6, 2), new Box());
+        Door door = new Door();
+        fieldObjectInventory.addFieldObject(new Coordinate(7, 5), door);
+        buttonInventory.addButton(new Coordinate(3, 1), new Button(door, 1));
+
     }
 
     private void Interact(){
         player.Interact(player.getPos());
     }
 
-    private void Step(){
+    private void Step(Direction dir) {
 //        player.Step(Direction.East);
 //        player.Step(Direction.East);
 //        player.Interact(player.getPos());
@@ -126,12 +161,40 @@ public class GameClass {
 //        player.Step(Direction.East);
 //        player.Step(Direction.East);
 
-        player.Step(Direction.East);
-        player.Step(Direction.East);
-        player.Step(Direction.East);
+        player.Step(dir);
 
     }
 
-    private void Shoot(){}
+    private void Shoot(StarGateColor color) {
+        player.Shoot(color);
+    }
+
+    private void drawMap() {
+        for (int y = 9; y >= 0; y--) {
+            for (int x = 0; x < 10; x++) {
+                Coordinate thisCoord = new Coordinate(x, y);
+                if (player.getPos().toCoord().equals(thisCoord)) {
+                    System.out.print((player.hasBox()) ? "|F| " : "|E| ");
+                } else if (boxInventory.IsThere(thisCoord)) {
+                    System.out.print("|B| ");
+                } else if (collectableInventory.IsThere(thisCoord)) {
+                    System.out.print("|Z| ");
+                } else if (buttonInventory.isThere(thisCoord)) {
+                    System.out.print("|_| ");
+                } else if (stargateInventory.IsThere(new CVector(x, y, Direction.North))
+                        || stargateInventory.IsThere(new CVector(x, y, Direction.East))
+                        || stargateInventory.IsThere(new CVector(x, y, Direction.South))
+                        || stargateInventory.IsThere(new CVector(x, y, Direction.West))) {
+                    System.out.print("|O| ");
+                } else if (fieldObjectInventory.GetFieldObject(thisCoord).Steppable()
+                        && !fieldObjectInventory.GetFieldObject(thisCoord).IsMortal()) {
+                    System.out.print("| | ");
+                } else if (!fieldObjectInventory.GetFieldObject(thisCoord).Steppable()) {
+                    System.out.print("|X| ");
+                }
+            }
+            System.out.println();
+        }
+    }
 
 }

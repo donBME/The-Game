@@ -3,7 +3,6 @@
 /**
  * @author Laszlo
  * @version 1.0
- * @created 20-márc.-2016 12:28:33
  */
 public class StepHandler {
 
@@ -12,7 +11,6 @@ public class StepHandler {
 	private DataAccessPoint data;
 
 	/**
-	 * @author Mate
 	 * @param data Ahonan el?ri a t?bbi adatot.
 	 */
 	public StepHandler(DataAccessPoint data) {
@@ -21,7 +19,6 @@ public class StepHandler {
 	}
 	
 	/**
-	 * @author Mate
 	 * @param where Ahova a j?t?kos szeretne l?pni
 	 * @return R?l?phet-e az adott koordin?t?ra
 	 */
@@ -36,7 +33,6 @@ public class StepHandler {
 	}
 	
 	/**
-	 * @author Mate
 	 * @param playerpos A j?t?kos poz?ci?ja
 	 * @param dir A l?p?s ir?nya
 	 * @param canGenerateZPM kiv?lthat-e a l?p?ssel ?j ZPM l?trej?tt?t
@@ -75,6 +71,11 @@ public class StepHandler {
 		}
 	}
 
+	/**
+	 * ZPM felvétel ellenörzés
+	 *
+	 * @return Vett-e fel a járékos a körben ZOM modult
+	 */
 	public boolean isZPMcollected(){
 		boolean returnVal = isCollected;
 		isCollected = false;

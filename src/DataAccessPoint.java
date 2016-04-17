@@ -1,9 +1,9 @@
-
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Laszlo
  * @version 1.0
- * @created 20-márc.-2016 12:28:33
  */
 public class DataAccessPoint {
 
@@ -12,15 +12,35 @@ public class DataAccessPoint {
 	public CollectableInventory collectables;
 	public StarGateInventory stargates;
 	public FieldObjectInventory fields;
+	public List<Player> players;
 	
 	public DataAccessPoint(StarGateInventory stargates, FieldObjectInventory fields,
 			BoxInventory boxes, ButtonInventory buttons, CollectableInventory collectables) {
-		System.out.println(">>DataAccesspoint::Create(StarGateInventory stargates, FieldObjectInventory fields,BoxInventory boxes, ButtonInventory buttons, CollectableInventory collectables)");
 		this.boxes = boxes;
 		this.buttons = buttons;
 		this.collectables = collectables;
 		this.stargates = stargates;
 		this.fields = fields;
-		System.out.println("<<DataAccesspoint::Create(StarGateInventory stargates, FieldObjectInventory fields,BoxInventory boxes, ButtonInventory buttons, CollectableInventory collectables)");
+		players = new ArrayList<>();
+	}
+
+	/**
+	 * Megadja, hogy van-e játékos a kijelölt koordinátán
+	 *
+	 * @param coord Kérdéses koordináta
+	 * @return van játékos vagy nincs
+	 */
+	public boolean isPlayerAtCoord(Coordinate coord) {
+		boolean isThere = false;
+
+		for (Player player : players) {
+			Coordinate playerPos = new Coordinate(player.getPos().GetX(), player.getPos().GetY());
+
+			if (playerPos.equals(coord)) {
+				isThere = true;
+			}
+		}
+
+		return isThere;
 	}
 }

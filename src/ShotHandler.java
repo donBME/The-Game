@@ -3,12 +3,10 @@
 /**
  * @author Laszlo
  * @version 1.0
- * @created 20-márc.-2016 12:28:33
  */
 public class ShotHandler {
 
 	private DataAccessPoint data;
-    private QuestionAssistant questionAssistant = new QuestionAssistant();
 	
 	public ShotHandler(DataAccessPoint data) {
 		this.data = data;
