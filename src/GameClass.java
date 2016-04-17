@@ -89,7 +89,7 @@ public class GameClass {
         grabHandler = new GrabHandler(dataAccesspoint);
         stepHandler = new StepHandler(dataAccesspoint);
 
-        player = new Player(shotHandler, grabHandler, stepHandler,true, 0, 0);
+        player = new Colonel(shotHandler, grabHandler, stepHandler, 0, 0);
 
         fieldObjectInventory.addFieldObject(new Coordinate(0,0),new Way());
         fieldObjectInventory.addFieldObject(new Coordinate(1,0),new Way());
