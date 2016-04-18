@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class CustomHashMap extends HashMap {
 
     /**
-     * Egyedi HashMap
+     * Egyedi HashMap kulcskereső
      * @param key Coordinate típusú kulcs
      * @return igaz/hamis
      */
@@ -14,6 +14,9 @@ public class CustomHashMap extends HashMap {
     public boolean containsKey(Object key) {
         Coordinate customKey = (Coordinate)key;
 
+        /* Mivel a HashMap a kulcsokat referencia alapján keresi,
+           megpróbáljuk egy kicsit megtéveszteni.
+         */
         for (Object iteratingKey : keySet()){
             Coordinate coordKey = (Coordinate)iteratingKey;
             if(coordKey.equals(customKey)){

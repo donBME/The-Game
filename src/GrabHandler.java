@@ -7,26 +7,38 @@
  */
 public class GrabHandler {
 
+	// Adattároló
 	private DataAccessPoint data;
 
+	/**
+	 * Konstruktor
+	 *
+	 * @param data Adattároló
+	 */
 	public GrabHandler(DataAccessPoint data){
 		this.data = data;
 	}
 
 	/**
-	 * 
-	 * @param interactfrom belépés iránya
+	 * Doboz felvétele
+	 * @param interactfrom Játékos helye a felvételkor
 	 */
-	public Box Grab(CVector interactfrom){
+	public Box Grab(CVector interactfrom) {
+
+		// A felvenni kívánt doboz pozíciója
 		Coordinate checkedPos = interactfrom.toNextCoord();
 
-        if(data.stargates.IsThere(interactfrom.toNextCoord())){
+		// Csillagkapun keresztüli dobozfelvétel lehetövé tétele
+		if(data.stargates.IsThere(interactfrom.toNextCoord())){
             checkedPos = data.stargates.StepIn(interactfrom.toNextCoord());
-        }
-        if(data.boxes.IsThere(checkedPos)){
+		}
+
+		// Van doboz a kiszemelt pozíción?
+		if(data.boxes.IsThere(checkedPos)){
             Box returnBox;
 
-            returnBox =  data.boxes.GetBox(interactfrom.toNextCoord());
+			// Felvett doboz
+			returnBox =  data.boxes.GetBox(interactfrom.toNextCoord());
 
 			if (returnBox != null){
 				System.out.println("Box grabbed at: " + checkedPos.GetX() + "," + checkedPos.GetY());
@@ -41,7 +53,6 @@ public class GrabHandler {
 	}
 	
 	/**
-	 * @author Mate
 	 * @param interactfrom belépés iránya
 	 */
 	private boolean CanPut(CVector interactfrom){
@@ -54,21 +65,27 @@ public class GrabHandler {
 		}
 		return false;
 	}
-	
+
 	/**
-	 * @author Mate
-	 * @param interactfrom belépés iránya
-	 * @param carriedobject doboz
+	 * Dobozlerakás
+	 * @param interactfrom Játékos helye a felvételkor.
+	 * @param carriedobject Játékos kezében lévö doboz.
 	 */
-	public boolean Put(CVector interactfrom, Box carriedobject){
+	public boolean Put(CVector interactfrom, Box carriedobject) {
+
+		// A koordináta, melyre a játékos a dobozt tenni szeretné.
 		CVector checkedPos = interactfrom.toNextCoord();
 
+		// Csillagkapun keresztüli dobozletétel.
 		if(data.stargates.IsThere(checkedPos)){
 			checkedPos = data.stargates.StepIn(checkedPos);
 		}
+
+		// Rakható-e a kiszemelt koordinátájú pontra doboz?
 		if(CanPut(checkedPos)){
 			data.boxes.PutBox(checkedPos, carriedobject);
 
+			// Szakadékba dobás esetén a doboz semmisüljön meg.
 			if(data.fields.GetFieldObject(checkedPos).IsMortal()){
 				data.boxes.Delete(checkedPos);
 			}

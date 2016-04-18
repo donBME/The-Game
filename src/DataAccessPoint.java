@@ -7,13 +7,23 @@ import java.util.List;
  */
 public class DataAccessPoint {
 
+	// Publikus inventory-k.
 	public BoxInventory boxes;
 	public ButtonInventory buttons;
 	public CollectableInventory collectables;
 	public StarGateInventory stargates;
 	public FieldObjectInventory fields;
 	public List<Player> players;
-	
+
+	/**
+	 * Értékadó konstruktor.
+	 *
+	 * @param stargates    Csillagkapu tároló
+	 * @param fields       Pályaelem tároló.
+	 * @param boxes        Doboz tároló
+	 * @param buttons      Nyomólap tároló
+	 * @param collectables Gyüjthetö elem tároló
+	 */
 	public DataAccessPoint(StarGateInventory stargates, FieldObjectInventory fields,
 			BoxInventory boxes, ButtonInventory buttons, CollectableInventory collectables) {
 		this.boxes = boxes;

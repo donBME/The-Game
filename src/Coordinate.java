@@ -7,16 +7,9 @@
  */
 public class Coordinate {
 
+	// Belsö koordináta attribútumok
 	private int x;
 	private int y;
-
-	public int GetX(){
-		return x;
-	}
-
-	public int GetY(){
-        return y;
-	}
 
 	/**
 	 * Üres konstruktor
@@ -31,6 +24,24 @@ public class Coordinate {
 	public Coordinate(int sx, int sy){
 		x = sx;
 		y = sy;
+	}
+
+	/**
+	 * X koordináta getter fgv.
+	 *
+	 * @return x koordináta
+	 */
+	public int GetX() {
+		return x;
+	}
+
+	/**
+	 * Y koordináta getter fgv.
+	 *
+	 * @return y koordináta
+	 */
+	public int GetY() {
+		return y;
 	}
 
 	/**

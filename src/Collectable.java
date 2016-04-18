@@ -7,6 +7,9 @@
  */
 public interface Collectable {
 
+	/**
+	 * Felszedhetö elem felszedése esetén felutó metódus.
+	 */
 	public void Collect();
 
 }

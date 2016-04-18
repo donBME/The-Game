@@ -7,9 +7,19 @@
  */
 public interface FieldObject {
 
+	/**
+	 * @return Halálos-e az objektumra való rálépés
+	 */
 	public boolean IsMortal();
 
+	/**
+	 * @return Löhetö-e az objektumra csillagkapu.
+	 */
 	public boolean Shootable();
 
+	/**
+	 *
+	 * @return Rá lehet-e lépni az objektumra.
+	 */
 	public boolean Steppable();
 }

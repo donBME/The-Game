@@ -6,11 +6,13 @@
  */
 public class StepHandler {
 
+	// Belső változók
 	private boolean pushed;
 	private boolean isCollected;
 	private DataAccessPoint data;
 
 	/**
+	 * Konstrukor
 	 * @param data Ahonan el?ri a t?bbi adatot.
 	 */
 	public StepHandler(DataAccessPoint data) {
@@ -19,6 +21,7 @@ public class StepHandler {
 	}
 	
 	/**
+	 * Lépés ellenőrző fgv.
 	 * @param where Ahova a j?t?kos szeretne l?pni
 	 * @return R?l?phet-e az adott koordin?t?ra
 	 */
@@ -76,9 +79,9 @@ public class StepHandler {
 	}
 
 	/**
-	 * ZPM felv�tel ellen�rz�s
+	 * ZPM felvétel ellenörzés
 	 *
-	 * @return Vett-e fel a j�r�kos a k�rben ZOM modult
+	 * @return Vett-e fel a járékos a körben ZPM modult
 	 */
 	public boolean isZPMcollected(){
 		boolean returnVal = isCollected;

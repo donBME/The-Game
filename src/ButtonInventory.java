@@ -8,6 +8,10 @@ public class ButtonInventory {
 
 	private Map<Coordinate,Button> buttonList;
 
+	/**
+	 * Nyomólap konstruktor.
+	 * Létrehozza a gombokat tároló kollekciót.
+	 */
 	public ButtonInventory(){
         buttonList = new CustomHashMap();
 	}

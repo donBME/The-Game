@@ -1,4 +1,3 @@
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -42,6 +41,7 @@ public class FieldObjectInventory {
 	public Coordinate getMaxCoords(){
 		int tmpMaxX = 0, tmpMaxY = 0;
 
+		// Megkeresi a pálya lehetö legszélsö pontját.
 		for (Coordinate key : fieldObjects.keySet()){
 			if (key.GetX() > tmpMaxX){
 				tmpMaxX = key.GetX();

@@ -3,12 +3,19 @@
 /**
  * @author Laszlo
  * @version 1.0
- * @created 20-m�rc.-2016 12:28:33
  */
 public class SpecialWall extends Wall {
-	
-	public SpecialWall(){}
-	
+
+    /**
+     * SpecialWall kostruktor
+     */
+    public SpecialWall(){}
+
+    /**
+     * Lőhető-e a falra csillagkapu?
+     *
+     * @return Igen, az ilyen típusú falra lőhető csillagkapu.
+     */
     @Override
     public boolean Shootable() {
         return true;

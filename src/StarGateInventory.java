@@ -1,25 +1,21 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author Laszlo
  * @version 1.0
- * @created 20-márc.-2016 12:28:33
  */
 public class StarGateInventory {
-	
-    private StarGate yellow, blue, red, green;
 
-	
+	// KÃ¼lÃ¶nbÃ¶zÅ‘ szÃ­nÅ± csillagkapuk
+	private StarGate yellow, blue, red, green;
+
+	/**
+	 * Konstruktor
+	 */
 	public StarGateInventory(){}
 
 	/**
-	 * Adott színü csillagkapu létrehozása, adott pozíción.
+	 * Adott szÃ­nÃ¼ csillagkapu lÃ©trehozÃ¡sa, adott pozÃ­ciÃ³n.
 	 * @param portalpos Csillagkapu helye
-	 * @param color Csillagkapu színe
+	 * @param color Csillagkapu szÃ­ne
      */
 	public void Create(CVector portalpos, StarGateColor color){
 		switch (color){
@@ -43,8 +39,8 @@ public class StarGateInventory {
 	}
 
 	/**
-	 * Adott színü csillagkapu törlése
-	 * @param color Törölni kívánt csillagkapu színe
+	 * Adott szÃ­nÃ¼ csillagkapu tÃ¶rlÃ©se
+	 * @param color TÃ¶rÃ¶lni kÃ­vÃ¡nt csillagkapu szÃ­ne
      */
 	public void Delete(StarGateColor color){
 		switch (color){
@@ -64,12 +60,11 @@ public class StarGateInventory {
 	}
 	
 	/**
-	 * @author Mate
-	 * @param pos A player lépésének helye
-	 * @return A belépés irányának megfelelõ irányú pozíció
-	 * Amikor Belépünk egy csillagkapuba
-	 * akkor az a lépés irányának
-	 * ellenkezõ irányból nyílik.
+	 * @param pos A player lÃ©pÃ©sÃ©nek helye
+	 * @return A belÃ©pÃ©s irÃ¡nyÃ¡nak megfelelÃµ irÃ¡nyÃº pozÃ­ciÃ³
+	 * Amikor BelÃ©pÃ¼nk egy csillagkapuba
+	 * akkor az a lÃ©pÃ©s irÃ¡nyÃ¡nak
+	 * ellenkezÃµ irÃ¡nybÃ³l nyÃ­lik.
 	 */
 	private CVector EnterPos(CVector pos){
 		switch (pos.GetDir()){
@@ -86,9 +81,8 @@ public class StarGateInventory {
 	}
 	
 	/**
-	 * @author Mate
-	 * @param from irány
-	 * @return A megadottkoordinátán van-e csillagkapu
+	 * @param from irÃ¡ny
+	 * @return A megadottkoordinÃ¡tÃ¡n van-e csillagkapu
 	 */
 	public boolean IsThere(CVector from){
 		CVector f = EnterPos(from);
@@ -106,9 +100,8 @@ public class StarGateInventory {
 	}
 	
 	/**
-	 * @author Mate
-	 * @param exitGatePos A férégjárat kijáratának pozíciója 
-	 * @return A féregjárat kijarata elõtti koordináta
+	 * @param exitGatePos A fÃ©rÃ©gjÃ¡rat kijÃ¡ratÃ¡nak pozÃ­ciÃ³ja 
+	 * @return A fÃ©regjÃ¡rat kijarata elÃµtti koordinÃ¡ta
 	 */
 	private CVector ExitPos(CVector exitGatePos){
 		switch (exitGatePos.GetDir()){
@@ -123,12 +116,11 @@ public class StarGateInventory {
 		default: return null;
 		}
 	}
-	
+
 
 	/**
-	 * @author Mate
-	 * @param from A belépéls iránya
-	 * @return A féregjárat elõtti pozíció
+	 * @param from A belÃ©pÃ©s irÃ¡nya
+	 * @return A fÃ©regjÃ¡rat elÃµtti pozÃ­ciÃ³
 	 */
 	public CVector StepIn(CVector from){
 		CVector f = EnterPos(from);
