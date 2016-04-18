@@ -1,0 +1,61 @@
+package Inventories;
+
+import Players.Player;
+import Tools.Coordinate;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @author Laszlo
+ * @version 1.0
+ */
+public class DataAccessPoint {
+
+	// Publikus inventory-k.
+	public BoxInventory boxes;
+	public ButtonInventory buttons;
+	public CollectableInventory collectables;
+	public StarGateInventory stargates;
+	public FieldObjectInventory fields;
+	public List<Player> players;
+
+	/**
+	 * Értékadó konstruktor.
+	 *
+	 * @param stargates    Csillagkapu tároló
+	 * @param fields       Pályaelem tároló.
+	 * @param boxes        Doboz tároló
+	 * @param buttons      Nyomólap tároló
+	 * @param collectables Gyüjthetö elem tároló
+	 */
+	public DataAccessPoint(StarGateInventory stargates, FieldObjectInventory fields,
+			BoxInventory boxes, ButtonInventory buttons, CollectableInventory collectables) {
+		this.boxes = boxes;
+		this.buttons = buttons;
+		this.collectables = collectables;
+		this.stargates = stargates;
+		this.fields = fields;
+		players = new ArrayList<>();
+	}
+
+	/**
+	 * Megadja, hogy van-e játékos a kijelölt koordinátán
+	 *
+	 * @param coord Kérdéses koordináta
+	 * @return van játékos vagy nincs
+	 */
+	boolean isPlayerAtCoord(Coordinate coord) {
+		boolean isThere = false;
+
+		for (Player player : players) {
+			Coordinate playerPos = new Coordinate(player.getPos().GetX(), player.getPos().GetY());
+
+			if (playerPos.equals(coord)) {
+				isThere = true;
+			}
+		}
+
+		return isThere;
+	}
+}
