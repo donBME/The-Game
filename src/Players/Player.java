@@ -61,6 +61,7 @@ public abstract class Player {
 				}
 			}
 		}
+		System.out.println();
 	}
 
 
@@ -71,7 +72,8 @@ public abstract class Player {
 	public void Shoot(StarGateColor color){
 		if (handfull == null && pos != null) {
 			gun.Shoot(pos,color);
-        }
+			System.out.println();
+		}
 	}
 
 	/**
@@ -81,11 +83,14 @@ public abstract class Player {
 	public void Step(Direction toDir) {
 		if (pos != null) {
 			pos = leg.NextStep(pos, toDir, canGenerateZPM, ZPMs, canFillAbyss);
+		} else {
+			System.out.print("Game over");
 		}
 
 		if (leg.isZPMcollected()) {
 			ZPMs++;
 		}
+		System.out.println();
 	}
 
 	/**

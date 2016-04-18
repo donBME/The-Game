@@ -40,8 +40,11 @@ public class ShotHandler {
 		// Lőhető-e a kiszámolt helyre csillagkapu.
 		if(fieldObject.Shootable()) {
 			data.stargates.Create(checkedPos,color);
-			System.out.println("created " + color.toString() + " stargate at " + checkedPos.GetX() + "," + checkedPos.GetY());
+			System.out.print(color.toString() + " portal at ");
+		} else {
+			System.out.print("failed to create portal at ");
 		}
+		System.out.print(checkedPos.GetX() + "," + checkedPos.GetY());
 	}
 
 }

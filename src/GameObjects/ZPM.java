@@ -34,6 +34,6 @@ public class ZPM implements Collectable {
 	@Override
 	public void Collect() {
 		count--;
-		System.out.println("GameObjects.ZPM collected");
+		System.out.print("ZPM collected ");
 	}
 }

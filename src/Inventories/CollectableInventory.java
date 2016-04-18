@@ -96,6 +96,6 @@ public class CollectableInventory {
 		// GameObjects.ZPM modul elhelyezése a számolt pozícióra.
 		collectables.put(coordinate, new ZPM());
 
-		System.out.println("GameObjects.ZPM generated at: " + x + "," + y);
+		System.out.print("ZPM spawned ");
 	}
 }

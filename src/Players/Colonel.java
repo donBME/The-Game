@@ -3,7 +3,9 @@ package Players;
 import Handlers.GrabHandler;
 import Handlers.ShotHandler;
 import Handlers.StepHandler;
+import Tools.CVector;
 import Tools.Direction;
+import Tools.StarGateColor;
 
 /**
  * @author Laszlo
@@ -31,14 +33,33 @@ public class Colonel extends Player {
      */
     @Override
     public void Step(Direction toDir) {
+        System.out.print("Colonel ");
         super.Step(toDir);
 
         // Ha a játékos halott
         if (pos == null) {
-
-            System.out.println("Players.Colonel is dead!");
-        } else {
-            System.out.println("Players.Colonel position: " + pos.GetX() + "," + pos.GetY() + " " + toDir);
         }
+    }
+
+    /**
+     * Doboz felvétel/lerakás fgv.
+     *
+     * @param fromThisPosition Erröl a pozícióról akarunk müveletet végrehajtani.
+     */
+    @Override
+    public void Interact(CVector fromThisPosition) {
+        System.out.print("Colonel ");
+        super.Interact(fromThisPosition);
+    }
+
+    /**
+     * Csillagkapu lövés
+     *
+     * @param color Csilagkapu színe
+     */
+    @Override
+    public void Shoot(StarGateColor color) {
+        System.out.print("Colonel ");
+        super.Shoot(color);
     }
 }

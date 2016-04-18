@@ -51,13 +51,12 @@ public class Replicator extends Player {
      */
     @Override
     public void Step(Direction toDir) {
+        System.out.print("Replicator ");
         super.Step(toDir);
 
 
         if (pos == null) {
             // Valami legyen
-        } else {
-            System.out.println("Players.Replicator position: " + pos.GetX() + "," + pos.GetY() + " " + toDir);
         }
     }
 }

@@ -12,7 +12,8 @@ public class Door implements FieldObject {
 	/**
 	 * Üres konstruktor, alaphelyzetben az ajtó zárt állapotban van.
 	 */
-	public Door(){ open = false;
+	public Door() {
+		open = false;
 	}
 
 	/**
@@ -23,10 +24,10 @@ public class Door implements FieldObject {
 		// Negálja a nyitottság változó értékét.
 		open = !open;
 		if (open){
-			System.out.println("door opened");
+			System.out.print("door opened ");
 		}
 		else {
-			System.out.println("door closed");
+			System.out.print("door closed ");
 		}
 	}
 

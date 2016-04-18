@@ -45,7 +45,7 @@ public class GrabHandler {
 			returnBox =  data.boxes.GetBox(interactfrom.toNextCoord());
 
 			if (returnBox != null){
-				System.out.println("GameObjects.Box grabbed at: " + checkedPos.GetX() + "," + checkedPos.GetY());
+				System.out.print("has grabbed an item at " + checkedPos.GetX() + "," + checkedPos.GetY() + " ");
 			}
 
 			// Gomb felengedés kezelése
@@ -90,18 +90,21 @@ public class GrabHandler {
 		if(CanPut(checkedPos)){
 			data.boxes.PutBox(checkedPos, carriedobject);
 
+			System.out.print("has put an item at " + checkedPos.GetX() + "," + checkedPos.GetY() + " ");
+
 			// Szakadékba dobás esetén a doboz semmisüljön meg.
 			if(data.fields.GetFieldObject(checkedPos).IsMortal()){
+				System.out.println("box destroyed ");
 				data.boxes.Delete(checkedPos);
 			}
 
-			System.out.println("GameObjects.Box put to: " + checkedPos.GetX() + "," + checkedPos.GetY());
 
 			// Ajtónyitás kezelése
 			data.buttons.EventOn(checkedPos,data.boxes.isThereV2(checkedPos));
 
 			return true;
 		} else {
+			System.out.println("can't interact at " + checkedPos.GetX() + "," + checkedPos.GetY() + " ");
 			return false;
 		}
 	}

@@ -49,7 +49,9 @@ public class StepHandler {
 	 */
 	public CVector NextStep(CVector playerpos, Direction dir, boolean canGenerateZPM, int ZPMs, boolean canFillAbyss) {
 		if(playerpos.GetDir() != dir){
+
 			// Ha nem a l?p?s ir?ny?ba n?z a palyer, akkor arra fordul
+			System.out.print("new position: " + playerpos.GetX() + "," + playerpos.GetY() + " ");
 			return new CVector(playerpos.GetX(), playerpos.GetY(), dir); 
 		}
 		
@@ -58,24 +60,32 @@ public class StepHandler {
 		if (data.stargates.IsThere(nextpos)) {
 			nextpos = data.stargates.StepIn(nextpos);
 		}
-		
+
+		System.out.print("new position: " + nextpos.GetX() + "," + nextpos.GetY() + " ");
+
 		if (CanStep(nextpos)) {
+
 			// Gombr?l val? lel?p?s figyel?se
 			data.buttons.EventOn(playerpos, 0);
 			if(data.fields.GetFieldObject(nextpos).IsMortal()){
 
+				System.out.print("Game Over ");
+
 				if (canFillAbyss) {
 					data.fields.addFieldObject(nextpos, new Way());
+					System.out.print("way spawned ");
 				}
 				return null;
 			}
 			// GameObjects.ZPM felv?tel figyel?se
 			if(data.collectables.IsThere(nextpos)){
+
+				data.collectables.GetCollectableAt(nextpos);
+				isCollected = true;
+
 				if(canGenerateZPM && (ZPMs + 1) % 2 == 0 ){
 					data.collectables.addToRandomCoord();
 				}
-				data.collectables.GetCollectableAt(nextpos);
-				isCollected = true;
 			}
 			data.buttons.EventOn(nextpos, 1);
 			return nextpos;

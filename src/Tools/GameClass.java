@@ -10,7 +10,7 @@ import Handlers.GrabHandler;
 import Handlers.ShotHandler;
 import Handlers.StepHandler;
 import Inventories.*;
-import Players.Jaffa;
+import Players.Colonel;
 import Players.Player;
 
 import java.io.BufferedReader;
@@ -114,7 +114,7 @@ public class GameClass {
         grabHandler = new GrabHandler(dataAccesspoint);
         stepHandler = new StepHandler(dataAccesspoint);
 
-        player = new Jaffa(shotHandler, grabHandler, stepHandler, 1, 1);
+        player = new Colonel(shotHandler, grabHandler, stepHandler, 1, 1);
 
         dataAccesspoint.players.add(player);
 
