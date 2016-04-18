@@ -38,7 +38,7 @@ public class StepHandler {
 	 * @param canGenerateZPM kiv?lthat-e a l?p?ssel ?j ZPM l?trej?tt?t
 	 * @return A l?p?s ut?nai poz?ci?
 	 */
-	public CVector NextStep(CVector playerpos, Direction dir, boolean canGenerateZPM, int ZPMs){
+	public CVector NextStep(CVector playerpos, Direction dir, boolean canGenerateZPM, int ZPMs, boolean canFillAbyss) {
 		if(playerpos.GetDir() != dir){
 			// Ha nem a l?p?s ir?ny?ba n?z a palyer, akkor arra fordul
 			return new CVector(playerpos.GetX(), playerpos.GetY(), dir); 
@@ -54,6 +54,10 @@ public class StepHandler {
 			// Gombr?l val? lel?p?s figyel?se
 			data.buttons.EventOn(playerpos, 0);
 			if(data.fields.GetFieldObject(nextpos).IsMortal()){
+
+				if (canFillAbyss) {
+					data.fields.addFieldObject(nextpos, new Way());
+				}
 				return null;
 			}
 			// ZPM felv?tel figyel?se

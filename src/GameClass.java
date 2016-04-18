@@ -104,7 +104,7 @@ public class GameClass {
         grabHandler = new GrabHandler(dataAccesspoint);
         stepHandler = new StepHandler(dataAccesspoint);
 
-        player = new Colonel(shotHandler, grabHandler, stepHandler, 1, 1);
+        player = new Jaffa(shotHandler, grabHandler, stepHandler, 1, 1);
 
         dataAccesspoint.players.add(player);
 
@@ -144,6 +144,7 @@ public class GameClass {
         Door door = new Door();
         fieldObjectInventory.addFieldObject(new Coordinate(7, 5), door);
         buttonInventory.addButton(new Coordinate(3, 1), new Button(door, 2));
+        fieldObjectInventory.addFieldObject(new Coordinate(1, 3), new Abyss());
 
     }
 
@@ -174,7 +175,7 @@ public class GameClass {
         for (int y = 9; y >= 0; y--) {
             for (int x = 0; x < 10; x++) {
                 Coordinate thisCoord = new Coordinate(x, y);
-                if (player.getPos().toCoord().equals(thisCoord)) {
+                if (player.getPos() != null && player.getPos().toCoord().equals(thisCoord)) {
                     System.out.print((player.hasBox()) ? "|F " : "|E ");
                 } else if (boxInventory.IsThere(thisCoord)) {
                     System.out.print("|B ");
@@ -190,6 +191,8 @@ public class GameClass {
                 } else if (fieldObjectInventory.GetFieldObject(thisCoord).Steppable()
                         && !fieldObjectInventory.GetFieldObject(thisCoord).IsMortal()) {
                     System.out.print("|  ");
+                } else if (fieldObjectInventory.GetFieldObject(thisCoord).IsMortal()) {
+                    System.out.print("|A ");
                 } else if (!fieldObjectInventory.GetFieldObject(thisCoord).Steppable()) {
                     System.out.print("|X ");
                 }
