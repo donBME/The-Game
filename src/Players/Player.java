@@ -93,6 +93,11 @@ public abstract class Player {
 		System.out.println();
 	}
 
+	public boolean Shotable()
+	{
+		return false;
+	}
+
 	/**
 	 * Players.Player helyének lekérésére
 	 * @return Players.Player pozíciója és iránya
@@ -103,5 +108,11 @@ public abstract class Player {
 
 	public boolean hasBox() {
 		return (handfull != null);
+	}
+
+
+	public void kill()
+	{
+		this.pos=null;
 	}
 }

@@ -12,6 +12,7 @@ import Handlers.StepHandler;
 import Inventories.*;
 import Players.Colonel;
 import Players.Player;
+import Players.Replicator;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -39,6 +40,7 @@ public class GameClass {
     private GrabHandler grabHandler;
     private StepHandler stepHandler;
     private Player player;
+    private Replicator rep1;
 
 
     public static void main(String[] args) {
@@ -112,11 +114,22 @@ public class GameClass {
 
         shotHandler = new ShotHandler(dataAccesspoint);
         grabHandler = new GrabHandler(dataAccesspoint);
-        stepHandler = new StepHandler(dataAccesspoint);
+        stepHandler = new StepHandler(dataAccesspoint,true);
+
 
         player = new Colonel(shotHandler, grabHandler, stepHandler, 1, 1);
 
+        //itt adjuk hozza a replikatort: Albert
+        ShotHandler rep1ShHandler= new ShotHandler(dataAccesspoint);
+        GrabHandler rep1GHandler = new GrabHandler(dataAccesspoint);
+        StepHandler rep1StHandler =new StepHandler(dataAccesspoint,false);
+        rep1= new Replicator(rep1ShHandler,rep1GHandler,rep1StHandler,2,2);
+
         dataAccesspoint.players.add(player);
+        dataAccesspoint.players.add(rep1);
+
+        Thread rep1Thread = new Thread(rep1);
+        rep1Thread.start();
 
 //        fieldObjectInventory.addFieldObject(new Tools.Coordinate(0,0),new GameObjects.Way());
 //        fieldObjectInventory.addFieldObject(new Tools.Coordinate(1,0),new GameObjects.Way());
@@ -187,7 +200,12 @@ public class GameClass {
                 Coordinate thisCoord = new Coordinate(x, y);
                 if (player.getPos() != null && player.getPos().toCoord().equals(thisCoord)) {
                     System.out.print((player.hasBox()) ? "|F " : "|E ");
-                } else if (boxInventory.IsThere(thisCoord)) {
+                }
+                else if(rep1.getPos()!= null && rep1.getPos().toCoord().equals(thisCoord))
+                {
+                    System.out.print("|R ");
+                }
+                else if (boxInventory.IsThere(thisCoord)) {
                     System.out.print("|B ");
                 } else if (collectableInventory.IsThere(thisCoord)) {
                     System.out.print("|Z ");

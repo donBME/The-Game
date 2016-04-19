@@ -32,8 +32,22 @@ public class ShotHandler {
         FieldObject fieldObject;
 		CVector checkedPos = shootfrom.toNextCoord();
 
+		boolean replikatorshot=false;//löttünk le az ut során replikátort Albert
 		// Becsapódás helyének szimulálása
-		while ((fieldObject = data.fields.GetFieldObject(checkedPos)).Steppable() && !data.boxes.IsThere(checkedPos)) {
+		while ((fieldObject = data.fields.GetFieldObject(checkedPos)).Steppable() && !data.boxes.IsThere(checkedPos) &&!replikatorshot)
+		{
+
+			//megnézi hogy az azon mezőn le tud e lőni replikátort és le is lövi Albert
+			for(int i=0;i<data.players.size();i++)
+			{
+				if(data.players.get(i).getPos().GetX()==checkedPos.GetX() && data.players.get(i).getPos().GetY()==checkedPos.GetY() && data.players.get(i).Shotable())
+				{
+					data.players.get(i).kill();
+					data.players.remove(i);
+					replikatorshot=true;
+					System.out.println("replicator has been shotd");
+				}
+			}
 			checkedPos = checkedPos.toNextCoord();
 		}
 

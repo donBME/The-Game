@@ -1,24 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/src/Box.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/src/BoxInventory.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/src/ButtonInventory.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/src/Collectable.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/src/CollectableInventory.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/src/DataAccessPoint.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/src/Direction.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/src/Door.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/src/FieldObject.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/src/FieldObjectInventory.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/src/Player.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/src/SpecialWall.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/src/StarGate.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/src/StarGateColor.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/src/StarGateInventory.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/src/StepHandler.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/src/Wall.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/src/Way.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/GameObjects/Box.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/Inventories/ButtonInventory.java" charset="ISO-8859-1" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

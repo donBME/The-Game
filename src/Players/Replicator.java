@@ -6,13 +6,14 @@ import Handlers.StepHandler;
 import Tools.CVector;
 import Tools.Direction;
 import Tools.StarGateColor;
+import java.util.Random;
 
 /**
  * @author Laszlo
  * @version 1.0
  */
 
-public class Replicator extends Player {
+public class Replicator extends Player implements Runnable {
 
     /**
      * Replikátor konstruktora
@@ -29,27 +30,27 @@ public class Replicator extends Player {
 
     /**
      * Felüldefiniált lövés fgv.
-     * @param color Csilagkapu színe
-     */
-    @Override
-    public void Shoot(StarGateColor color) {
-        // nem lő
-    }
-
-    /**
-     * Felüldefiniált interact fgv.
+     *
+     * @param color            Csilagkapu színe
+     *                         <p>
+     *                         public void Shoot(StarGateColor color) {
+     *                         // nem lő
+     *                         }
+     *                         <p>
+     *                         /**
+     *                         Felüldefiniált interact fgv.
      * @param fromThisPosition Erröl a pozícióról akarunk müveletet végrehajtani.
      */
-    @Override
+
     public void Interact(CVector fromThisPosition) {
         // nem mozgat semmit
     }
 
     /**
      * Felüldefiniált lépés fgv.
+     *
      * @param toDir a l?p?s ir?nya
      */
-    @Override
     public void Step(Direction toDir) {
         System.out.print("Replicator ");
         super.Step(toDir);
@@ -58,5 +59,50 @@ public class Replicator extends Player {
         if (pos == null) {
             // Valami legyen
         }
+    }
+
+    public void run()
+    {
+        try
+        {
+            while (true)
+            {
+                Random rn = new Random();
+                int answer = rn.nextInt(4);
+                switch (answer)
+                {
+                    case 0:
+                        Step(Direction.East);
+                        Thread.sleep(1000);
+                        Step(Direction.East);
+                        break;
+                    case 1:
+                        Step(Direction.North);
+                        Thread.sleep(1000);
+                        Step(Direction.North);
+                        break;
+                    case 2:
+                        Step(Direction.West);
+                        Thread.sleep(1000);
+                        Step(Direction.West);
+                        break;
+                    case 3:
+                        Step(Direction.South);
+                        Thread.sleep(1000);
+                        Step(Direction.South);
+                        break;
+                }
+                Thread.sleep(2000);
+            }
+
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    public boolean Shotable()
+    {
+        return true;
     }
 }

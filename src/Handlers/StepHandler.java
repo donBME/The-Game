@@ -16,15 +16,18 @@ public class StepHandler {
 	private boolean pushed;
 	private boolean isCollected;
 	private DataAccessPoint data;
+	private boolean canCollect;//a replikátor nem vehet fel zpm-t Albert
 
 	/**
 	 * Konstrukor
 	 * @param data Ahonan el?ri a t?bbi adatot.
 	 */
-	public StepHandler(DataAccessPoint data) {
+	public StepHandler(DataAccessPoint data, boolean canCollect) {
 		this.data = data;
+		this.canCollect=canCollect;//a replikátor nem vehet fel zpm-t Albert
 		isCollected = false;
 	}
+
 	
 	/**
 	 * Lépés ellenőrző fgv.
@@ -78,7 +81,7 @@ public class StepHandler {
 				return null;
 			}
 			// GameObjects.ZPM felv?tel figyel?se
-			if(data.collectables.IsThere(nextpos)){
+			if(data.collectables.IsThere(nextpos) && canCollect){
 
 				data.collectables.GetCollectableAt(nextpos);
 				isCollected = true;
