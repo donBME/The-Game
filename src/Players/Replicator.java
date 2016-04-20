@@ -65,7 +65,7 @@ public class Replicator extends Player implements Runnable {
     {
         try
         {
-            while (true)
+            while (pos!=null)
             {
                 Random rn = new Random();
                 int answer = rn.nextInt(4);

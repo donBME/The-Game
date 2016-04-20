@@ -123,7 +123,7 @@ public class GameClass {
         ShotHandler rep1ShHandler= new ShotHandler(dataAccesspoint);
         GrabHandler rep1GHandler = new GrabHandler(dataAccesspoint);
         StepHandler rep1StHandler =new StepHandler(dataAccesspoint,false);
-        rep1= new Replicator(rep1ShHandler,rep1GHandler,rep1StHandler,2,2);
+        rep1= new Replicator(rep1ShHandler,rep1GHandler,rep1StHandler,1,2);
 
         dataAccesspoint.players.add(player);
         dataAccesspoint.players.add(rep1);
