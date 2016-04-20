@@ -50,7 +50,7 @@ public class StepHandler {
 	 * @param canGenerateZPM kiv?lthat-e a l?p?ssel ?j GameObjects.ZPM l?trej?tt?t
 	 * @return A l?p?s ut?nai poz?ci?
 	 */
-	public CVector NextStep(CVector playerpos, Direction dir, boolean canGenerateZPM, int ZPMs, boolean canFillAbyss) {
+	public synchronized CVector NextStep(CVector playerpos, Direction dir, boolean canGenerateZPM, int ZPMs, boolean canFillAbyss) {
 		if(playerpos.GetDir() != dir){
 
 			// Ha nem a l?p?s ir?ny?ba n?z a palyer, akkor arra fordul
