@@ -45,7 +45,7 @@ public class CVector extends Coordinate {
 	 * Átkonvertálja a CVectort egy sima Tools.Coordinate osztályra, irány nélkül
 	 * @return Egyszerűsített Tools.CVector
 	 */
-	Coordinate toCoord() {
+	public Coordinate toCoord() {
 		return new Coordinate(GetX(), GetY());
 	}
 

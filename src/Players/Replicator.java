@@ -29,16 +29,7 @@ public class Replicator extends Player implements Runnable {
     }
 
     /**
-     * Felüldefiniált lövés fgv.
-     *
-     * @param color            Csilagkapu színe
-     *                         <p>
-     *                         public void Shoot(StarGateColor color) {
-     *                         // nem lő
-     *                         }
-     *                         <p>
-     *                         /**
-     *                         Felüldefiniált interact fgv.
+     * Felüldefiniált interact fgv.
      * @param fromThisPosition Erröl a pozícióról akarunk müveletet végrehajtani.
      */
 

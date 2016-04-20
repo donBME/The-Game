@@ -153,8 +153,8 @@ public class GameClass {
             for (int y = 0; y < 10; y++) {
                 if (x == 0 || x == 9 || y == 0 || y == 9) {
                     fieldObjectInventory.addFieldObject(new Coordinate(x, y), new SpecialWall());
-                } else if (x == 7) {
-                    fieldObjectInventory.addFieldObject(new Coordinate(x, y), new Wall());
+                } else if (x == 3 || y == 3) {
+                    fieldObjectInventory.addFieldObject(new Coordinate(x, y), new Abyss());
                 } else {
                     fieldObjectInventory.addFieldObject(new Coordinate(x, y), new Way());
                 }

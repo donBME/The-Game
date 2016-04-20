@@ -45,7 +45,8 @@ public class ShotHandler {
 					data.players.get(i).kill();
 					data.players.remove(i);
 					replikatorshot=true;
-					System.out.println("replicator has been shotd");
+					System.out.println("Replicator has been shot");
+					break;
 				}
 			}
 			checkedPos = checkedPos.toNextCoord();

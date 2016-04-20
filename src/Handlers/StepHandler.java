@@ -36,7 +36,7 @@ public class StepHandler {
 	 */
 	private boolean CanStep(CVector where){
 		FieldObject fieldObject = data.fields.GetFieldObject(where);
-		if(fieldObject != null && fieldObject.Steppable()){
+		if(fieldObject != null && fieldObject.Steppable() && !data.isPlayerAtCoord(where.toCoord())){
 			if(!data.boxes.IsThere(where)){
 				return true;
 			}
@@ -50,7 +50,7 @@ public class StepHandler {
 	 * @param canGenerateZPM kiv?lthat-e a l?p?ssel ?j GameObjects.ZPM l?trej?tt?t
 	 * @return A l?p?s ut?nai poz?ci?
 	 */
-	public CVector NextStep(CVector playerpos, Direction dir, boolean canGenerateZPM, int ZPMs, boolean canFillAbyss) {
+	public synchronized CVector NextStep(CVector playerpos, Direction dir, boolean canGenerateZPM, int ZPMs, boolean canFillAbyss) {
 		if(playerpos.GetDir() != dir){
 
 			// Ha nem a l?p?s ir?ny?ba n?z a palyer, akkor arra fordul
@@ -64,9 +64,9 @@ public class StepHandler {
 			nextpos = data.stargates.StepIn(nextpos);
 		}
 
-		System.out.print("new position: " + nextpos.GetX() + "," + nextpos.GetY() + " ");
-
 		if (CanStep(nextpos)) {
+
+			System.out.print("new position: " + nextpos.GetX() + "," + nextpos.GetY() + " ");
 
 			// Gombr?l val? lel?p?s figyel?se
 			data.buttons.EventOn(playerpos, 0);
@@ -93,6 +93,7 @@ public class StepHandler {
 			data.buttons.EventOn(nextpos, 1);
 			return nextpos;
 		} else{
+			System.out.print("new position: " + playerpos.GetX() + "," + playerpos.GetY() + " ");
 			return playerpos;
 		}
 	}

@@ -21,13 +21,13 @@ public class DataAccessPoint {
 	public List<Player> players;
 
 	/**
-	 * Értékadó konstruktor.
+	 * ï¿½rtï¿½kadï¿½ konstruktor.
 	 *
-	 * @param stargates    Csillagkapu tároló
-	 * @param fields       Pályaelem tároló.
-	 * @param boxes        Doboz tároló
-	 * @param buttons      Nyomólap tároló
-	 * @param collectables Gyüjthetö elem tároló
+	 * @param stargates    Csillagkapu tï¿½rolï¿½
+	 * @param fields       Pï¿½lyaelem tï¿½rolï¿½.
+	 * @param boxes        Doboz tï¿½rolï¿½
+	 * @param buttons      Nyomï¿½lap tï¿½rolï¿½
+	 * @param collectables Gyï¿½jthetï¿½ elem tï¿½rolï¿½
 	 */
 	public DataAccessPoint(StarGateInventory stargates, FieldObjectInventory fields,
 			BoxInventory boxes, ButtonInventory buttons, CollectableInventory collectables) {
@@ -40,19 +40,28 @@ public class DataAccessPoint {
 	}
 
 	/**
-	 * Megadja, hogy van-e játékos a kijelölt koordinátán
+	 * Megadja, hogy van-e jï¿½tï¿½kos a kijelï¿½lt koordinï¿½tï¿½n
 	 *
-	 * @param coord Kérdéses koordináta
-	 * @return van játékos vagy nincs
+	 * @param coord Kï¿½rdï¿½ses koordinï¿½ta
+	 * @return van jï¿½tï¿½kos vagy nincs
 	 */
-	boolean isPlayerAtCoord(Coordinate coord) {
+	public boolean isPlayerAtCoord(Coordinate coord) {
 		boolean isThere = false;
 
-		for (Player player : players) {
-			Coordinate playerPos = new Coordinate(player.getPos().GetX(), player.getPos().GetY());
+		for (int i = 0; i < players.size(); i++) {
+			Player player = players.get(i);
+			try {
+				Coordinate playerPos = new Coordinate(player.getPos().GetX(), player.getPos().GetY());
 
-			if (playerPos.equals(coord)) {
-				isThere = true;
+				if (playerPos.equals(coord)) {
+					isThere = true;
+				}
+			} catch (NullPointerException e) {
+				// Ha ilyen kivÃ©telt kapunk, halott a jÃ¡tÃ©kos
+				players.remove(i);
+
+				// RekurzÃ­v hax
+				return isPlayerAtCoord(coord);
 			}
 		}
 

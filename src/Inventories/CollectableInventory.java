@@ -80,6 +80,7 @@ public class CollectableInventory {
 		- nincs a koordinátán játékos
 		- nincs rajta nyomólap
 		- nem szakadék
+		- nincs rajta doboz
 
 		Ha ezek közül valamelyik teljesül, új koordinátát generálunk.
 		*/
@@ -87,7 +88,8 @@ public class CollectableInventory {
 				|| collectables.containsKey(coordinate)
 				|| data.isPlayerAtCoord(coordinate)
 				|| data.buttons.isThere(coordinate)
-				|| data.fields.GetFieldObject(coordinate).IsMortal()) {
+				|| data.fields.GetFieldObject(coordinate).IsMortal()
+				|| data.boxes.IsThere(coordinate)) {
 			x = random.nextInt(maxX+1);
 			y = random.nextInt(maxY+1);
 			coordinate.Set(x, y);
