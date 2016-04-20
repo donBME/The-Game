@@ -62,6 +62,12 @@ public class Coordinate {
 	@Override
 	public boolean equals(Object obj) {
 		Coordinate comparing = (Coordinate)obj;
-		return x == comparing.GetX() && y == comparing.GetY();
+		try {
+			return x == comparing.GetX() && y == comparing.GetY();
+		}
+		catch (NullPointerException e){
+			return false;
+		}
 	}
+
 }

@@ -23,28 +23,29 @@ public class FieldObjectInventory {
 
 	/**
 	 *
-	 * @param coord ahonnan la a karjuk kérni, hogy ott van-e FeildObject
-	 * @return A koordinátán található GameObjects.FieldObject
+	 * @param coord ahonnan la a karjuk kï¿½rni, hogy ott van-e FeildObject
+	 * @return A koordinï¿½tï¿½n talï¿½lhatï¿½ GameObjects.FieldObject
 	 */
 	public FieldObject GetFieldObject(Coordinate coord){
 		return fieldObjects.get(coord);
 	}
 
 	/**
-	 * @param newFieldObject új GameObjects.FieldObject
+	 * @param newFieldObject ï¿½j GameObjects.FieldObject
 	 */
 	public void addFieldObject(Coordinate coord, FieldObject newFieldObject){
+		fieldObjects.remove(coord);
         fieldObjects.put(coord, newFieldObject);
 	}
 
 	/**
-	 * Pálya maximális méretét megadó függvény
-	 * @return Pálya max mérete
+	 * Pï¿½lya maximï¿½lis mï¿½retï¿½t megadï¿½ fï¿½ggvï¿½ny
+	 * @return Pï¿½lya max mï¿½rete
 	 */
 	Coordinate getMaxCoords() {
 		int tmpMaxX = 0, tmpMaxY = 0;
 
-		// Megkeresi a pálya lehetö legszélsö pontját.
+		// Megkeresi a pï¿½lya lehetï¿½ legszï¿½lsï¿½ pontjï¿½t.
 		for (Coordinate key : fieldObjects.keySet()){
 			if (key.GetX() > tmpMaxX){
 				tmpMaxX = key.GetX();

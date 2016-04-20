@@ -37,7 +37,7 @@ public class CustomHashMap extends HashMap {
      * @return Object
      */
     @Override
-    public Object get(Object key) {
+    public synchronized Object get(Object key) {
         Coordinate customKey = (Coordinate)key;
 
         for (Object iteratingKey : keySet()){
@@ -57,7 +57,7 @@ public class CustomHashMap extends HashMap {
      * @return Törölt kulcs
      */
     @Override
-    public Object remove(Object key) {
+    public synchronized Object remove(Object key) {
         Coordinate customKey = (Coordinate)key;
 
         for (Object iteratingKey : keySet()){
