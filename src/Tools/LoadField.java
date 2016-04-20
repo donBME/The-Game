@@ -23,18 +23,18 @@ public class LoadField {
 			while((s = read.readLine())!= null)
 			{
 				objs = s.split(";");
-				switch ( objs[2]) // itt mindenbol uj van letrehozva, ezert ilyen hosszuak
+				switch ( objs[0]) // itt mindenbol uj van letrehozva, ezert ilyen hosszuak
 				{
-					case "p": data.players.add(new Colonel(new ShotHandler(data), new GrabHandler(data), new StepHandler(data, true), Integer.parseInt(objs[0]), Integer.parseInt(objs[1]))); break;
-					case "j": data.players.add(new Jaffa(new ShotHandler(data), new GrabHandler(data), new StepHandler(data, true), Integer.parseInt(objs[0]), Integer.parseInt(objs[1]))); break;
-					case "r": data.players.add(new Replicator(new ShotHandler(data), new GrabHandler(data), new StepHandler(data, false), Integer.parseInt(objs[0]), Integer.parseInt(objs[1])));break;
-					case "a": data.fields.addFieldObject(new Coordinate(Integer.parseInt(objs[0]), Integer.parseInt(objs[1])), new Abyss());break;
-					case "z": data.collectables.addCollectable(new Coordinate(Integer.parseInt(objs[0]), Integer.parseInt(objs[1])), new ZPM());break;
+					case "p": data.players.add(new Colonel(new ShotHandler(data), new GrabHandler(data), new StepHandler(data, true), Integer.parseInt(objs[1]), Integer.parseInt(objs[2]))); break;
+					case "j": data.players.add(new Jaffa(new ShotHandler(data), new GrabHandler(data), new StepHandler(data, true), Integer.parseInt(objs[1]), Integer.parseInt(objs[2]))); break;
+					case "r": data.players.add(new Replicator(new ShotHandler(data), new GrabHandler(data), new StepHandler(data, false), Integer.parseInt(objs[1]), Integer.parseInt(objs[2])));break;
+					case "a": data.fields.addFieldObject(new Coordinate(Integer.parseInt(objs[1]), Integer.parseInt(objs[2])), new Abyss());break;
+					case "z": data.collectables.addCollectable(new Coordinate(Integer.parseInt(objs[1]), Integer.parseInt(objs[2])), new ZPM());break;
 					case "d": this.addButtonDoor(read.readLine(), s);break;
-					case "wl": data.fields.addFieldObject(new Coordinate(Integer.parseInt(objs[0]), Integer.parseInt(objs[1])), new Wall());break;
-					case "sw": data.fields.addFieldObject(new Coordinate(Integer.parseInt(objs[0]), Integer.parseInt(objs[1])), new SpecialWall());break;
-					case "bx": data.boxes.addBox(new Coordinate(Integer.parseInt(objs[0]), Integer.parseInt(objs[1])), new Box());break;
-					case "wy": data.fields.addFieldObject(new Coordinate(Integer.parseInt(objs[0]), Integer.parseInt(objs[1])), new Way()); break;
+					case "wl": data.fields.addFieldObject(new Coordinate(Integer.parseInt(objs[1]), Integer.parseInt(objs[2])), new Wall());break;
+					case "sw": data.fields.addFieldObject(new Coordinate(Integer.parseInt(objs[1]), Integer.parseInt(objs[2])), new SpecialWall());break;
+					case "bx": data.boxes.addBox(new Coordinate(Integer.parseInt(objs[1]), Integer.parseInt(objs[2])), new Box());break;
+					case "wy": data.fields.addFieldObject(new Coordinate(Integer.parseInt(objs[1]), Integer.parseInt(objs[2])), new Way()); break;
 					
 				}
 			}
@@ -48,8 +48,8 @@ public class LoadField {
 	{
 		objs = s2.split(";");
 		Door door = new Door();
-		data.fields.addFieldObject(new Coordinate(Integer.parseInt(objs[0]), Integer.parseInt(objs[1])), door);
+		data.fields.addFieldObject(new Coordinate(Integer.parseInt(objs[1]), Integer.parseInt(objs[2])), door);
 		objs = s1.split(";");
-		data.buttons.addButton(new Coordinate(Integer.parseInt(objs[0]), Integer.parseInt(objs[1])), new Button(door, 20));
+		data.buttons.addButton(new Coordinate(Integer.parseInt(objs[1]), Integer.parseInt(objs[2])), new Button(door, 20));
 	}
 }
