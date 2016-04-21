@@ -50,6 +50,6 @@ public class LoadField {
 		Door door = new Door();
 		data.fields.addFieldObject(new Coordinate(Integer.parseInt(objs[1]), Integer.parseInt(objs[2])), door);
 		objs = s1.split(";");
-		data.buttons.addButton(new Coordinate(Integer.parseInt(objs[1]), Integer.parseInt(objs[2])), new Button(door, 20));
+		data.buttons.addButton(new Coordinate(Integer.parseInt(objs[1]), Integer.parseInt(objs[2])), new Button(door, Integer.parseInt(objs[3])));
 	}
 }
