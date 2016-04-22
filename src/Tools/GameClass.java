@@ -66,6 +66,7 @@ public class GameClass {
                 "e: Doboz felvetel/learkas");*/
 
         //teszteset kiválasztásos menü
+        //FIXME - ez még kell
         tester.test(1);
         
         //A lépkedés teszthez nem kell
