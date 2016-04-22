@@ -96,4 +96,12 @@ public class Replicator extends Player implements Runnable {
     {
         return true;
     }
+    
+    /**
+     * Visszaadja a játékos nevét
+     */
+    @Override
+	public String whichPlayer(){
+		return "Replicator";
+    }
 }

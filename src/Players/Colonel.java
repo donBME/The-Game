@@ -62,4 +62,12 @@ public class Colonel extends Player {
         System.out.print("Colonel ");
         super.Shoot(color);
     }
+    
+    /**
+     * Visszaadja a játékos nevét
+     */
+    @Override
+	public String whichPlayer(){
+		return "Colonel";
+    }
 }

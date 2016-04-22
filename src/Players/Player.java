@@ -109,7 +109,8 @@ public abstract class Player {
 	public boolean hasBox() {
 		return (handfull != null);
 	}
-
+	
+	public abstract String whichPlayer();
 
 	public void kill()
 	{

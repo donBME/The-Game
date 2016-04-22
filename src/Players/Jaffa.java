@@ -61,4 +61,12 @@ public class Jaffa extends Player {
         System.out.print("Jaffa ");
         super.Shoot(color);
     }
+    
+    /**
+     * Visszaadja a játékos nevét
+     */
+    @Override
+	public String whichPlayer(){
+		return "Jaffa";
+    }
 }

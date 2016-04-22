@@ -30,6 +30,7 @@ import java.io.InputStreamReader;
  */
 public class GameClass {
 
+	/*
     private FieldObjectInventory fieldObjectInventory;
     private StarGateInventory stargateInventory;
     private BoxInventory boxInventory;
@@ -38,10 +39,12 @@ public class GameClass {
     private DataAccessPoint dataAccesspoint;
     private ShotHandler shotHandler;
     private GrabHandler grabHandler;
-    private StepHandler stepHandler;
+    private StepHandler stepHandler;*/
     private Player player;
-    private Replicator rep1;
+    //private Replicator rep1;
 
+    static LoadField fieldloader;
+    static TestHandler tester;
 
     public static void main(String[] args) {
         // Anything which isn't evident at first glimpse, must be rigorously described in a comment beforehand.
@@ -50,18 +53,23 @@ public class GameClass {
 
         menu.Init();
 
-
+        /*
         InputStreamReader inputStreamReader = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-        String line = "";
-        System.out.println("w: Elore\n" +
+        String line = "";*/
+        /*System.out.println("w: Elore\n" +
                 "a: Balra\n" +
                 "s: Hatra\n" +
                 "d: Jobbra\n" +
                 "f: Sarga portal\n" +
                 "g: Kek portal\n" +
-                "e: Doboz felvetel/learkas");
+                "e: Doboz felvetel/learkas");*/
 
+        //teszteset kiválasztásos menü
+        tester.test(1);
+        
+        //A lépkedés teszthez nem kell
+        /*
         while(!line.equals("q")){
 
             menu.drawMap();
@@ -96,27 +104,29 @@ public class GameClass {
                 default:
                     break;
             }
-        }
+        }*/
 
     }
 
     private void Init(){
-
+    	//ideiglenesen kivéve cuccok
+    	/*
         fieldObjectInventory = new FieldObjectInventory();
         stargateInventory = new StarGateInventory();
         boxInventory = new BoxInventory();
         buttonInventory = new ButtonInventory();
-        collectableInventory = new CollectableInventory();
+        collectableInventory = new CollectableInventory();*/
 
+    	/*
         dataAccesspoint = new DataAccessPoint(stargateInventory, fieldObjectInventory, boxInventory, buttonInventory, collectableInventory);
 
         collectableInventory.setData(dataAccesspoint);
 
         shotHandler = new ShotHandler(dataAccesspoint);
         grabHandler = new GrabHandler(dataAccesspoint);
-        stepHandler = new StepHandler(dataAccesspoint,true);
+        stepHandler = new StepHandler(dataAccesspoint,true);*/
 
-
+    	/*
         player = new Colonel(shotHandler, grabHandler, stepHandler, 1, 1);
 
         //itt adjuk hozza a replikatort: Albert
@@ -126,10 +136,17 @@ public class GameClass {
         rep1= new Replicator(rep1ShHandler,rep1GHandler,rep1StHandler,1,2);
 
         dataAccesspoint.players.add(player);
-        dataAccesspoint.players.add(rep1);
-
+        dataAccesspoint.players.add(rep1);*/
+    	
+        /*
         Thread rep1Thread = new Thread(rep1);
-        rep1Thread.start();
+        rep1Thread.start();*/
+        
+        //teszteléshez kell
+        fieldloader = new LoadField();
+        tester = new TestHandler(fieldloader);
+        
+        //tester.writer();
 
 //        fieldObjectInventory.addFieldObject(new Tools.Coordinate(0,0),new GameObjects.Way());
 //        fieldObjectInventory.addFieldObject(new Tools.Coordinate(1,0),new GameObjects.Way());
@@ -149,6 +166,8 @@ public class GameClass {
 //        collectableInventory.addCollectable(new Tools.Coordinate(2,0), new GameObjects.ZPM());
 
 
+        
+        /*
         for (int x = 0; x < 10; x++) {
             for (int y = 0; y < 10; y++) {
                 if (x == 0 || x == 9 || y == 0 || y == 9) {
@@ -167,7 +186,7 @@ public class GameClass {
         Door door = new Door();
         fieldObjectInventory.addFieldObject(new Coordinate(7, 5), door);
         buttonInventory.addButton(new Coordinate(3, 1), new Button(door, 2));
-        fieldObjectInventory.addFieldObject(new Coordinate(1, 3), new Abyss());
+        fieldObjectInventory.addFieldObject(new Coordinate(1, 3), new Abyss());*/
 
     }
 
@@ -195,6 +214,7 @@ public class GameClass {
     }
 
     private void drawMap() {
+    	/*
         for (int y = 9; y >= 0; y--) {
             for (int x = 0; x < 10; x++) {
                 Coordinate thisCoord = new Coordinate(x, y);
@@ -226,7 +246,7 @@ public class GameClass {
                 }
             }
             System.out.println();
-        }
+        }*/
     }
 
 }

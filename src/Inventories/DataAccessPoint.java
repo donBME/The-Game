@@ -19,6 +19,8 @@ public class DataAccessPoint {
 	public StarGateInventory stargates;
 	public FieldObjectInventory fields;
 	public List<Player> players;
+	public Player Jaffa;
+	public Player Colonel;
 
 	/**
 	 * �rt�kad� konstruktor.
