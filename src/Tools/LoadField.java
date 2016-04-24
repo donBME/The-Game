@@ -41,7 +41,8 @@ public class LoadField {
 					case "d": this.addButtonDoor(read.readLine(), s);break;
 					case "wl": data.fields.addFieldObject(new Coordinate(Integer.parseInt(objs[2]), Integer.parseInt(objs[1])), new Wall());break;
 					case "sw": data.fields.addFieldObject(new Coordinate(Integer.parseInt(objs[2]), Integer.parseInt(objs[1])), new SpecialWall());break;
-					case "bx": data.boxes.addBox(new Coordinate(Integer.parseInt(objs[2]), Integer.parseInt(objs[1])), new Box());break;
+					case "bx": data.boxes.addBox(new Coordinate(Integer.parseInt(objs[2]), Integer.parseInt(objs[1])), new Box());
+								data.buttons.EventOn(new Coordinate(Integer.parseInt(objs[2]), Integer.parseInt(objs[1])), data.boxes.isThereV2(new Coordinate(Integer.parseInt(objs[2]), Integer.parseInt(objs[1]))));break;
 					case "wy": data.fields.addFieldObject(new Coordinate(Integer.parseInt(objs[2]), Integer.parseInt(objs[1])), new Way()); break;
 					
 				}

@@ -84,7 +84,7 @@ public class GameClass {
                     if(command.charAt(0) > '0' && command.charAt(0) <= '9'){
                     testnumber = (command.charAt(0) - '0');
                     }
-                if (testnumber != 0 && testnumber < 33){
+                if (testnumber != 0 && testnumber < 34){
                 	// meghívja a testesetet
                     tester.test(testnumber);
                     testnumber = 0;
