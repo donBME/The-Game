@@ -85,6 +85,12 @@ public class TestHandler {
 					{
 						playerAction(dataAccesspoint.Jaffa, tmp);
 					}
+				} else if (tmp[0].equals("Replicator"))
+				{
+					if (dataAccesspoint.Repli != null)
+					{
+						playerAction(dataAccesspoint.Repli, tmp);
+					}
 				}
 				
 				drawTMap();
@@ -205,10 +211,10 @@ public class TestHandler {
                 } else if (dataAccesspoint.Jaffa != null && dataAccesspoint.Jaffa.getPos() != null && dataAccesspoint.Jaffa.getPos().toCoord().equals(thisCoord)) {
                     System.out.print((dataAccesspoint.Jaffa.hasBox()) ? "|H " : "|J ");
                 }
-                /*else if(rep1.getPos()!= null && rep1.getPos().toCoord().equals(thisCoord))
+                else if(dataAccesspoint.Repli!= null && dataAccesspoint.Repli.getPos()!= null && dataAccesspoint.Repli.getPos().toCoord().equals(thisCoord))
                 {
                     System.out.print("|R ");
-                }*/
+                }
                 else if (boxInventory.IsThere(thisCoord)) {
                     System.out.print("|B ");
                 } else if (collectableInventory.IsThere(thisCoord)) {

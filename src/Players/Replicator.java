@@ -44,11 +44,9 @@ public class Replicator extends Player implements Runnable {
      */
     public void Step(Direction toDir) {
         System.out.print("Replicator ");
+        
         super.Step(toDir);
-
-
         if (pos == null) {
-            // Valami legyen
         }
     }
 

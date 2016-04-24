@@ -23,7 +23,7 @@ import java.io.InputStreamReader;
  * Test function for educational purposes to commence and teach the usage of bitbucket.
  *
  * Input:
- * args contains the supplied command-line arguments as an array of String objects.
+ * args contains the supplied command-command arguments as an array of String objects.
  *
  * Output:
  * void type methods have no return value.
@@ -48,15 +48,14 @@ public class GameClass {
 
     public static void main(String[] args) {
         // Anything which isn't evident at first glimpse, must be rigorously described in a comment beforehand.
-        //System.out.println("Test method:" + System.lineSeparator() + "Starting one hell of a game from scratch!");
+        //System.out.println("Test method:" + System.commandSeparator() + "Starting one hell of a game from scratch!");
         GameClass menu = new GameClass();
 
         menu.Init();
 
-        /*
+
         InputStreamReader inputStreamReader = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-        String line = "";*/
         /*System.out.println("w: Elore\n" +
                 "a: Balra\n" +
                 "s: Hatra\n" +
@@ -67,20 +66,45 @@ public class GameClass {
 
         //teszteset kiválasztásos menü
         //FIXME - ez még kell
-        tester.test(1);
-        
+
+        String command = "";
+        int testnumber = 0;
+        while(!command.equals("q")){
+
+            //menu.drawMap();
+
+            try {
+                command = bufferedReader.readLine();
+                // ellenörzi hogy csak valid bemenetre hívjunk meg testesetet
+                if(command.length() == 2)
+	                if(command.charAt(0) > '0' && command.charAt(0) <= '9' && command.charAt(0) >= '0' && command.charAt(0) <= '9'){
+	                testnumber = (command.charAt(0) - '0') * 10 + (command.charAt(1) - '0');
+	                }
+                if(command.length() == 1)
+                    if(command.charAt(0) > '0' && command.charAt(0) <= '9'){
+                    testnumber = (command.charAt(0) - '0');
+                    }
+                if (testnumber != 0 && testnumber < 33){
+                	// meghívja a testesetet
+                    tester.test(testnumber);
+                    testnumber = 0;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         //A lépkedés teszthez nem kell
         /*
-        while(!line.equals("q")){
+        while(!command.equals("q")){
 
             menu.drawMap();
 
             try {
-                line = bufferedReader.readLine();
+                command = bufferedReader.readcommand();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            switch (line) {
+            switch (command) {
                 case "w":
                     menu.Step(Direction.North);
                     break;

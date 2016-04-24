@@ -21,6 +21,7 @@ public class DataAccessPoint {
 	public List<Player> players;
 	public Player Jaffa;
 	public Player Colonel;
+	public Player Repli;
 
 	/**
 	 * �rt�kad� konstruktor.

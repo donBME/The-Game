@@ -35,7 +35,7 @@ public class LoadField {
 						data.Jaffa = j;
 						data.players.add(data.Jaffa); 
 					break;
-					case "r": data.players.add(new Replicator(new ShotHandler(data), new GrabHandler(data), new StepHandler(data, false), Integer.parseInt(objs[2]), Integer.parseInt(objs[1])));break;
+					case "r": data.players.add(data.Repli = new Replicator(new ShotHandler(data), new GrabHandler(data), new StepHandler(data, false), Integer.parseInt(objs[2]), Integer.parseInt(objs[1])));break;
 					case "a": data.fields.addFieldObject(new Coordinate(Integer.parseInt(objs[2]), Integer.parseInt(objs[1])), new Abyss());break;
 					case "z": data.collectables.addCollectable(new Coordinate(Integer.parseInt(objs[2]), Integer.parseInt(objs[1])), new ZPM());break;
 					case "d": this.addButtonDoor(read.readLine(), s);break;

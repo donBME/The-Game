@@ -42,7 +42,7 @@ public class GrabHandler {
             Box returnBox;
 
 			// Felvett doboz
-			returnBox =  data.boxes.GetBox(interactfrom.toNextCoord());
+			returnBox =  data.boxes.GetBox(checkedPos);
 
 			if (returnBox != null){
 				System.out.print("has grabbed an item at " + checkedPos.GetX() + "," + checkedPos.GetY() + " ");
@@ -53,6 +53,7 @@ public class GrabHandler {
 
 			return returnBox;
         }
+		System.out.print("can’t interact at: " + checkedPos.GetX() + "," + checkedPos.GetY() + " ");
         return null;
 	}
 	

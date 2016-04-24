@@ -72,12 +72,11 @@ public class StepHandler {
 			data.buttons.EventOn(playerpos, 0);
 			if(data.fields.GetFieldObject(nextpos).IsMortal()){
 
-				System.out.print("Game Over ");
-
 				if (canFillAbyss) {
 					data.fields.addFieldObject(nextpos.toCoord(), new Way());
 					System.out.print("way spawned ");
 				}
+				else System.out.print("Game Over ");
 				return null;
 			}
 			// GameObjects.ZPM felv?tel figyel?se

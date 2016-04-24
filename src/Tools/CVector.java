@@ -7,15 +7,15 @@ package Tools;
 
 public class CVector extends Coordinate {
 
-	// Kiegészítettük az attribútumokat egy mozgási iránnyal is.
+	// KiegÃ©szÃ­tettÃ¼k az attribÃºtumokat egy mozgÃ¡si irÃ¡nnyal is.
 	private Direction dir;
 
 	/**
-	 * Értékadó kostruktor
+	 * Ã‰rtÃ©kadÃ³ kostruktor
 	 *
-	 * @param sx x koordináta
-	 * @param sy y koordináta
-	 * @param sd irány
+	 * @param sx x koordinÃ¡ta
+	 * @param sy y koordinÃ¡ta
+	 * @param sd irÃ¡ny
 	 */
 	public CVector(int sx, int sy, Direction sd) {
 		Set(sx,sy);
@@ -23,8 +23,8 @@ public class CVector extends Coordinate {
 	}
 
 	/**
-	 * Irány getter fgv.
-	 * @return Mozgási irány
+	 * IrÃ¡ny getter fgv.
+	 * @return MozgÃ¡si irÃ¡ny
 	 */
 	public Direction GetDir(){
 		return dir;
@@ -32,9 +32,9 @@ public class CVector extends Coordinate {
 
 	/**
 	 * 
-	 * @param sx x koordináta
-	 * @param sy y koordináta
-	 * @param sd irány
+	 * @param sx x koordinÃ¡ta
+	 * @param sy y koordinÃ¡ta
+	 * @param sd irÃ¡ny
 	 */
 	public void SetD(int sx, int sy, Direction sd){
 		Set(sx,sy);
@@ -42,16 +42,16 @@ public class CVector extends Coordinate {
 	}
 
 	/**
-	 * Átkonvertálja a CVectort egy sima Tools.Coordinate osztályra, irány nélkül
-	 * @return Egyszerűsített Tools.CVector
+	 * Ã�tkonvertÃ¡lja a CVectort egy sima Tools.Coordinate osztÃ¡lyra, irÃ¡ny nÃ©lkÃ¼l
+	 * @return EgyszerÅ±sÃ­tett Tools.CVector
 	 */
 	public Coordinate toCoord() {
 		return new Coordinate(GetX(), GetY());
 	}
 
 	/**
-	 * Tools.CVector -> Tools.Coordinate átalakító
-	 * @return az irány alapján következő koordináták
+	 * Tools.CVector -> Tools.Coordinate Ã¡talakÃ­tÃ³
+	 * @return az irÃ¡ny alapjÃ¡n kÃ¶vetkezÅ‘ koordinÃ¡tÃ¡k
      */
 	public CVector toNextCoord() {
 		switch (dir) {
