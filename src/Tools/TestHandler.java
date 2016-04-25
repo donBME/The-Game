@@ -58,7 +58,7 @@ public class TestHandler {
 		fieldLoader.Load("testmap" + testNum + ".txt", dataAccesspoint);
 		
 		//kezdeti állapot		
-		drawTMap();
+		//drawTMap();
 		
 		//utasítások végrehajtása
 		//tesztbemenet betöltés
@@ -93,8 +93,8 @@ public class TestHandler {
 					}
 				}
 				
-				drawTMap();
-			}		
+				//drawTMap();
+			}
 			read.close();
 		}catch(IOException e)
 		{

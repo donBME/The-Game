@@ -1,4 +1,4 @@
 Colonel Step East
 Colonel Interact
-Colonel Step West
+Colonel Step North
 Colonel Interact

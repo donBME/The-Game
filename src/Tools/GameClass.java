@@ -64,8 +64,6 @@ public class GameClass {
                 "g: Kek portal\n" +
                 "e: Doboz felvetel/learkas");*/
 
-        //teszteset kiválasztásos menü
-        //FIXME - ez még kell
 
         String command = "";
         int testnumber = 0;
