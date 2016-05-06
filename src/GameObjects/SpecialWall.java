@@ -9,7 +9,8 @@ public class SpecialWall extends Wall {
     /**
      * GameObjects.SpecialWall kostruktor
      */
-    public SpecialWall(){}
+    public SpecialWall() {
+    }
 
     /**
      * Lőhető-e a falra csillagkapu?

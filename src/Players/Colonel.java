@@ -29,7 +29,8 @@ public class Colonel extends Player {
 
     /**
      * Felüldefiniált lépés osztály.
-     * @param toDir a l?p?s ir?nya
+     *
+     * @param toDir a lépés iránya
      */
     @Override
     public void Step(Direction toDir) {
@@ -62,12 +63,12 @@ public class Colonel extends Player {
         System.out.print("Colonel ");
         super.Shoot(color);
     }
-    
+
     /**
-     * Visszaadja a j�t�kos nev�t
+     * Visszaadja a játékos nevét
      */
     @Override
-	public String whichPlayer(){
-		return "Colonel";
+    public String whichPlayer() {
+        return "Colonel";
     }
 }

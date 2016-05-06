@@ -12,53 +12,55 @@ import java.util.Map;
  */
 public class ButtonInventory {
 
-	private Map<Coordinate, Button> buttonList;
+    private Map<Coordinate, Button> buttonList;
 
-	/**
-	 * Nyomólap konstruktor.
-	 * Létrehozza a gombokat tároló kollekciót.
-	 */
-	public ButtonInventory(){
-        buttonList = new CustomHashMap();
-	}
-
-	/**
-	 * Nyomólap hozzáadása a listához
-	 * @param coord Nyomólap helye
-	 * @param button A Nyomólap
-	 */
-	public void addButton(Coordinate coord, Button button){
-		buttonList.put(coord, button);
-	}
-
-	/**
-	 * Nyomólapra történö dobozrarakás vagy rálépés esetén lefutó függvény.
-	 * @param coord A nyomólap koordinátája
-	 * @param weightOnCoord A koordinátán található összsúly
-	 */
-	public void EventOn(Coordinate coord, int weightOnCoord){
-		Button button;
-
-		if (buttonList.containsKey(coord)){
-			button = buttonList.get(coord);
-
-			// Ajtónyitás kezelése
-			if (button.getRequiredWeight() > weightOnCoord){
-				button.lockDoor();
-			}
-			else {
-				button.unlockDoor();
-			}
-		}
-	}
-
-	/**
-	 * Megmondja, hogy van-e egy adott koordinátájú ponton nyomólap.
-	 * @param coord A keresett koordinátájú mezö.
-	 * @return igaz / hamis
+    /**
+     * Nyomï¿½lap konstruktor.
+     * Lï¿½trehozza a gombokat tï¿½rolï¿½ kollekciï¿½t.
      */
-	public boolean isThere(Coordinate coord){
-		return buttonList.containsKey(coord);
-	}
+    public ButtonInventory() {
+        buttonList = new CustomHashMap();
+    }
+
+    /**
+     * Nyomï¿½lap hozzï¿½adï¿½sa a listï¿½hoz
+     *
+     * @param coord  Nyomï¿½lap helye
+     * @param button A Nyomï¿½lap
+     */
+    public void addButton(Coordinate coord, Button button) {
+        buttonList.put(coord, button);
+    }
+
+    /**
+     * Nyomï¿½lapra tï¿½rtï¿½nï¿½ dobozrarakï¿½s vagy rï¿½lï¿½pï¿½s esetï¿½n lefutï¿½ fï¿½ggvï¿½ny.
+     *
+     * @param coord         A nyomï¿½lap koordinï¿½tï¿½ja
+     * @param weightOnCoord A koordinï¿½tï¿½n talï¿½lhatï¿½ ï¿½sszsï¿½ly
+     */
+    public void EventOn(Coordinate coord, int weightOnCoord) {
+        Button button;
+
+        if (buttonList.containsKey(coord)) {
+            button = buttonList.get(coord);
+
+            // Ajtï¿½nyitï¿½s kezelï¿½se
+            if (button.getRequiredWeight() > weightOnCoord) {
+                button.lockDoor();
+            } else {
+                button.unlockDoor();
+            }
+        }
+    }
+
+    /**
+     * Megmondja, hogy van-e egy adott koordinï¿½tï¿½jï¿½ ponton nyomï¿½lap.
+     *
+     * @param coord A keresett koordinï¿½tï¿½jï¿½ mezï¿½.
+     * @return igaz / hamis
+     */
+    public boolean isThere(Coordinate coord) {
+        return buttonList.containsKey(coord);
+    }
 
 }

@@ -7,30 +7,27 @@ package GameObjects;
 public class Box implements FieldObject {
 
     /**
-     *
-	 * @return Hamissal tér vissza. A doboz nem öl meg.
-	 */
-	@Override
-	public boolean IsMortal() {
+     * @return Hamissal tï¿½r vissza. A doboz nem ï¿½l meg.
+     */
+    @Override
+    public boolean IsMortal() {
         return false;
-	}
+    }
 
     /**
-     *
-	 * @return Hamissal tér vissza. A dobozra nem löhetö csillagkapu.
-	 */
-	@Override
-	public boolean Shootable() {
+     * @return Hamissal tï¿½r vissza. A dobozra nem lï¿½hetï¿½ csillagkapu.
+     */
+    @Override
+    public boolean Shootable() {
         return false;
-	}
+    }
 
     /**
-     *
-	 * @return Hamissal tér vissza. A dobozra nem is lehet rálépni.
-	 */
-	@Override
-	public boolean Steppable() {
+     * @return Hamissal tï¿½r vissza. A dobozra nem is lehet rï¿½lï¿½pni.
+     */
+    @Override
+    public boolean Steppable() {
         return false;
-	}
+    }
 
 }

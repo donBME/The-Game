@@ -6,37 +6,40 @@ package GameObjects;
  */
 public class Wall implements FieldObject {
 
-	/**
-	 * Konstrukor
-	 */
-	public Wall() {
-	}
+    /**
+     * Konstrukor
+     */
+    public Wall() {
+    }
 
-	/**
-	 * Halálos-e az objektumra lépés
-	 * @return Nem, a falra lépés nem halálos
-	 */
-	@Override
-	public boolean IsMortal() {
-		return false;
-	}
-
-	/**
-	 * Lőhető-e a falra csillagkapu
-	 * @return Nem, alapesetben a falra nem lőhető csillagkapu.
-	 */
-	@Override
-	public boolean Shootable() {
+    /**
+     * Halálos-e az objektumra lépés
+     *
+     * @return Nem, a falra lépés nem halálos
+     */
+    @Override
+    public boolean IsMortal() {
         return false;
-	}
+    }
 
-	/**
-	 * Rá lehet-e lépni a falra
-	 * @return Nem, a fal nem átjárható.
-	 */
-	@Override
-	public boolean Steppable() {
+    /**
+     * Lőhető-e a falra csillagkapu
+     *
+     * @return Nem, alapesetben a falra nem lőhető csillagkapu.
+     */
+    @Override
+    public boolean Shootable() {
         return false;
-	}
+    }
+
+    /**
+     * Rá lehet-e lépni a falra
+     *
+     * @return Nem, a fal nem átjárható.
+     */
+    @Override
+    public boolean Steppable() {
+        return false;
+    }
 
 }

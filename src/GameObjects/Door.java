@@ -6,55 +6,52 @@ package GameObjects;
  */
 public class Door implements FieldObject {
 
-	// Nyitottságot jelzö belsö változó.
-	private boolean open;
+    // Nyitottsï¿½got jelzï¿½ belsï¿½ vï¿½ltozï¿½.
+    private boolean open;
 
-	/**
-	 * Üres konstruktor, alaphelyzetben az ajtó zárt állapotban van.
-	 */
-	public Door() {
-		open = false;
-	}
+    /**
+     * ï¿½res konstruktor, alaphelyzetben az ajtï¿½ zï¿½rt ï¿½llapotban van.
+     */
+    public Door() {
+        open = false;
+    }
 
-	/**
-	 * Nyitottság megváltoztatása
-	 */
-	void Statechanged() {
+    /**
+     * Nyitottsï¿½g megvï¿½ltoztatï¿½sa
+     */
+    void Statechanged() {
 
-		// Negálja a nyitottság változó értékét.
-		open = !open;
-		if (open){
-			System.out.print("door opened ");
-		}
-		else {
-			System.out.print("door closed ");
-		}
-	}
+        // Negï¿½lja a nyitottsï¿½g vï¿½ltozï¿½ ï¿½rtï¿½kï¿½t.
+        open = !open;
+        if (open) {
+            System.out.print("door opened ");
+        } else {
+            System.out.print("door closed ");
+        }
+    }
 
-	/**
-	 *
-	 * @return Hamis, az ajtóba lépés nem halálos.
-	 */
-	@Override
-	public boolean IsMortal() { return false;
-	}
-
-	/**
-	 *
-	 * @return Hamis, az ajtóra nem löhetö csillagkapu.
-	 */
-	@Override
-	public boolean Shootable() {
+    /**
+     * @return Hamis, az ajtï¿½ba lï¿½pï¿½s nem halï¿½los.
+     */
+    @Override
+    public boolean IsMortal() {
         return false;
-	}
+    }
 
-	/**
-	 *
-	 * @return Attól függöen igaz/hamis, hogy az ajto nyitott vagy zárt állapotban van.
-	 */
-	@Override
-	public boolean Steppable() {
+    /**
+     * @return Hamis, az ajtï¿½ra nem lï¿½hetï¿½ csillagkapu.
+     */
+    @Override
+    public boolean Shootable() {
+        return false;
+    }
+
+    /**
+     * @return Attï¿½l fï¿½ggï¿½en igaz/hamis, hogy az ajto nyitott vagy zï¿½rt ï¿½llapotban van.
+     */
+    @Override
+    public boolean Steppable() {
         return open;
-	}
+    }
 
 }

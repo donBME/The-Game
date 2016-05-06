@@ -5,7 +5,7 @@ import Handlers.ShotHandler;
 import Handlers.StepHandler;
 import Tools.CVector;
 import Tools.Direction;
-import Tools.StarGateColor;
+
 import java.util.Random;
 
 /**
@@ -30,6 +30,7 @@ public class Replicator extends Player implements Runnable {
 
     /**
      * Felüldefiniált interact fgv.
+     *
      * @param fromThisPosition Erröl a pozícióról akarunk müveletet végrehajtani.
      */
 
@@ -44,22 +45,18 @@ public class Replicator extends Player implements Runnable {
      */
     public void Step(Direction toDir) {
         System.out.print("Replicator ");
-        
+
         super.Step(toDir);
         if (pos == null) {
         }
     }
 
-    public void run()
-    {
-        try
-        {
-            while (pos!=null)
-            {
+    public void run() {
+        try {
+            while (pos != null) {
                 Random rn = new Random();
                 int answer = rn.nextInt(4);
-                switch (answer)
-                {
+                switch (answer) {
                     case 0:
                         Step(Direction.East);
                         Thread.sleep(1000);
@@ -84,22 +81,20 @@ public class Replicator extends Player implements Runnable {
                 Thread.sleep(2000);
             }
 
-        }
-        catch (InterruptedException e)
-        {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
-    public boolean Shotable()
-    {
+
+    public boolean Shootable() {
         return true;
     }
-    
+
     /**
-     * Visszaadja a j�t�kos nev�t
+     * Visszaadja a j�t�kos nev�t
      */
     @Override
-	public String whichPlayer(){
-		return "Replicator";
+    public String whichPlayer() {
+        return "Replicator";
     }
 }

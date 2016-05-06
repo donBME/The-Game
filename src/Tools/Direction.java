@@ -6,5 +6,5 @@ package Tools;
  */
 
 public enum Direction {
-    East,North,West,South
+    East, North, West, South
 }

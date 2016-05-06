@@ -28,7 +28,8 @@ public class Jaffa extends Player {
 
     /**
      * Felüldefiniált lépés függvény
-     * @param toDir a l?p?s ir?nya
+     *
+     * @param toDir a lépés iránya
      */
     @Override
     public void Step(Tools.Direction toDir) {
@@ -61,12 +62,12 @@ public class Jaffa extends Player {
         System.out.print("Jaffa ");
         super.Shoot(color);
     }
-    
+
     /**
-     * Visszaadja a j�t�kos nev�t
+     * Visszaadja a játékos nevét
      */
     @Override
-	public String whichPlayer(){
-		return "Jaffa";
+    public String whichPlayer() {
+        return "Jaffa";
     }
 }

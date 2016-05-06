@@ -6,9 +6,9 @@ package GameObjects;
  */
 public interface Collectable {
 
-	/**
-	 * Felszedhetö elem felszedése esetén felutó metódus.
-	 */
-	void Collect();
+    /**
+     * Felszedhetï¿½ elem felszedï¿½se esetï¿½n felutï¿½ metï¿½dus.
+     */
+    void Collect();
 
 }

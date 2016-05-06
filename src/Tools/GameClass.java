@@ -5,14 +5,8 @@ package Tools;
  * @version 1.0
  */
 
-import GameObjects.*;
-import Handlers.GrabHandler;
-import Handlers.ShotHandler;
-import Handlers.StepHandler;
-import Inventories.*;
-import Players.Colonel;
+import Handlers.GameHandler;
 import Players.Player;
-import Players.Replicator;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,16 +15,19 @@ import java.io.InputStreamReader;
 /**
  * Template comment describing the goal of the method.
  * Test function for educational purposes to commence and teach the usage of bitbucket.
- *
+ * <p>
  * Input:
  * args contains the supplied command-command arguments as an array of String objects.
- *
+ * <p>
  * Output:
  * void type methods have no return value.
  */
 public class GameClass {
 
-	/*
+    static LoadField fieldloader;
+    //private Replicator rep1;
+    static GameHandler tester;
+    /*
     private FieldObjectInventory fieldObjectInventory;
     private StarGateInventory stargateInventory;
     private BoxInventory boxInventory;
@@ -41,12 +38,8 @@ public class GameClass {
     private GrabHandler grabHandler;
     private StepHandler stepHandler;*/
     private Player player;
-    //private Replicator rep1;
 
-    static LoadField fieldloader;
-    static TestHandler tester;
-
-    public static void main(String[] args) {
+    public static void main_(String[] args) {
         // Anything which isn't evident at first glimpse, must be rigorously described in a comment beforehand.
         //System.out.println("Test method:" + System.commandSeparator() + "Starting one hell of a game from scratch!");
         GameClass menu = new GameClass();
@@ -67,31 +60,31 @@ public class GameClass {
 
         String command = "";
         int testnumber = 0;
-        while(!command.equals("q")){
+        while (!command.equals("q")) {
 
             //menu.drawMap();
 
             try {
                 command = bufferedReader.readLine();
-                // ellenörzi hogy csak valid bemenetre hívjunk meg testesetet
-                if(command.length() == 2)
-	                if(command.charAt(0) > '0' && command.charAt(0) <= '9' && command.charAt(0) >= '0' && command.charAt(0) <= '9'){
-	                testnumber = (command.charAt(0) - '0') * 10 + (command.charAt(1) - '0');
-	                }
-                if(command.length() == 1)
-                    if(command.charAt(0) > '0' && command.charAt(0) <= '9'){
-                    testnumber = (command.charAt(0) - '0');
+                // ellenÃ¶rzi hogy csak valid bemenetre hÃ­vjunk meg testesetet
+                if (command.length() == 2)
+                    if (command.charAt(0) > '0' && command.charAt(0) <= '9' && command.charAt(0) >= '0' && command.charAt(0) <= '9') {
+                        testnumber = (command.charAt(0) - '0') * 10 + (command.charAt(1) - '0');
                     }
-                if (testnumber != 0 && testnumber < 34){
-                	// meghívja a testesetet
-                    tester.test(testnumber);
+                if (command.length() == 1)
+                    if (command.charAt(0) > '0' && command.charAt(0) <= '9') {
+                        testnumber = (command.charAt(0) - '0');
+                    }
+                if (testnumber != 0 && testnumber < 34) {
+                    // meghÃ­vja a testesetet
+                    tester.runMap(testnumber);
                     testnumber = 0;
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        //A lépkedés teszthez nem kell
+        //A lÃ©pkedÃ©s teszthez nem kell
         /*
         while(!command.equals("q")){
 
@@ -131,9 +124,9 @@ public class GameClass {
 
     }
 
-    private void Init(){
-    	//ideiglenesen kivéve cuccok
-    	/*
+    private void Init() {
+        //ideiglenesen kivÃ©ve cuccok
+        /*
         fieldObjectInventory = new FieldObjectInventory();
         stargateInventory = new StarGateInventory();
         boxInventory = new BoxInventory();
@@ -164,11 +157,11 @@ public class GameClass {
         /*
         Thread rep1Thread = new Thread(rep1);
         rep1Thread.start();*/
-        
-        //teszteléshez kell
+
+        //tesztelÃ©shez kell
         fieldloader = new LoadField();
-        tester = new TestHandler(fieldloader);
-        
+        tester = new GameHandler(fieldloader);
+
         //tester.writer();
 
 //        fieldObjectInventory.addFieldObject(new Tools.Coordinate(0,0),new GameObjects.Way());
@@ -213,7 +206,7 @@ public class GameClass {
 
     }
 
-    private void Interact(){
+    private void Interact() {
         player.Interact(player.getPos());
     }
 

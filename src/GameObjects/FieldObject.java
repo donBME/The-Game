@@ -6,19 +6,18 @@ package GameObjects;
  */
 public interface FieldObject {
 
-	/**
-	 * @return Halálos-e az objektumra való rálépés
-	 */
-	boolean IsMortal();
+    /**
+     * @return Halï¿½los-e az objektumra valï¿½ rï¿½lï¿½pï¿½s
+     */
+    boolean IsMortal();
 
-	/**
-	 * @return Löhetö-e az objektumra csillagkapu.
-	 */
-	boolean Shootable();
+    /**
+     * @return Lï¿½hetï¿½-e az objektumra csillagkapu.
+     */
+    boolean Shootable();
 
-	/**
-	 *
-	 * @return Rá lehet-e lépni az objektumra.
-	 */
-	boolean Steppable();
+    /**
+     * @return Rï¿½ lehet-e lï¿½pni az objektumra.
+     */
+    boolean Steppable();
 }
