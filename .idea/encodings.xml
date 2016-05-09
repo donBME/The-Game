@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/src/GameObjects/Box.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/src/Inventories/ButtonInventory.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/GameObjects/Box.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/GameObjects/Button.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/GameObjects/Collectable.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/GameObjects/Door.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/GameObjects/FieldObject.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Handlers/GameHandler.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Handlers/GrabHandler.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Handlers/ShotHandler.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Handlers/StepHandler.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Inventories/BoxInventory.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Inventories/ButtonInventory.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Inventories/DataAccessPoint.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Inventories/FieldObjectInventory.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Inventories/StarGateInventory.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Players/Player.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Tools/CVector.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Tools/Coordinate.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Tools/CustomHashMap.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Tools/Direction.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Tools/GameClass.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Tools/LoadField.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Tools/StarGateColor.java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

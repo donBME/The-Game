@@ -160,7 +160,7 @@ public class GameClass {
 
         //teszteléshez kell
         fieldloader = new LoadField();
-        tester = new GameHandler(fieldloader);
+        //tester = new GameHandler(fieldloader);
 
         //tester.writer();
 

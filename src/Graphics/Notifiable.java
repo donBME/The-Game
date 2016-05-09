@@ -1,5 +1,7 @@
 package Graphics;
 
+import Inventories.DataAccessPoint;
+
 /**
  * @author Laszlo
  * @version 1.0
@@ -7,5 +9,7 @@ package Graphics;
 
 public interface Notifiable {
 
-    public void notifyView();
+    void notifyView();
+
+    void setData(DataAccessPoint dataAccessPoint);
 }

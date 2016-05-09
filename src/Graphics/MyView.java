@@ -13,22 +13,29 @@ import javax.swing.*;
 public class MyView implements Notifiable{
 
     private DataAccessPoint data;
+    private Controller controller;
+
+    private int OBJECT_WIDTH, OBJECT_HEIGHT;
 
     public MyView(){
         JFrame jFrame = new JFrame();
         jFrame.setSize(600,600);
         jFrame.setVisible(true);
-        jFrame.addKeyListener(new Controller());
-        jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    }
+        controller = new Controller(this);
+        controller.loadMap(10);
 
-    public MyView(DataAccessPoint data){
-        this.data = data;
+        jFrame.addKeyListener(controller);
+        jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     @Override
     public void notifyView() {
+        System.out.println("This view has been notified!");
+    }
 
+    @Override
+    public void setData(DataAccessPoint data) {
+        this.data = data;
     }
 
     public void drawMenu(){

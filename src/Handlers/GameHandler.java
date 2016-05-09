@@ -1,5 +1,6 @@
 package Handlers;
 
+import Graphics.Notifiable;
 import Inventories.*;
 import Players.Player;
 import Tools.*;
@@ -7,14 +8,17 @@ import Tools.*;
 public class GameHandler {
 
     private LoadField fieldLoader;
+    private Notifiable view;
+    private DataAccessPoint dataAccesspoint;
 
     /**
      * GameHandler konstruktor.
      *
      * @param fLoader Pályabetöltő
      */
-    public GameHandler(LoadField fLoader) {
+    public GameHandler(LoadField fLoader, Notifiable view) {
         fieldLoader = fLoader;
+        this.view = view;
     }
 
     public void runMap(int testNum) {
@@ -26,15 +30,41 @@ public class GameHandler {
         ButtonInventory buttonInventory = new ButtonInventory();
         CollectableInventory collectableInventory = new CollectableInventory();
 
-        DataAccessPoint dataAccesspoint = new DataAccessPoint(stargateInventory, fieldObjectInventory, boxInventory, buttonInventory, collectableInventory);
+        dataAccesspoint = new DataAccessPoint(stargateInventory, fieldObjectInventory, boxInventory, buttonInventory, collectableInventory);
         collectableInventory.setData(dataAccesspoint);
 
         //mapbetöltés
         fieldLoader.Load("testmap" + testNum + ".txt", dataAccesspoint);
+
+        view.setData(dataAccesspoint);
+
+        dataAccesspoint.Colonel.subscribe(view);
+        try {
+            dataAccesspoint.Jaffa.subscribe(view);
+        }
+        catch (java.lang.NullPointerException ignored){}
+
+        try {
+            dataAccesspoint.Repli.subscribe(view);
+        }
+        catch (java.lang.NullPointerException ignored){}
     }
 
     public void executeCommand(String command){
-        System.out.println(command);
+        String[] reinterpret = command.split(" ");
+        Player currentPlayer = null;
+
+        switch (reinterpret[0]){
+            case "Colonel":
+                currentPlayer = dataAccesspoint.Colonel;
+                break;
+            case "Jaffa":
+                currentPlayer = dataAccesspoint.Jaffa;
+                break;
+        }
+
+        playerAction(currentPlayer, reinterpret);
+
     }
 
     //megadott játékossal lép

@@ -1,6 +1,7 @@
 package Tools;
 
 import Graphics.MyView;
+import Graphics.Notifiable;
 import Handlers.GameHandler;
 
 import java.awt.event.KeyEvent;
@@ -14,19 +15,18 @@ import java.awt.event.KeyListener;
 public class Controller implements KeyListener {
     private GameHandler gameHandler;
 
-                                      // 0   1   2   3   4   5   6
+    // 0   1   2   3   4   5   6
     private final char[] colonelKeys = {'w','a','s','d','q','e','f'};
     private final char[] jaffaKeys =   {'8','4','5','6','7','9','2'};
 
-    // Ezt még lehet ki kellene cserélni, mert nem annyira tetszik.
-    private MyView currentView;
+    private final int[] menuKeys = {10, 37, 38, 39, 40};
 
     public static void main(String[] args) {
         MyView view  = new MyView();
     }
 
-    public Controller(){
-        gameHandler = new GameHandler(new LoadField());
+    public Controller(Notifiable currentView){
+        gameHandler = new GameHandler(new LoadField(), currentView);
     }
 
     private void handleColonel(char command){
@@ -109,6 +109,7 @@ public class Controller implements KeyListener {
      */
     @Override
     public void keyReleased(KeyEvent e) {
+
         for (char colonelKey : colonelKeys) {
             if (e.getKeyChar() == colonelKey){
                 handleColonel(e.getKeyChar());
@@ -123,4 +124,9 @@ public class Controller implements KeyListener {
             }
         }
     }
+
+    public void loadMap(int mapID) {
+        gameHandler.runMap(mapID);
+    }
+
 }
