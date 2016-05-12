@@ -69,9 +69,9 @@ public class CVector extends Coordinate {
         return this;
     }
 
-//	@Override
-//	public boolean equals(Object obj) {
-//		Tools.CVector comparing = (Tools.CVector)obj;
-//		return super.equals(obj) && comparing.dir == dir;
-//	}
+	@Override
+		public boolean equals(Object obj) {
+			Tools.CVector comparing = (Tools.CVector)obj;
+			return this.GetX() == comparing.GetX() && this.GetY() == comparing.GetY() && this.dir == comparing.dir;
+		}
 }

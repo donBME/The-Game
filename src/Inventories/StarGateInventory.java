@@ -105,6 +105,19 @@ public class StarGateInventory {
                 || green != null && green.GetPos().equals(f);
     }
 
+	
+	public StarGate GetStarGate(CVector from){
+    	if(yellow.GetPos().equals(from)){
+    		return yellow;
+    	} else if(blue.GetPos().equals(from)){
+    		return blue;
+    	} else if(red.GetPos().equals(from)){
+    		return red;
+    	} else if(green.GetPos().equals(from)){
+    		return green;
+    	} else return null;
+    }
+	
     /**
      * @param exitGatePos A férégjárat kijáratának pozíciója
      * @return A féregjárat kijarata elõtti koordináta
