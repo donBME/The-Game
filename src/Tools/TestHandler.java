@@ -201,6 +201,7 @@ public class TestHandler {
 		
 	}
 	
+	
 	private void drawTMap() {
     		
         for (int y = 0; y < 5; y++) {

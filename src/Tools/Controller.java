@@ -91,6 +91,7 @@ public class Controller implements KeyListener {
         }
 
         gameHandler.executeCommand(command);
+
     }
 
     @Override
