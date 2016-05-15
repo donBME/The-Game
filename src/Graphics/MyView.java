@@ -46,58 +46,58 @@ public class MyView implements Notifiable{
     public MyView(){
     	controller = new Controller(this);
     	initwindow();
-    	
+
     }
     
-    /* ablak inicializálása:
-     *   config betöltése
-     *   vezérlõelemek elhelyezése
+    /* ablak inicializï¿½lï¿½sa:
+     *   config betï¿½ltï¿½se
+     *   vezï¿½rlï¿½elemek elhelyezï¿½se
      */
     private void initwindow(){
     	
-    	//Adatok betöltése
+    	//Adatok betï¿½ltï¿½se
     	String[] config = getConfig();
-    	//Ha nem sikeres visszajelzést kapunk kilépünk
+    	//Ha nem sikeres visszajelzï¿½st kapunk kilï¿½pï¿½nk
     	if(!config[0].equals("ok!"))
     		return;
     	
-    	//ablak létrehozása
+    	//ablak lï¿½trehozï¿½sa
         jFrame = new JFrame();
         try{
-        	//config adatok beállítása az ablakon
+        	//config adatok beï¿½llï¿½tï¿½sa az ablakon
             int w = Integer.parseInt(config[1]);
             int h = Integer.parseInt(config[2]);
             jFrame.setSize(w,h);
             num_of_maps = Integer.parseInt(config[3]);
         } catch (NumberFormatException e){
-        	//amennyiben a config fájl tartalma nem konzisztens az elvárásokkal, alapértelmezett értékeket használunk
+        	//amennyiben a config fï¿½jl tartalma nem konzisztens az elvï¿½rï¿½sokkal, alapï¿½rtelmezett ï¿½rtï¿½keket hasznï¿½lunk
         	jFrame.setSize(800,600);
         	num_of_maps = 0;
         }
-        //cím középre és felülre igazítva
+        //cï¿½m kï¿½zï¿½pre ï¿½s felï¿½lre igazï¿½tva
         JLabel title = new JLabel("don Game - Stargates");
         ptitle = new JPanel();
         ptitle.add(title, BorderLayout.CENTER);
         
         
-        //pályaválasztáshoz legördülõ lista:
+        //pï¿½lyavï¿½lasztï¿½shoz legï¿½rdï¿½lï¿½ lista:
         String[] combolabels = new String[num_of_maps];
         for (int i = 0; i < num_of_maps; i++){
         	combolabels[i] = "" + (i+1); 
         }
-        //címkék hozzáadása
+        //cï¿½mkï¿½k hozzï¿½adï¿½sa
         mapselectbox = new JComboBox<>(combolabels);
-        //tájékoztató felirat
+        //tï¿½jï¿½koztatï¿½ felirat
         JLabel info = new JLabel("Please select map number below:");
-        //ezeket tartalmazó panel
+        //ezeket tartalmazï¿½ panel
         maps = new JPanel();
         GridLayout mapsLayout = new GridLayout(20,0);
-        //layout beállításe, elemek hozzáadása
+        //layout beï¿½llï¿½tï¿½se, elemek hozzï¿½adï¿½sa
         maps.setLayout(mapsLayout);
         maps.add(info);
         maps.add(mapselectbox);
         
-        //gombpanel és gomb létrehozása, igazítások
+        //gombpanel ï¿½s gomb lï¿½trehozï¿½sa, igazï¿½tï¿½sok
         buttonpanel = new JPanel();
         startbutton = new JButton();
         startbutton.setText("Start!");
@@ -105,7 +105,7 @@ public class MyView implements Notifiable{
         ButtonActionListener buttlistener = new ButtonActionListener();
         startbutton.addActionListener(buttlistener);        
         
-        //panelek ablakhoz hozzáadása
+        //panelek ablakhoz hozzï¿½adï¿½sa
         jFrame.add(ptitle, BorderLayout.PAGE_START);
         jFrame.add(maps, BorderLayout.CENTER);
         jFrame.add(buttonpanel, BorderLayout.PAGE_END);
@@ -125,7 +125,7 @@ public class MyView implements Notifiable{
         
         
         
-        //mapbetöltés teszt
+        //mapbetï¿½ltï¿½s teszt
         //controller.loadMap(10);
 
         jFrame.addKeyListener(controller);
@@ -134,14 +134,14 @@ public class MyView implements Notifiable{
     }
     
     /* 
-     * config.ini fájlból adatok kiolvasása
-     * az ablak és a pályabemeneti paraméterek így programon kívül egyszerûen testreszabható
+     * config.ini fï¿½jlbï¿½l adatok kiolvasï¿½sa
+     * az ablak ï¿½s a pï¿½lyabemeneti paramï¿½terek ï¿½gy programon kï¿½vï¿½l egyszerï¿½en testreszabhatï¿½
      */
     private String[] getConfig(){
     	BufferedReader read;
     	
 		try {
-			//eltároljuk a configból beolvasott adatokat és a válasz eredményét
+			//eltï¿½roljuk a configbï¿½l beolvasott adatokat ï¿½s a vï¿½lasz eredmï¿½nyï¿½t
 			String[] result = new String[CONFIG_SIZE+1];
 			read = new BufferedReader(new FileReader("config.ini"));
 			//beolvassuk a sorokat
@@ -151,17 +151,17 @@ public class MyView implements Notifiable{
 				result[i] = tmp[1];
 			}
 			read.close();
-			//nyugtázzuk hogy minden jól ment
+			//nyugtï¿½zzuk hogy minden jï¿½l ment
 			result[0] = "ok!";
 			return result;
 		} catch (FileNotFoundException e) {
-			//ha nem létezik a fájl
+			//ha nem lï¿½tezik a fï¿½jl
 			e.printStackTrace();
 			String[] result = new String[1];
 			result[0] = "File not found";
 			return result;
 		} catch (IOException e) {
-			//bármely io hiba esetén
+			//bï¿½rmely io hiba esetï¿½n
 			e.printStackTrace();
 			String[] result = new String[1];
 			result[0] = "Unexpected Error";
@@ -172,11 +172,13 @@ public class MyView implements Notifiable{
     @Override
     public void notifyView() {
         System.out.println("This view has been notified!");
+		drawAll();
     }
 
     @Override
     public void setData(DataAccessPoint data) {
         this.data = data;
+		drawAll();
     }
 
     public void drawMenu(){
@@ -187,20 +189,33 @@ public class MyView implements Notifiable{
     
     private void drawButton(Coordinate coord) {}
     
-    private void drawFieldObject(FieldObject fieldObject, Coordinate coord) {}
+    private void drawFieldObject(FieldObject fieldObject, Coordinate coord) {
+
+	}
     
-    private void drawPlayer(Player player) {}
+    private void drawPlayer(Player player) {
+		final int x = jFrame.getWidth() / OBJECT_WIDTH, y = jFrame.getHeight() / OBJECT_HEIGHT;
+		CVector pos;
+
+		// Colonel
+		pos = data.Colonel.getPos();
+		jFrame.add(new Kep("Don-Graphics/OneillUpstep1.png", x * pos.GetX(), y * pos.GetY(), x, y));
+	}
     
     private void drawStarGate(StarGate stargate) {}
     
     private void drawZPM(Coordinate coord) {}
     
     private void drawWin() {}
-    
+
     private void drawGameOver() {}
     
-    public void drawAll() {
+    private void drawAll() {
     	Coordinate maxCoord = data.fields.getMaxCoords();
+		OBJECT_WIDTH = maxCoord.GetX();
+		OBJECT_HEIGHT = maxCoord.GetY();
+		jFrame.getContentPane().removeAll();
+
     	for(int i = 0; i < maxCoord.GetX(); i++){
     		for(int j = 0; j < maxCoord.GetY(); j++){
     			Coordinate coord = new Coordinate(i, j);
@@ -237,26 +252,29 @@ public class MyView implements Notifiable{
     			cv = data.Colonel.getPos();
     			if(coord.equals(cv))
     				drawPlayer(data.Colonel);
-    			cv = data.Jaffa.getPos();
-    			if(coord.equals(cv))
-    				drawPlayer(data.Jaffa);
-    			cv = data.Repli.getPos();
-    			if(coord.equals(cv))
-    				drawPlayer(data.Repli);
+				if (data.Jaffa != null){
+					cv = data.Jaffa.getPos();
+					if(coord.equals(cv))
+						drawPlayer(data.Jaffa);
+				}
+				if (data.Repli != null){
+					cv = data.Repli.getPos();
+					if(coord.equals(cv))
+						drawPlayer(data.Repli);
+				}
     		}
     	}
+		jFrame.setVisible(true);
     }
     
     
-    class ButtonActionListener implements ActionListener{
+    private class ButtonActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent arg0) {
 			int selectedmap = mapselectbox.getSelectedIndex() + 1;
 			jFrame.remove(maps);
 			jFrame.remove(ptitle);
 			jFrame.remove(buttonpanel);
-			jFrame.setVisible(false);
-			jFrame.setVisible(true);
 			
 			controller.loadMap(selectedmap);
 		}

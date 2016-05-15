@@ -107,13 +107,13 @@ public class StarGateInventory {
 
 	
 	public StarGate GetStarGate(CVector from){
-    	if(yellow.GetPos().equals(from)){
+    	if(yellow != null && yellow.GetPos().equals(from)){
     		return yellow;
-    	} else if(blue.GetPos().equals(from)){
+    	} else if(blue != null && blue.GetPos().equals(from)){
     		return blue;
-    	} else if(red.GetPos().equals(from)){
+    	} else if(red != null && red.GetPos().equals(from)){
     		return red;
-    	} else if(green.GetPos().equals(from)){
+    	} else if(green != null && green.GetPos().equals(from)){
     		return green;
     	} else return null;
     }

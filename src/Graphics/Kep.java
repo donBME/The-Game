@@ -1,14 +1,10 @@
-package draw;
+package Graphics;
  
-import java.awt.Graphics;
-import java.awt.Image;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
  
      
 public class Kep extends JComponent
@@ -28,7 +24,7 @@ public class Kep extends JComponent
     {
         try 
         {
-            Image image = ImageIO.read(this.getClass().getResource(path));
+            Image image = ImageIO.read(new File(path));
             g.drawImage(image, x, y, width, height, null);
              
         } catch (IOException ex) 
