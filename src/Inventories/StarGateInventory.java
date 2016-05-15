@@ -13,7 +13,7 @@ import static Tools.StarGateColor.*;
  */
 public class StarGateInventory {
 
-    // Különböző színű csillagkapuk
+    // K?l?nb?z? sz?n? csillagkapuk
     private StarGate yellow, blue, red, green;
 
     /**
@@ -23,10 +23,10 @@ public class StarGateInventory {
     }
 
     /**
-     * Adott színü csillagkapu létrehozása, adott pozíción.
+     * Adott sz?n? csillagkapu l?trehoz?sa, adott poz?ci?n.
      *
      * @param portalpos Csillagkapu helye
-     * @param color     Csillagkapu színe
+     * @param color     Csillagkapu sz?ne
      */
     public void Create(CVector portalpos, StarGateColor color) {
         switch (color) {
@@ -50,9 +50,9 @@ public class StarGateInventory {
     }
 
     /**
-     * Adott színü csillagkapu törlése
+     * Adott sz?n? csillagkapu t?rl?se
      *
-     * @param color Törölni kívánt csillagkapu színe
+     * @param color T?r?lni k?v?nt csillagkapu sz?ne
      */
     private void Delete(StarGateColor color) {
         switch (color) {
@@ -72,11 +72,11 @@ public class StarGateInventory {
     }
 
     /**
-     * @param pos A player lépésének helye
-     * @return A belépés irányának megfelelõ irányú pozíció
-     * Amikor Belépünk egy csillagkapuba
-     * akkor az a lépés irányának
-     * ellenkezõ irányból nyílik.
+     * @param pos A player l?p?s?nek helye
+     * @return A bel?p?s ir?ny?nak megfelel? ir?ny? poz?ci?
+     * Amikor Bel?p?nk egy csillagkapuba
+     * akkor az a l?p?s ir?ny?nak
+     * ellenkez? ir?nyb?l ny?lik.
      */
     private CVector EnterPos(CVector pos) {
         switch (pos.GetDir()) {
@@ -94,8 +94,8 @@ public class StarGateInventory {
     }
 
     /**
-     * @param from irány
-     * @return A megadott koordinátán van-e csillagkapu
+     * @param from ir?ny
+     * @return A megadott koordin?t?n van-e csillagkapu
      */
     public boolean IsThere(CVector from) {
         CVector f = EnterPos(from);
@@ -119,8 +119,8 @@ public class StarGateInventory {
     }
 	
     /**
-     * @param exitGatePos A férégjárat kijáratának pozíciója
-     * @return A féregjárat kijarata elõtti koordináta
+     * @param exitGatePos A f?r?gj?rat kij?rat?nak poz?ci?ja
+     * @return A f?regj?rat kijarata el?tti koordin?ta
      */
     private CVector ExitPos(CVector exitGatePos) {
         switch (exitGatePos.GetDir()) {
@@ -139,8 +139,8 @@ public class StarGateInventory {
 
 
     /**
-     * @param from A belépés iránya
-     * @return A féregjárat elõtti pozíció
+     * @param from A bel?p?s ir?nya
+     * @return A f?regj?rat el?tti poz?ci?
      */
     public CVector StepIn(CVector from) {
         CVector f = EnterPos(from);

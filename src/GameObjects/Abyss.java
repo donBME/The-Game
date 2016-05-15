@@ -7,7 +7,7 @@ package GameObjects;
 public class Abyss implements FieldObject {
 
     /**
-     * @return Igazzal tér vissza, a szakadékba esés halálos.
+     * @return Igazzal t?r vissza, a szakad?kba es?s hal?los.
      */
     @Override
     public boolean IsMortal() {
@@ -15,7 +15,7 @@ public class Abyss implements FieldObject {
     }
 
     /**
-     * @return Hamissal tér vissza, szakadékra nem löhetö csillagkapu.
+     * @return Hamissal t?r vissza, szakad?kra nem l?het? csillagkapu.
      */
     @Override
     public boolean Shootable() {
@@ -23,7 +23,7 @@ public class Abyss implements FieldObject {
     }
 
     /**
-     * @return Igazzal tér vissza, a szakadékra rá lehet lépni.
+     * @return Igazzal t?r vissza, a szakad?kra r? lehet l?pni.
      */
     @Override
     public boolean Steppable() {
