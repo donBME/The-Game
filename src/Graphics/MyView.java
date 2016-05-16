@@ -200,8 +200,14 @@ public class MyView implements Notifiable{
         startbutton = new JButton();
         startbutton.setText("Start!");
         buttonpanel.add(startbutton, BorderLayout.CENTER);
-        ButtonActionListener buttlistener = new ButtonActionListener();
-        startbutton.addActionListener(buttlistener);        
+        startbutton.addActionListener(e -> {
+            int selectedmap = mapselectbox.getSelectedIndex() + 1;
+            jFrame.remove(maps);
+            jFrame.remove(ptitle);
+            jFrame.remove(buttonpanel);
+            jFrame.setLayout(null);
+            controller.loadMap(selectedmap);
+        });
         
         //panelek ablakhoz hozz�ad�sa
         jFrame.add(ptitle, BorderLayout.PAGE_START);
@@ -568,6 +574,7 @@ public class MyView implements Notifiable{
     
     private void drawAll() {
 		jFrame.getContentPane().removeAll();
+		jFrame.requestFocus();
 
 		if (data.collectables.ZPMCount() == 0) {
 			drawWin();
@@ -638,22 +645,4 @@ public class MyView implements Notifiable{
     	}
 		jFrame.repaint();
     }
-    
-    
-    private class ButtonActionListener implements ActionListener{
-
-		public void actionPerformed(ActionEvent arg0) {
-			int selectedmap = mapselectbox.getSelectedIndex() + 1;
-			jFrame.remove(maps);
-			jFrame.remove(ptitle);
-			jFrame.remove(buttonpanel);
-			jFrame.setLayout(null);
-
-			controller.loadMap(selectedmap);
-		}
-		
-    }
-    
-    
-    
 }
