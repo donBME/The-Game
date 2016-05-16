@@ -91,8 +91,11 @@ public class MyView implements Notifiable{
 		iconBuffer.put("Wall",new ImageIcon(ImageIO.read(new File("Don-Graphics/wall.png")).
 				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
 
-		iconBuffer.put("ZPM",new ImageIcon(ImageIO.read(new File("Don-Graphics/menu.png")).
+		iconBuffer.put("ZPM",new ImageIcon(ImageIO.read(new File("Don-Graphics/ZPM.png")).
 				getScaledInstance(OBJECT_WIDTH / 2, OBJECT_HEIGHT / 2, Image.SCALE_SMOOTH)));
+
+		iconBuffer.put("Abyss",new ImageIcon(ImageIO.read(new File("Don-Graphics/Abyss.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
 
 		iconBuffer.put("RightYellowGate",new ImageIcon(ImageIO.read(new File("Don-Graphics/rightYellowGate.png")).
 				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
@@ -352,6 +355,9 @@ public class MyView implements Notifiable{
 			}
 			else if (!fieldObject.IsMortal()){
 				img = iconBuffer.get("Way");
+			}
+			else if (fieldObject.IsMortal()){
+				img = iconBuffer.get("Abyss");
 			}
 		}
 		else {
