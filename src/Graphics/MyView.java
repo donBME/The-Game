@@ -287,14 +287,39 @@ public class MyView implements Notifiable{
 
     }
     
-    private void drawBox(Coordinate coord) {
+    private void drawBox(Coordinate coord, int subPosition) {
 		JLabel label = new JLabel();
 
 		ImageIcon img = iconBuffer.get("Box");
 
 		label.setIcon(img);
-		label.setBounds(OBJECT_WIDTH * coord.GetX() + OBJECT_WIDTH / 4, jFrame.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1),
-				OBJECT_WIDTH, OBJECT_HEIGHT);
+		switch (subPosition){
+			case 1:
+				label.setBounds(OBJECT_WIDTH * coord.GetX() + OBJECT_WIDTH / 4,
+						jFrame.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1),
+						OBJECT_WIDTH, OBJECT_HEIGHT);
+				break;
+			case 2:
+				label.setBounds(OBJECT_WIDTH * coord.GetX(),
+						jFrame.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1) - OBJECT_HEIGHT / 4,
+						OBJECT_WIDTH, OBJECT_HEIGHT);
+				break;
+			case 3:
+				label.setBounds(OBJECT_WIDTH * coord.GetX(),
+						jFrame.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1) + OBJECT_HEIGHT / 4,
+						OBJECT_WIDTH, OBJECT_HEIGHT);
+				break;
+			case 4:
+				label.setBounds(OBJECT_WIDTH * coord.GetX() + OBJECT_WIDTH / 2,
+						jFrame.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1) + OBJECT_HEIGHT / 4,
+						OBJECT_WIDTH, OBJECT_HEIGHT);
+				break;
+			case 5:
+				label.setBounds(OBJECT_WIDTH * coord.GetX() + OBJECT_WIDTH / 2,
+						jFrame.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1) - OBJECT_HEIGHT / 4,
+						OBJECT_WIDTH, OBJECT_HEIGHT);
+				break;
+		}
 		jFrame.add(label);
 	}
     
@@ -373,7 +398,7 @@ public class MyView implements Notifiable{
 		}
 
 		if (jaffa.hasBox()) {
-			drawBox(pos);
+			drawBox(pos,1);
 		}
 
 		label.setIcon(img);
@@ -432,7 +457,7 @@ public class MyView implements Notifiable{
 		}
 
 		if (colonel.hasBox()) {
-			drawBox(pos);
+			drawBox(pos,1);
 		}
 
 		label.setIcon(img);
@@ -571,9 +596,10 @@ public class MyView implements Notifiable{
 						drawPlayer((Replicator)data.Repli);
 				}
 
-				boolean boxes = data.boxes.IsThere(coord);
-				if (boxes){
-					drawBox(coord);
+				int boxes = data.boxes.isThereV2(coord);
+				while (boxes > 0){
+					drawBox(coord, boxes);
+					boxes--;
 				}
 
 				boolean isThere = data.buttons.isThere(coord);
