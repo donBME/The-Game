@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="ISO-8859-1">
-    <file url="file://$PROJECT_DIR$/src/GameObjects/Abyss.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/src/GameObjects/Box.java" charset="x-UTF-16LE-BOM" />
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="US-ASCII">
+    <file url="jar://F:/Program Files/Java/jdk1.8.0_77/src.zip!/java/net/URLClassLoader.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/GameObjects/Abyss.java" charset="US-ASCII" />
+    <file url="file://$PROJECT_DIR$/src/GameObjects/Box.java" charset="US-ASCII" />
     <file url="file://$PROJECT_DIR$/src/GameObjects/Button.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/GameObjects/Collectable.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/GameObjects/Collectable.java" charset="ISO-8859-3" />
     <file url="file://$PROJECT_DIR$/src/GameObjects/Door.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/GameObjects/FieldObject.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/Handlers/GameHandler.java" charset="UTF-8" />
@@ -24,6 +25,6 @@
     <file url="file://$PROJECT_DIR$/src/Tools/GameClass.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/Tools/LoadField.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/Tools/StarGateColor.java" charset="UTF-8" />
-    <file url="PROJECT" charset="UTF-16" />
+    <file url="PROJECT" charset="US-ASCII" />
   </component>
 </project>
