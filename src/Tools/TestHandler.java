@@ -34,7 +34,7 @@ public class TestHandler {
 	/**
 	 * TestHandler konstruktor.
 	 *
-	 * @param fLoader   Pályabetöltõ
+	 * @param fLoader   Pï¿½lyabetï¿½ltï¿½
 	 */
 	public TestHandler(LoadField fLoader )
 	{
@@ -54,25 +54,25 @@ public class TestHandler {
         dataAccesspoint = new DataAccessPoint(stargateInventory, fieldObjectInventory, boxInventory, buttonInventory, collectableInventory);
         collectableInventory.setData(dataAccesspoint);
 		
-        //mapbetöltés
+        //mapbetï¿½ltï¿½s
 		fieldLoader.Load("testmap" + testNum + ".txt", dataAccesspoint);
 		
-		//kezdeti állapot		
+		//kezdeti ï¿½llapot		
 		//drawTMap();
 		
-		//utasítások végrehajtása
-		//tesztbemenet betöltés
+		//utasï¿½tï¿½sok vï¿½grehajtï¿½sa
+		//tesztbemenet betï¿½ltï¿½s
 		String FileName = "test" + testNum + "in.txt";
 		try
 		{
 			BufferedReader read = new BufferedReader(new FileReader(FileName));
 			String str;
-			//egyenlõre csak kiírjuk
+			//egyenlï¿½re csak kiï¿½rjuk
 			while((str = read.readLine())!= null)
 			{
 				System.out.print("in: " + str + "\n");
 				String tmp[] = str.split(" ");	
-				//szétválasztunk játékosra, csak akkor hívjuk tovább ha létezik is
+				//szï¿½tvï¿½lasztunk jï¿½tï¿½kosra, csak akkor hï¿½vjuk tovï¿½bb ha lï¿½tezik is
 				if (tmp[0].equals("Colonel"))
 				{
 					if (dataAccesspoint.Colonel != null)
@@ -98,24 +98,12 @@ public class TestHandler {
 			read.close();
 		}catch(IOException e)
 		{
-			 System.out.print("Hiba a betöltés során. " + e.getMessage());
+			 System.out.print("Hiba a betï¿½ltï¿½s sorï¿½n. " + e.getMessage());
 		}
-		
-		/* replikátorok indítása 
-		 * FIXME a playersbe csak replikátorokat!! nem tudunk thread-et indítani mert nem látja hogy replicator
-		 * Thread[] replicatorTreads = new Thread[dataAccesspoint.players.size()];
-		for (int i = 0; i < dataAccesspoint.players.size(); i++){
-			replicatorTreads[i] = new Thread(dataAccesspoint.players.get(i));
-			replicatorTreads[i].start();
-		}*/
-
-		
-		//végállapot
-		//drawTMap();
 	}
 	
 	
-	//megadott játékossal lép
+	//megadott jï¿½tï¿½kossal lï¿½p
 	private void step(Player p, String dirstr){
 		Direction dir;
 		switch (dirstr){
@@ -144,7 +132,7 @@ public class TestHandler {
 		StarGateColor col;
 		if (blueandyellow){
 			switch (colorstr){
-			case "Blue": 
+			case "Blue":
 				 col = StarGateColor.valueOf("Blue");
 				 p.Shoot(col);
 				break;
@@ -157,7 +145,7 @@ public class TestHandler {
 			}
 		} else {
 			switch (colorstr){
-			case "Green": 
+			case "Green":
 				 col = StarGateColor.valueOf("Green");
 				 p.Shoot(col);
 				break;
@@ -192,11 +180,11 @@ public class TestHandler {
 	public void writeResult() {
 		try{
 			PrintWriter wr = new PrintWriter(new FileWriter(new File("file")));
-			wr.println("ezt meg kell még írni");
+			wr.println("ezt meg kell mï¿½g ï¿½rni");
 			wr.close();
 		}catch(IOException e)
 		{
-			 System.out.print("Hiba a kiírás során. " + e.getMessage());
+			 System.out.print("Hiba a kiï¿½rï¿½s sorï¿½n. " + e.getMessage());
 		}
 		
 	}

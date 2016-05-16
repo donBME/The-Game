@@ -124,18 +124,20 @@ public class GameHandler {
     }
 
     private void playerAction(Player p, String[] commands) {
-        switch (commands[1]) {
-            case "Step":
-                step(p, commands[2]);
-                break;
-            case "Shoot":
-                shoot(p, commands[2], commands[0].equals("Colonel"));
-                break;
-            case "Interact":
-                p.Interact(p.getPos());
-                break;
-            default:
-                break;
+        if (p != null){
+            switch (commands[1]) {
+                case "Step":
+                    step(p, commands[2]);
+                    break;
+                case "Shoot":
+                    shoot(p, commands[2], commands[0].equals("Colonel"));
+                    break;
+                case "Interact":
+                    p.Interact(p.getPos());
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

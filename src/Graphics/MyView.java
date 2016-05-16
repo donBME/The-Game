@@ -3,7 +3,6 @@ package Graphics;
 import Inventories.DataAccessPoint;
 import Players.Colonel;
 import Players.Jaffa;
-import Players.Player;
 import Players.Replicator;
 import Tools.CVector;
 import Tools.Controller;
@@ -11,9 +10,6 @@ import Tools.Coordinate;
 import Tools.Direction;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.HashMap;
 
