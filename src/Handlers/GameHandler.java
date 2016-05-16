@@ -34,7 +34,7 @@ public class GameHandler {
         collectableInventory.setData(dataAccesspoint);
 
         //mapbetöltés
-        fieldLoader.Load("testmap" + testNum + ".txt", dataAccesspoint);
+        fieldLoader.Load("SingleLevel" + testNum + ".txt", dataAccesspoint);
 
         view.setData(dataAccesspoint);
 
