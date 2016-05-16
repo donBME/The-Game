@@ -1,25 +1,24 @@
 package GameObjects;
 
-/**
- * @author Laszlo
- * @version 1.0
- */
 public interface FieldObject {
 
     /**
-     * @return Hal�los-e az objektumra val� r�l�p�s
+     * @return Halálos-e az objektumra való rálépés
      */
     boolean IsMortal();
 
     /**
-     * @return L�het�-e az objektumra csillagkapu.
+     * @return Lőhető-e az objektumra csillagkapu.
      */
     boolean Shootable();
 
     /**
-     * @return R� lehet-e l�pni az objektumra.
+     * @return Rá lehet-e lépni az objektumra.
      */
     boolean Steppable();
 
+    /**
+     * @return Ajtó-e az objektum.
+     */
     boolean isDoor();
 }

@@ -1,13 +1,9 @@
 package GameObjects;
 
-/**
- * @author Laszlo
- * @version 1.0
- */
 public class Box implements FieldObject {
 
     /**
-     * @return Hamissal t?r vissza. A doboz nem ?l meg.
+     * @return Hamissal tér vissza. A doboz nem öl meg.
      */
     @Override
     public boolean IsMortal() {
@@ -15,7 +11,7 @@ public class Box implements FieldObject {
     }
 
     /**
-     * @return Hamissal t?r vissza. A dobozra nem l?het? csillagkapu.
+     * @return Hamissal tér vissza. A dobozra nem lőhető csillagkapu.
      */
     @Override
     public boolean Shootable() {
@@ -23,13 +19,17 @@ public class Box implements FieldObject {
     }
 
     /**
-     * @return Hamissal t?r vissza. A dobozra nem is lehet r?l?pni.
+     * @return Hamissal tér vissza. A dobozra nem is lehet rálépni.
      */
     @Override
     public boolean Steppable() {
         return false;
     }
 
+    /**
+     *
+     * @return Hamissal tér vissza, a doboz nem ajtó.
+     */
     @Override
     public boolean isDoor() {
         return false;

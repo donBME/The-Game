@@ -1,9 +1,5 @@
 package GameObjects;
 
-/**
- * @author Laszlo
- * @version 1.0
- */
 public class Button {
     private Door wire;
     private int requiredWeight;

@@ -38,6 +38,7 @@ public class MyView implements Notifiable{
     private JPanel ptitle;
     private JPanel maps;
     private JPanel buttonpanel;
+	private JPanel gamePanel;
 	private Timer replicatorTimer;
 	private HashMap<String,ImageIcon> iconBuffer;
 
@@ -203,7 +204,11 @@ public class MyView implements Notifiable{
             jFrame.remove(maps);
             jFrame.remove(ptitle);
             jFrame.remove(buttonpanel);
-            jFrame.setLayout(null);
+			gamePanel = new JPanel();
+			gamePanel.setLayout(null);
+			gamePanel.setPreferredSize(new Dimension(jFrame.getWidth(), jFrame.getHeight()));
+			jFrame.add(gamePanel);
+			jFrame.pack();
             controller.loadMap(selectedmap);
 
         });
@@ -224,9 +229,6 @@ public class MyView implements Notifiable{
         
         jFrame.setResizable(false);
         jFrame.setVisible(true);
-        
-        
-        
         
         //mapbet�lt�s teszt
         //controller.loadMap(10);
@@ -281,8 +283,10 @@ public class MyView implements Notifiable{
     public void setData(DataAccessPoint data) {
         this.data = data;
 		maxCoord = data.fields.getMaxCoords();
-		OBJECT_WIDTH = jFrame.getWidth() / (maxCoord.GetX() + 1);
-		OBJECT_HEIGHT = jFrame.getHeight() / (maxCoord.GetY() + 1);
+		OBJECT_WIDTH = gamePanel.getWidth() / (maxCoord.GetX() + 1);
+		OBJECT_HEIGHT = gamePanel.getHeight() / (maxCoord.GetY() + 1);
+		System.out.println(maxCoord.GetX() + " " + maxCoord.GetY()	);
+		System.out.println(OBJECT_WIDTH + " " + OBJECT_HEIGHT);
 		try {
 			loadIcons();
 		} catch (IOException ignored) {}
@@ -296,10 +300,6 @@ public class MyView implements Notifiable{
 
 		drawAll();
     }
-
-    public void drawMenu(){
-
-    }
     
     private void drawBox(Coordinate coord, int subPosition) {
 		JLabel label = new JLabel();
@@ -310,31 +310,31 @@ public class MyView implements Notifiable{
 		switch (subPosition){
 			case 1:
 				label.setBounds(OBJECT_WIDTH * coord.GetX() + OBJECT_WIDTH / 4,
-						jFrame.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1),
+						gamePanel.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1),
 						OBJECT_WIDTH, OBJECT_HEIGHT);
 				break;
 			case 2:
 				label.setBounds(OBJECT_WIDTH * coord.GetX(),
-						jFrame.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1) - OBJECT_HEIGHT / 4,
+						gamePanel.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1) - OBJECT_HEIGHT / 4,
 						OBJECT_WIDTH, OBJECT_HEIGHT);
 				break;
 			case 3:
 				label.setBounds(OBJECT_WIDTH * coord.GetX(),
-						jFrame.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1) + OBJECT_HEIGHT / 4,
+						gamePanel.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1) + OBJECT_HEIGHT / 4,
 						OBJECT_WIDTH, OBJECT_HEIGHT);
 				break;
 			case 4:
 				label.setBounds(OBJECT_WIDTH * coord.GetX() + OBJECT_WIDTH / 2,
-						jFrame.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1) + OBJECT_HEIGHT / 4,
+						gamePanel.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1) + OBJECT_HEIGHT / 4,
 						OBJECT_WIDTH, OBJECT_HEIGHT);
 				break;
 			case 5:
 				label.setBounds(OBJECT_WIDTH * coord.GetX() + OBJECT_WIDTH / 2,
-						jFrame.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1) - OBJECT_HEIGHT / 4,
+						gamePanel.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1) - OBJECT_HEIGHT / 4,
 						OBJECT_WIDTH, OBJECT_HEIGHT);
 				break;
 		}
-		jFrame.add(label);
+		gamePanel.add(label);
 	}
     
     private void drawButton(Coordinate coord) {
@@ -349,9 +349,9 @@ public class MyView implements Notifiable{
 		}
 
 		label.setIcon(img);
-		label.setBounds(OBJECT_WIDTH * coord.GetX(), jFrame.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1),
+		label.setBounds(OBJECT_WIDTH * coord.GetX(), gamePanel.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1),
 				OBJECT_WIDTH, OBJECT_HEIGHT);
-		jFrame.add(label);
+		gamePanel.add(label);
 	}
     
     private void drawFieldObject(FieldObject fieldObject, Coordinate coord) {
@@ -385,9 +385,9 @@ public class MyView implements Notifiable{
 
 		if (img != null){
 			label.setIcon(img);
-			label.setBounds(OBJECT_WIDTH * coord.GetX(), jFrame.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1),
+			label.setBounds(OBJECT_WIDTH * coord.GetX(), gamePanel.getHeight() -  OBJECT_HEIGHT * (coord.GetY() + 1),
 					OBJECT_WIDTH, OBJECT_HEIGHT);
-			jFrame.add(label);
+			gamePanel.add(label);
 		}
 
 	}
@@ -419,9 +419,9 @@ public class MyView implements Notifiable{
 		}
 
 		label.setIcon(img);
-		label.setBounds(OBJECT_WIDTH * pos.GetX(), jFrame.getHeight() - OBJECT_HEIGHT * (pos.GetY() + 1),
+		label.setBounds(OBJECT_WIDTH * pos.GetX(), gamePanel.getHeight() - OBJECT_HEIGHT * (pos.GetY() + 1),
 				OBJECT_WIDTH, OBJECT_HEIGHT);
-		jFrame.add(label);
+		gamePanel.add(label);
 	}
 
 	private void drawPlayer(Replicator replicator) {
@@ -446,9 +446,9 @@ public class MyView implements Notifiable{
 				break;
 		}
 		label.setIcon(img);
-		label.setBounds(OBJECT_WIDTH * pos.GetX(), jFrame.getHeight() - OBJECT_HEIGHT * (pos.GetY() + 1),
+		label.setBounds(OBJECT_WIDTH * pos.GetX(), gamePanel.getHeight() - OBJECT_HEIGHT * (pos.GetY() + 1),
 				OBJECT_WIDTH, OBJECT_HEIGHT);
-		jFrame.add(label);
+		gamePanel.add(label);
 	}
 
 	private void drawPlayer(Colonel colonel) {
@@ -478,9 +478,9 @@ public class MyView implements Notifiable{
 		}
 
 		label.setIcon(img);
-		label.setBounds(OBJECT_WIDTH * pos.GetX(), jFrame.getHeight() - OBJECT_HEIGHT * (pos.GetY() + 1),
+		label.setBounds(OBJECT_WIDTH * pos.GetX(), gamePanel.getHeight() - OBJECT_HEIGHT * (pos.GetY() + 1),
 				OBJECT_WIDTH, OBJECT_HEIGHT);
-		jFrame.add(label);
+		gamePanel.add(label);
 	}
     private void drawStarGate(StarGate stargate) {
 		JLabel label = new JLabel();
@@ -555,9 +555,9 @@ public class MyView implements Notifiable{
 		}
 
 		label.setIcon(img);
-		label.setBounds(OBJECT_WIDTH * pos.GetX(), jFrame.getHeight() - OBJECT_HEIGHT * (pos.GetY() + 1),
+		label.setBounds(OBJECT_WIDTH * pos.GetX(), gamePanel.getHeight() - OBJECT_HEIGHT * (pos.GetY() + 1),
 				OBJECT_WIDTH, OBJECT_HEIGHT);
-		jFrame.add(label);
+		gamePanel.add(label);
 	}
     
     private void drawZPM(Coordinate coord) {
@@ -566,9 +566,9 @@ public class MyView implements Notifiable{
 		ImageIcon img = iconBuffer.get("ZPM");
 
 		label.setIcon(img);
-		label.setBounds(OBJECT_WIDTH * coord.GetX() + OBJECT_WIDTH / 4, jFrame.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1),
+		label.setBounds(OBJECT_WIDTH * coord.GetX() + OBJECT_WIDTH / 4, gamePanel.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1),
 				OBJECT_WIDTH, OBJECT_HEIGHT);
-		jFrame.add(label);
+		gamePanel.add(label);
 	}
     
     private void drawWin() {
@@ -576,10 +576,10 @@ public class MyView implements Notifiable{
 
 		label.setText("Winner");
 		label.setBounds(0, 0,
-				OBJECT_WIDTH, OBJECT_HEIGHT);
-		jFrame.add(label);
+				100, 100);
+		gamePanel.add(label);
 
-		jFrame.removeKeyListener(controller);
+		gamePanel.removeKeyListener(controller);
 		if (replicatorTimer != null){
 			replicatorTimer.stop();
 		}
@@ -590,27 +590,27 @@ public class MyView implements Notifiable{
 
 		label.setText("Game Over");
 		label.setBounds(0, 0,
-				OBJECT_WIDTH, OBJECT_HEIGHT);
-		jFrame.add(label);
+				100, 100);
+		gamePanel.add(label);
 
-		jFrame.removeKeyListener(controller);
+		gamePanel.removeKeyListener(controller);
 		if (replicatorTimer != null){
 			replicatorTimer.stop();
 		}
 	}
     
     private void drawAll() {
-		jFrame.getContentPane().removeAll();
 		jFrame.requestFocus();
+		gamePanel.removeAll();
 
 		if (data.collectables.ZPMCount() == 0) {
 			drawWin();
-			jFrame.repaint();
+			gamePanel.repaint();
 			return;
 		}
 		else if (data.Colonel.getPos() == null || (data.Jaffa != null && data.Jaffa.getPos() == null)) {
 			drawGameOver();
-			jFrame.repaint();
+			gamePanel.repaint();
 			return;
 		}
 
@@ -636,7 +636,7 @@ public class MyView implements Notifiable{
 						replicatorTimer.stop();
 					}
 					if(coord.equals(cv))
-						drawPlayer((Replicator)data.Repli);
+						drawPlayer(data.Repli);
 				}
 
 				int boxes = data.boxes.isThereV2(coord);
@@ -673,6 +673,6 @@ public class MyView implements Notifiable{
     				drawFieldObject(fo, coord);
     		}
     	}
-		jFrame.repaint();
+		gamePanel.repaint();
     }
 }

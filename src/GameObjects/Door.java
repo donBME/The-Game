@@ -1,27 +1,23 @@
 package GameObjects;
 
-/**
- * @author Laszlo
- * @version 1.0
- */
 public class Door implements FieldObject {
 
-    // Nyitotts�got jelz� bels� v�ltoz�.
+    // Nyitottságot jelző belső változó.
     private boolean open;
 
     /**
-     * �res konstruktor, alaphelyzetben az ajt� z�rt �llapotban van.
+     * Üres konstruktor, alaphelyzetben az ajtó zárt állapotban van.
      */
     public Door() {
         open = false;
     }
 
     /**
-     * Nyitotts�g megv�ltoztat�sa
+     * Nyitottság megváltoztatása
      */
     void Statechanged() {
 
-        // Neg�lja a nyitotts�g v�ltoz� �rt�k�t.
+        // Negálja a nyitottság változó értékét.
         open = !open;
         if (open) {
             System.out.print("door opened ");
