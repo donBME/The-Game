@@ -4,51 +4,48 @@ import Players.Player;
 import Players.Replicator;
 import Tools.Coordinate;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * @author Laszlo
- * @version 1.0
+ * Központi adattároló egység
  */
 public class DataAccessPoint {
 
     // Publikus inventory-k.
-    public BoxInventory boxes;
-    public ButtonInventory buttons;
-    public CollectableInventory collectables;
-    public StarGateInventory stargates;
-    public FieldObjectInventory fields;
+    public final BoxInventory boxes;
+    public final ButtonInventory buttons;
+    public final CollectibleInventory collectables;
+    public final StarGateInventory stargates;
+    public final FieldObjectInventory fields;
     public Player Jaffa;
     public Player Colonel;
     public Replicator Repli;
 
     /**
-     * �rt�kad� konstruktor.
+     * Értékadó konstruktor.
      *
-     * @param stargates    Csillagkapu t�rol�
-     * @param fields       P�lyaelem t�rol�.
-     * @param boxes        Doboz t�rol�
-     * @param buttons      Nyom�lap t�rol�
-     * @param collectables Gy�jthet� elem t�rol�
+     * @param starGates    Csillagkapu tároló
+     * @param fields       Pályaelem tároló.
+     * @param boxes        Doboz tároló
+     * @param buttons      Nyomólap tároló
+     * @param collectibles Gyűjthető elem tároló
      */
-    public DataAccessPoint(StarGateInventory stargates, FieldObjectInventory fields,
-                           BoxInventory boxes, ButtonInventory buttons, CollectableInventory collectables) {
+    public DataAccessPoint(StarGateInventory starGates, FieldObjectInventory fields,
+                           BoxInventory boxes, ButtonInventory buttons, CollectibleInventory collectibles) {
         this.boxes = boxes;
         this.buttons = buttons;
-        this.collectables = collectables;
-        this.stargates = stargates;
+        this.collectables = collectibles;
+        this.stargates = starGates;
         this.fields = fields;
     }
 
     /**
-     * Megadja, hogy van-e j�t�kos a kijel�lt koordin�t�n
+     * Megadja, hogy van-e játékos a kijelölt koordinátán
      *
-     * @param coord K�rd�ses koordin�ta
-     * @return van j�t�kos vagy nincs
+     * @param coordinate Kérdéses koordináta
+     * @return van játékos vagy nincs
      */
-    public boolean isPlayerAtCoord(Coordinate coord) {
-        return Colonel.getPos().toCoord().equals(coord) || (Jaffa != null && Jaffa.getPos().toCoord().equals(coord)) ||
-                (Repli != null && Repli.getPos() != null && Repli.getPos().toCoord().equals(coord));
+    public boolean isPlayerAtCoordinate(Coordinate coordinate) {
+        return Colonel.getPos().toCoordinate().equals(coordinate) ||
+                (Jaffa != null && Jaffa.getPos().toCoordinate().equals(coordinate)) ||
+                (Repli != null && Repli.getPos() != null && Repli.getPos().toCoordinate().equals(coordinate));
     }
 }

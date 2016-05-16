@@ -2,18 +2,16 @@ package Handlers;
 
 import GameObjects.FieldObject;
 import Inventories.DataAccessPoint;
-import Players.Colonel;
 import Tools.CVector;
 import Tools.StarGateColor;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * Lövést végző osztály
  */
 public class ShotHandler {
 
     // Adattároló
-    private DataAccessPoint data;
+    private final DataAccessPoint data;
 
     /**
      * Konstruktor
@@ -32,25 +30,24 @@ public class ShotHandler {
      */
     public void Shoot(CVector shootfrom, StarGateColor color) {
         FieldObject fieldObject;
-        CVector checkedPos = shootfrom.toNextCoord();
+        CVector checkedPos = shootfrom.toNextCoordinate();
 
         // Becsapódás helyének szimulálása
         while ((fieldObject = data.fields.GetFieldObject(checkedPos)).Steppable() && !data.boxes.IsThere(checkedPos)) {
 
             //megnézi hogy az azon mezőn le tud e lőni replikátort és le is lövi Albert
 
-            if (checkedPos.toCoord().equals(data.Colonel.getPos().toCoord()) ||
-                    (data.Jaffa != null && checkedPos.toCoord().equals(data.Jaffa.getPos().toCoord()))) {
+            if (checkedPos.toCoordinate().equals(data.Colonel.getPos().toCoordinate()) ||
+                    (data.Jaffa != null && checkedPos.toCoordinate().equals(data.Jaffa.getPos().toCoordinate()))) {
                 break;
-            }
-            else if (data.Repli != null && data.Repli.getPos() != null &&
-                    checkedPos.toCoord().equals(data.Repli.getPos().toCoord())) {
+            } else if (data.Repli != null && data.Repli.getPos() != null &&
+                    checkedPos.toCoordinate().equals(data.Repli.getPos().toCoordinate())) {
                 data.Repli.kill();
                 System.out.println("Replicator has been shot");
                 break;
             }
 
-            checkedPos = checkedPos.toNextCoord();
+            checkedPos = checkedPos.toNextCoordinate();
         }
 
         // Lőhető-e a kiszámolt helyre csillagkapu.

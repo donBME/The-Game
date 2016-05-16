@@ -4,13 +4,13 @@ import Tools.CVector;
 import Tools.StarGateColor;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * Csillagkapu objektum
  */
 public class StarGate {
 
-    private CVector pos;
-    private StarGateColor color;
+    // Pozíció és szín
+    private final CVector pos;
+    private final StarGateColor color;
 
     /**
      * Csillagkapu konstruktor
@@ -32,7 +32,12 @@ public class StarGate {
         return pos;
     }
 
-    public StarGateColor getColor(){
+    /**
+     * Csillagkapu szín getter
+     *
+     * @return szín
+     */
+    public StarGateColor getColor() {
         return color;
     }
 

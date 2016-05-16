@@ -1,8 +1,7 @@
 package GameObjects;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * Járható út obektum
  */
 public class Way implements FieldObject {
 
@@ -42,6 +41,11 @@ public class Way implements FieldObject {
         return true;
     }
 
+    /**
+     * Ajtó-e az objetum
+     *
+     * @return hamis, nem ajtó
+     */
     @Override
     public boolean isDoor() {
         return false;

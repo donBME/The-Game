@@ -8,10 +8,8 @@ import Tools.Direction;
 import Tools.StarGateColor;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * Ezredes osztály
  */
-
 public class Colonel extends Player {
 
     /**
@@ -33,13 +31,9 @@ public class Colonel extends Player {
      * @param toDir a lépés iránya
      */
     @Override
-    public void Step(Direction toDir) {
+    public void step(Direction toDir) {
         System.out.print("Colonel ");
-        super.Step(toDir);
-
-        // Ha a játékos halott
-        if (pos == null) {
-        }
+        super.step(toDir);
     }
 
     /**
@@ -48,9 +42,9 @@ public class Colonel extends Player {
      * @param fromThisPosition Erröl a pozícióról akarunk müveletet végrehajtani.
      */
     @Override
-    public void Interact(CVector fromThisPosition) {
+    public void interact(CVector fromThisPosition) {
         System.out.print("Colonel ");
-        super.Interact(fromThisPosition);
+        super.interact(fromThisPosition);
     }
 
     /**
@@ -59,16 +53,9 @@ public class Colonel extends Player {
      * @param color Csilagkapu színe
      */
     @Override
-    public void Shoot(StarGateColor color) {
+    public void shoot(StarGateColor color) {
         System.out.print("Colonel ");
-        super.Shoot(color);
+        super.shoot(color);
     }
 
-    /**
-     * Visszaadja a játékos nevét
-     */
-    @Override
-    public String whichPlayer() {
-        return "Colonel";
-    }
 }

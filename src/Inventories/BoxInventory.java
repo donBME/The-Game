@@ -9,13 +9,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * Dobozokat tároló osztály
  */
+@SuppressWarnings("unchecked")
 public class BoxInventory {
 
     // Dobozok tárolója
-    private Map<Coordinate, List<Box>> boxList;
+    private final Map<Coordinate, List<Box>> boxList;
 
     /**
      * Tároló konstruktor
@@ -25,101 +25,99 @@ public class BoxInventory {
     }
 
     /**
-     *
-     * @param coord Törölni kívánt mező koordinátája
+     * @param coordinate Törölni kívánt mező koordinátája
      */
-    public void Delete(Coordinate coord) {
-        boxList.remove(coord);
+    public void Delete(Coordinate coordinate) {
+        boxList.remove(coordinate);
     }
 
     /**
-     *
-     * @param coord A lekérdezni kívánt mező koordinátája.
+     * @param coordinate A lekérdezni kívánt mező koordinátája.
      * @return A dobozlista első eleme.
      */
-    public Box GetBox(Coordinate coord) {
+    public Box GetBox(Coordinate coordinate) {
 
-        // Visszat�r a lista legfels� elem�vel.
-        if (boxList.containsKey(coord)) {
-            if (boxList.get(coord).size() > 0) {
-                Box returnValue = boxList.get(coord).get(0);
-                boxList.get(coord).remove(returnValue);
+        // Visszatér a lista legfelső elemével.
+        if (boxList.containsKey(coordinate)) {
+            if (boxList.get(coordinate).size() > 0) {
+                Box returnValue = boxList.get(coordinate).get(0);
+                boxList.get(coordinate).remove(returnValue);
 
-                // T�r�lj�k a kulcsot is, ha nincs alatta m�r doboz.
-                if (boxList.get(coord).size() == 0) {
-                    boxList.remove(coord);
+                // Töröljük a kulcsot is, ha nincs alatta már doboz.
+                if (boxList.get(coordinate).size() == 0) {
+                    boxList.remove(coordinate);
                 }
 
                 return returnValue;
             } else {
 
-                // Ha �res a lista, t�r�lj�k a hozz� tartot� kulcsot is.
-                boxList.remove(coord);
+                // Ha üres a lista, töröljük a hozzá tartozó kulcsot is.
+                boxList.remove(coordinate);
                 return null;
             }
         } else {
 
-            // Egy�bk�nt legyen NULL a visszat�r�si �rt�k.
+            // Egyébként legyen NULL a visszatérési érték.
             return null;
         }
     }
 
     /**
-     * Doboz hozz�ad�sa az inventoryhoz.
+     * Doboz hozzáadása az inventoryhoz.
      *
-     * @param coord:  Doboz helye
-     * @param newBox: Doboz objektum
+     * @param coordinate: Doboz helye
+     * @param newBox:     Doboz objektum
      */
-    public void addBox(Coordinate coord, Box newBox) {
+    public void addBox(Coordinate coordinate, Box newBox) {
 
-        // Ha nincs m�g doboz a koordni�t�n, hozzuk l�tre a t�rol�t.
-        if (!boxList.keySet().contains(coord)) {
-            boxList.put(coord, new ArrayList<>());
+        // Ha nincs még doboz a koordinátán, hozzuk létre a tárolót.
+        if (!boxList.keySet().contains(coordinate)) {
+            boxList.put(coordinate, new ArrayList<>());
         }
 
-        // Adjuk hozz� a l�tez� t�rol�hoz a dobozt.
-        boxList.get(coord).add(newBox);
+        // Adjuk hozzá a létező tárolóhoz a dobozt.
+        boxList.get(coordinate).add(newBox);
     }
 
     /**
-     * Megadja, hogy a keresett koordni�t�n van-e doboz.
+     * Megadja, hogy a keresett koordinátán van-e doboz.
      *
-     * @param coord Mez� koordin�t�ja.
-     * @return Igazzal t�r vissza, ha van a mez�n doboz, hamissal ha nincs.
+     * @param coordinate Mező koordinátája.
+     * @return Igazzal tér vissza, ha van a mezőn doboz, hamissal ha nincs.
      */
-    public boolean IsThere(Coordinate coord) {
+    public boolean IsThere(Coordinate coordinate) {
 
-        // Ha van a kiv�lasztott koordin�t�n t�rol� �s nem �res, akkor t�r vissza igazzal.
-        return boxList.containsKey(coord) && boxList.get(coord).size() > 0;
+        // Ha van a kiválasztott koordinátán tároló és nem üres, akkor tér vissza igazzal.
+        return boxList.containsKey(coordinate) && boxList.get(coordinate).size() > 0;
     }
 
     /**
-     * Tov�bbfejlesztett isThere f�ggv�ny.
+     * Továbbfejlesztett isThere függvény.
      *
-     * @param coord A keresett koordin�t�j� mez�.
-     * @return A mez�n l�v� dobozok �sszs�lya.
+     * @param coordinate A keresett koordinátájú mező.
+     * @return A mezőn lévő dobozok összsúlya.
      */
-    public int isThereV2(Coordinate coord) {
+    public int isThereV2(Coordinate coordinate) {
 
-        // Visszat�r a mez�n l�v� dobozok �sszs�ly�val.
-        if (boxList.containsKey(coord)) {
-            return boxList.get(coord).size();
+        // Visszatér a mezőn lévő dobozok összsúlyával.
+        if (boxList.containsKey(coordinate)) {
+            return boxList.get(coordinate).size();
         } else {
             return 0;
         }
     }
 
     /**
-     * A j�t�kos kez�ben l�v� dobozt helyezi a megadott koordin�t�ra.
+     * A játékos kezében lévő dobozt helyezi a megadott koordinátára.
      * Ugyanaz, mint az addBox.
      *
-     * @param coord         A doboz leend� koordin�t�ja.
-     * @param carriedObject A letenni k�v�nt doboz.
+     * @param coordinate    A doboz leendő koordinátája.
+     * @param carriedObject A letenni kívánt doboz.
      */
-    public void PutBox(Coordinate coord, Box carriedObject) {
+    public void PutBox(Coordinate coordinate, Box carriedObject) {
 
-        // Funkcionalit�sa megegyezik az addBox-�val.
-        addBox(coord, carriedObject);
+        // Funkcionalitása megegyezik az addBox-éval.
+        addBox(coordinate, carriedObject);
     }
 
 }

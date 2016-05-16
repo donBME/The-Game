@@ -10,20 +10,18 @@ import Tools.Direction;
 import Tools.StarGateColor;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * Játékos osztály
  */
 public abstract class Player {
-
-    CVector pos;
-    // Belsö tárolók
+    private final GrabHandler hand;
+    private final StepHandler leg;
+    private final ShotHandler gun;
+    private final boolean canGenerateZPM;
+    private final boolean canFillAbyss;
+    private CVector pos;
+    // Belső tárolók
     private int ZPMs;
     private Box handfull;
-    private GrabHandler hand;
-    private StepHandler leg;
-    private ShotHandler gun;
-    private boolean canGenerateZPM;
-    private boolean canFillAbyss;
     private Notifiable notifiable;
 
     /**
@@ -53,7 +51,7 @@ public abstract class Player {
      *
      * @param fromThisPosition Erröl a pozícióról akarunk müveletet végrehajtani.
      */
-    public void Interact(CVector fromThisPosition) {
+    public void interact(CVector fromThisPosition) {
         if (pos != null) {
             if (handfull == null) {
                 handfull = hand.Grab(fromThisPosition);
@@ -66,7 +64,7 @@ public abstract class Player {
         }
         System.out.println();
 
-        if (notifiable != null){
+        if (notifiable != null) {
             notifiable.notifyView();
         }
     }
@@ -77,12 +75,12 @@ public abstract class Player {
      *
      * @param color Csilagkapu színe
      */
-    public void Shoot(StarGateColor color) {
+    public void shoot(StarGateColor color) {
         if (handfull == null && pos != null) {
             gun.Shoot(pos, color);
             System.out.println();
 
-            if (notifiable != null){
+            if (notifiable != null) {
                 notifiable.notifyView();
             }
         }
@@ -93,7 +91,7 @@ public abstract class Player {
      *
      * @param toDir a l?p?s ir?nya
      */
-    public void Step(Direction toDir) {
+    public void step(Direction toDir) {
         if (pos != null) {
             pos = leg.NextStep(pos, toDir, canGenerateZPM, ZPMs, canFillAbyss);
         } else {
@@ -105,13 +103,9 @@ public abstract class Player {
         }
         System.out.println();
 
-        if (notifiable != null){
+        if (notifiable != null) {
             notifiable.notifyView();
         }
-    }
-
-    public boolean Shootable() {
-        return false;
     }
 
     /**
@@ -123,16 +117,25 @@ public abstract class Player {
         return pos;
     }
 
+    /**
+     * @return van-e doboz a játékosnál
+     */
     public boolean hasBox() {
         return (handfull != null);
     }
 
-    public abstract String whichPlayer();
-
+    /**
+     * Játékos megölése
+     */
     public void kill() {
         this.pos = null;
     }
 
+    /**
+     * Játékos feliratkoztatása egy nézetre
+     *
+     * @param notifiable értesíthető interfész
+     */
     public void subscribe(Notifiable notifiable) {
         this.notifiable = notifiable;
     }

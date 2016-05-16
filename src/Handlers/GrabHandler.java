@@ -6,13 +6,12 @@ import Tools.CVector;
 import Tools.Coordinate;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * Dobozfelvételt és dobozlerakást végző osztály
  */
 public class GrabHandler {
 
     // Adattároló
-    private DataAccessPoint data;
+    private final DataAccessPoint data;
 
     /**
      * Konstruktor
@@ -31,11 +30,11 @@ public class GrabHandler {
     public Box Grab(CVector interactfrom) {
 
         // A felvenni kívánt doboz pozíciója
-        Coordinate checkedPos = interactfrom.toNextCoord().toCoord();
+        Coordinate checkedPos = interactfrom.toNextCoordinate().toCoordinate();
 
         // Csillagkapun keresztüli dobozfelvétel lehetövé tétele
-        if (data.stargates.IsThere(interactfrom.toNextCoord())) {
-            checkedPos = data.stargates.StepIn(interactfrom.toNextCoord()).toCoord();
+        if (data.stargates.isThere(interactfrom.toNextCoordinate())) {
+            checkedPos = data.stargates.stepIn(interactfrom.toNextCoordinate()).toCoordinate();
         }
 
         // Van doboz a kiszemelt pozíción?
@@ -54,7 +53,7 @@ public class GrabHandler {
 
             return returnBox;
         }
-        System.out.print("can�t interact at: " + checkedPos.GetX() + "," + checkedPos.GetY() + " ");
+        System.out.print("can't interact at: " + checkedPos.GetX() + "," + checkedPos.GetY() + " ");
         return null;
     }
 
@@ -65,10 +64,8 @@ public class GrabHandler {
      */
     private boolean CanPut(Tools.CVector interactfrom) {
         if (data.fields.GetFieldObject(interactfrom).Steppable()) {
-//			if(!data.boxes.IsThere(interactfrom)){
-            if (!data.collectables.IsThere(interactfrom)) {
+            if (!data.collectables.isThere(interactfrom)) {
                 return true;
-//				}
             }
         }
         return false;
@@ -83,25 +80,24 @@ public class GrabHandler {
     public boolean Put(CVector interactfrom, Box carriedobject) {
 
         // A koordináta, melyre a játékos a dobozt tenni szeretné.
-        CVector checkedPos = interactfrom.toNextCoord();
+        CVector checkedPos = interactfrom.toNextCoordinate();
 
         // Csillagkapun keresztüli dobozletétel.
-        if (data.stargates.IsThere(checkedPos)) {
-            checkedPos = data.stargates.StepIn(checkedPos);
+        if (data.stargates.isThere(checkedPos)) {
+            checkedPos = data.stargates.stepIn(checkedPos);
         }
 
         // Rakható-e a kiszemelt koordinátájú pontra doboz?
         if (CanPut(checkedPos)) {
-            data.boxes.PutBox(checkedPos.toCoord(), carriedobject);
+            data.boxes.PutBox(checkedPos.toCoordinate(), carriedobject);
 
             System.out.print("has put an item at " + checkedPos.GetX() + "," + checkedPos.GetY() + " ");
 
             // Szakadékba dobás esetén a doboz semmisüljön meg.
-            if (data.fields.GetFieldObject(checkedPos.toCoord()).IsMortal()) {
+            if (data.fields.GetFieldObject(checkedPos.toCoordinate()).IsMortal()) {
                 System.out.println("box destroyed ");
-                data.boxes.Delete(checkedPos.toCoord());
+                data.boxes.Delete(checkedPos.toCoordinate());
             }
-
 
             // Ajtónyitás kezelése
             data.buttons.EventOn(checkedPos, data.boxes.isThereV2(checkedPos));

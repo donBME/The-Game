@@ -1,14 +1,13 @@
 package Tools;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * Iránnyal kiegészített vektor
  */
-
+@SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
 public class CVector extends Coordinate {
 
     // Kiegészített attribútumok egy mozgásiránnyal.
-    private Direction dir;
+    private final Direction dir;
 
     /**
      * Értékadó kostruktor
@@ -32,30 +31,20 @@ public class CVector extends Coordinate {
     }
 
     /**
-     * @param sx x koordináta
-     * @param sy y koordináta
-     * @param sd irány
-     */
-    public void SetD(int sx, int sy, Direction sd) {
-        Set(sx, sy);
-        dir = sd;
-    }
-
-    /**
      * Átkonvertálja a CVectort egy sima Tools.Coordinate osztályra, irány nélkül.
      *
-     * @return Egyszer?sített Tools.CVector
+     * @return Egyszerűsített Tools.CVector
      */
-    public Coordinate toCoord() {
+    public Coordinate toCoordinate() {
         return new Coordinate(GetX(), GetY());
     }
 
     /**
      * Tools.CVector -> Tools.Coordinate átalakító
      *
-     * @return az irány alapján következ? koordináták
+     * @return az irány alapján következő koordináták
      */
-    public CVector toNextCoord() {
+    public CVector toNextCoordinate() {
         switch (dir) {
             case North:
                 return new CVector(GetX(), GetY() + 1, dir);
@@ -69,9 +58,13 @@ public class CVector extends Coordinate {
         return this;
     }
 
-	@Override
-		public boolean equals(Object obj) {
-			Tools.CVector comparing = (Tools.CVector)obj;
-			return this.GetX() == comparing.GetX() && this.GetY() == comparing.GetY() && this.dir == comparing.dir;
-		}
+    /**
+     * @param obj Összehasonlítandó érték
+     * @return igaz/hamis nem referencia alapján számolandó
+     */
+    @Override
+    public boolean equals(Object obj) {
+        Tools.CVector comparing = (Tools.CVector) obj;
+        return this.GetX() == comparing.GetX() && this.GetY() == comparing.GetY() && this.dir == comparing.dir;
+    }
 }

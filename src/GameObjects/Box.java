@@ -1,5 +1,8 @@
 package GameObjects;
 
+/**
+ * Doboz osztály
+ */
 public class Box implements FieldObject {
 
     /**
@@ -27,7 +30,6 @@ public class Box implements FieldObject {
     }
 
     /**
-     *
      * @return Hamissal tér vissza, a doboz nem ajtó.
      */
     @Override

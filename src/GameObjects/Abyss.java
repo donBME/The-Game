@@ -1,5 +1,8 @@
 package GameObjects;
 
+/**
+ * Szakadék osztály
+ */
 public class Abyss implements FieldObject {
 
     /**
@@ -27,7 +30,6 @@ public class Abyss implements FieldObject {
     }
 
     /**
-     *
      * @return Hamissal tér vissza, a szakadék nem ajtó.
      */
     @Override

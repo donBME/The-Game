@@ -1,10 +1,8 @@
 package Tools;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * Irányok
  */
-
 public enum Direction {
     East, North, West, South
 }

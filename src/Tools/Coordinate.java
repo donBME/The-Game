@@ -1,20 +1,19 @@
 package Tools;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * Koordináta osztály
  */
-@SuppressWarnings("ALL")
+@SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
 public class Coordinate {
 
-    // Belsö koordináta attribútumok
+    // Belső koordináta attribútumok
     private int x;
     private int y;
 
     /**
      * Üres konstruktor
      */
-    public Coordinate() {
+    Coordinate() {
     }
 
     /**

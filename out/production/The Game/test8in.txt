@@ -1,4 +1,0 @@
-Colonel Step East
-Colonel Interact
-Colonel Step West
-Colonel Interact

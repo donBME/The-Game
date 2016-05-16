@@ -7,10 +7,8 @@ import Tools.CVector;
 import Tools.StarGateColor;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * Jaffa osztály
  */
-
 public class Jaffa extends Player {
 
     /**
@@ -32,13 +30,9 @@ public class Jaffa extends Player {
      * @param toDir a lépés iránya
      */
     @Override
-    public void Step(Tools.Direction toDir) {
+    public void step(Tools.Direction toDir) {
         System.out.print("Jaffa ");
-        super.Step(toDir);
-
-        if (pos == null) {
-
-        }
+        super.step(toDir);
     }
 
     /**
@@ -47,9 +41,9 @@ public class Jaffa extends Player {
      * @param fromThisPosition Erröl a pozícióról akarunk müveletet végrehajtani.
      */
     @Override
-    public void Interact(CVector fromThisPosition) {
+    public void interact(CVector fromThisPosition) {
         System.out.print("Jaffa ");
-        super.Interact(fromThisPosition);
+        super.interact(fromThisPosition);
     }
 
     /**
@@ -58,16 +52,9 @@ public class Jaffa extends Player {
      * @param color Csilagkapu színe
      */
     @Override
-    public void Shoot(StarGateColor color) {
+    public void shoot(StarGateColor color) {
         System.out.print("Jaffa ");
-        super.Shoot(color);
+        super.shoot(color);
     }
 
-    /**
-     * Visszaadja a játékos nevét
-     */
-    @Override
-    public String whichPlayer() {
-        return "Jaffa";
-    }
 }

@@ -8,12 +8,11 @@ import static Tools.Direction.*;
 import static Tools.StarGateColor.*;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * Csillagkapukat tároló osztály
  */
 public class StarGateInventory {
 
-    // K?l?nb?z? sz?n? csillagkapuk
+    // Különböző színű csillagkapuk
     private StarGate yellow, blue, red, green;
 
     /**
@@ -23,36 +22,36 @@ public class StarGateInventory {
     }
 
     /**
-     * Adott sz?n? csillagkapu l?trehoz?sa, adott poz?ci?n.
+     * Adott színű csillagkapu létrehozása adott pozíción
      *
-     * @param portalpos Csillagkapu helye
-     * @param color     Csillagkapu sz?ne
+     * @param portalPosition Csillagkapu helye
+     * @param color          Csillagkapu színe
      */
-    public void Create(CVector portalpos, StarGateColor color) {
+    public void Create(CVector portalPosition, StarGateColor color) {
         switch (color) {
             case Yellow:
                 Delete(Yellow);
-                yellow = new StarGate(EnterPos(portalpos), color);
+                yellow = new StarGate(EnterPos(portalPosition), color);
                 break;
             case Blue:
                 Delete(Blue);
-                blue = new StarGate(EnterPos(portalpos), color);
+                blue = new StarGate(EnterPos(portalPosition), color);
                 break;
             case Red:
                 Delete(Red);
-                red = new StarGate(EnterPos(portalpos), color);
+                red = new StarGate(EnterPos(portalPosition), color);
                 break;
             case Green:
                 Delete(Green);
-                green = new StarGate(EnterPos(portalpos), color);
+                green = new StarGate(EnterPos(portalPosition), color);
                 break;
         }
     }
 
     /**
-     * Adott sz?n? csillagkapu t?rl?se
+     * Adott színű csillagkapu törlése
      *
-     * @param color T?r?lni k?v?nt csillagkapu sz?ne
+     * @param color A törölni kívánt csillagkapu színe
      */
     private void Delete(StarGateColor color) {
         switch (color) {
@@ -72,11 +71,11 @@ public class StarGateInventory {
     }
 
     /**
-     * @param pos A player l?p?s?nek helye
-     * @return A bel?p?s ir?ny?nak megfelel? ir?ny? poz?ci?
-     * Amikor Bel?p?nk egy csillagkapuba
-     * akkor az a l?p?s ir?ny?nak
-     * ellenkez? ir?nyb?l ny?lik.
+     * @param pos A player lépésének helye
+     * @return A belépés irányának megfelelő irányú pozíció
+     * Amikor Belépünk egy csillagkapuba
+     * akkor az a lépés irányának
+     * ellenkező irányból nyílik.
      */
     private CVector EnterPos(CVector pos) {
         switch (pos.GetDir()) {
@@ -94,10 +93,10 @@ public class StarGateInventory {
     }
 
     /**
-     * @param from ir?ny
-     * @return A megadott koordin?t?n van-e csillagkapu
+     * @param from irány
+     * @return A megadott koordinátán van-e csillagkapu
      */
-    public boolean IsThere(CVector from) {
+    public boolean isThere(CVector from) {
         CVector f = EnterPos(from);
         return yellow != null && yellow.GetPos().equals(f)
                 || blue != null && blue.GetPos().equals(f)
@@ -105,24 +104,29 @@ public class StarGateInventory {
                 || green != null && green.GetPos().equals(f);
     }
 
-	
-	public StarGate GetStarGate(CVector from){
-    	if(yellow != null && yellow.GetPos().equals(from)){
-    		return yellow;
-    	} else if(blue != null && blue.GetPos().equals(from)){
-    		return blue;
-    	} else if(red != null && red.GetPos().equals(from)){
-    		return red;
-    	} else if(green != null && green.GetPos().equals(from)){
-    		return green;
-    	} else return null;
-    }
-	
     /**
-     * @param exitGatePos A f?r?gj?rat kij?rat?nak poz?ci?ja
-     * @return A f?regj?rat kijarata el?tti koordin?ta
+     * Getter fgv. adott színű csillagkapura
+     *
+     * @param from lekérés helye
+     * @return csillagkapu referencia
      */
-    private CVector ExitPos(CVector exitGatePos) {
+    public StarGate getStarGate(CVector from) {
+        if (yellow != null && yellow.GetPos().equals(from)) {
+            return yellow;
+        } else if (blue != null && blue.GetPos().equals(from)) {
+            return blue;
+        } else if (red != null && red.GetPos().equals(from)) {
+            return red;
+        } else if (green != null && green.GetPos().equals(from)) {
+            return green;
+        } else return null;
+    }
+
+    /**
+     * @param exitGatePos A féregjárat kijáratának pozíciója
+     * @return A féregjárat előtti pozíció koordinátája
+     */
+    private CVector exitPos(CVector exitGatePos) {
         switch (exitGatePos.GetDir()) {
             case North:
                 return new CVector(exitGatePos.GetX(), exitGatePos.GetY() + 1, North);
@@ -139,26 +143,26 @@ public class StarGateInventory {
 
 
     /**
-     * @param from A bel?p?s ir?nya
-     * @return A f?regj?rat el?tti poz?ci?
+     * @param from A belépés iránya
+     * @return A féregjárat előtti pozíció
      */
-    public CVector StepIn(CVector from) {
+    public CVector stepIn(CVector from) {
         CVector f = EnterPos(from);
         if (yellow != null && yellow.GetPos().equals(f)) {
             if (blue != null) {
-                return ExitPos(blue.GetPos());
+                return exitPos(blue.GetPos());
             } else return from;
         } else if (blue != null && blue.GetPos().equals(f)) {
             if (yellow != null) {
-                return ExitPos(yellow.GetPos());
+                return exitPos(yellow.GetPos());
             } else return from;
         } else if (red != null && red.GetPos().equals(f)) {
             if (green != null) {
-                return ExitPos(green.GetPos());
+                return exitPos(green.GetPos());
             } else return from;
         } else if (green != null && green.GetPos().equals(f)) {
             if (red != null) {
-                return ExitPos(red.GetPos());
+                return exitPos(red.GetPos());
             } else return from;
         } else {
             return from;

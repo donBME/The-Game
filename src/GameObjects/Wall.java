@@ -1,8 +1,7 @@
 package GameObjects;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * Fal objektum
  */
 public class Wall implements FieldObject {
 
@@ -42,6 +41,11 @@ public class Wall implements FieldObject {
         return false;
     }
 
+    /**
+     * Ajtó-e az objektum
+     *
+     * @return hamis, a fal nem ajtó
+     */
     @Override
     public boolean isDoor() {
         return false;

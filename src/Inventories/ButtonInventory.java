@@ -7,45 +7,45 @@ import Tools.CustomHashMap;
 import java.util.Map;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * Nyomólapokat tároló osztály
  */
+@SuppressWarnings("unchecked")
 public class ButtonInventory {
 
-    private Map<Coordinate, Button> buttonList;
+    private final Map<Coordinate, Button> buttonList;
 
     /**
-     * Nyom�lap konstruktor.
-     * L�trehozza a gombokat t�rol� kollekci�t.
+     * Nyomólap konstruktor.
+     * Létrehozza a gombokat tároló kollekciót.
      */
     public ButtonInventory() {
         buttonList = new CustomHashMap();
     }
 
     /**
-     * Nyom�lap hozz�ad�sa a list�hoz
+     * Nyomólap hozzáadása a listához
      *
-     * @param coord  Nyom�lap helye
-     * @param button A Nyom�lap
+     * @param coordinate Nyomólap helye
+     * @param button     A Nyomólap
      */
-    public void addButton(Coordinate coord, Button button) {
-        buttonList.put(coord, button);
+    public void addButton(Coordinate coordinate, Button button) {
+        buttonList.put(coordinate, button);
     }
 
     /**
-     * Nyom�lapra t�rt�n� dobozrarak�s vagy r�l�p�s eset�n lefut� f�ggv�ny.
+     * Nyomólapra történő dobozrarakás vagy rálépés esetén lefutó függvény.
      *
-     * @param coord         A nyom�lap koordin�t�ja
-     * @param weightOnCoord A koordin�t�n tal�lhat� �sszs�ly
+     * @param coordinate         A nyomólap koordinátája
+     * @param weightOnCoordinate A koordinátán található összsúly
      */
-    public void EventOn(Coordinate coord, int weightOnCoord) {
+    public void EventOn(Coordinate coordinate, int weightOnCoordinate) {
         Button button;
 
-        if (buttonList.containsKey(coord)) {
-            button = buttonList.get(coord);
+        if (buttonList.containsKey(coordinate)) {
+            button = buttonList.get(coordinate);
 
-            // Ajt�nyit�s kezel�se
-            if (button.getRequiredWeight() > weightOnCoord) {
+            // Ajtónyitás kezelése
+            if (button.getRequiredWeight() > weightOnCoordinate) {
                 button.lockDoor();
             } else {
                 button.unlockDoor();
@@ -54,15 +54,21 @@ public class ButtonInventory {
     }
 
     /**
-     * Megmondja, hogy van-e egy adott koordin�t�j� ponton nyom�lap.
+     * Megmondja, hogy van-e egy adott koordinátájú ponton nyomólap.
      *
-     * @param coord A keresett koordin�t�j� mez�.
+     * @param coordinate A keresett koordinátájú mező.
      * @return igaz / hamis
      */
-    public boolean isThere(Coordinate coord) {
-        return buttonList.containsKey(coord);
+    public boolean isThere(Coordinate coordinate) {
+        return buttonList.containsKey(coordinate);
     }
 
+    /**
+     * Megadja, hogy van-e nyitott állapontban lévő gomb a keresett koordinátán
+     *
+     * @param coordinate keresett koordináta
+     * @return igaz / hamis
+     */
     public boolean isOpenAt(Coordinate coordinate) {
         return buttonList.containsKey(coordinate) && !buttonList.get(coordinate).isLocked();
     }

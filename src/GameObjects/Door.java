@@ -1,5 +1,8 @@
 package GameObjects;
 
+/**
+ * Ajtó objektum
+ */
 public class Door implements FieldObject {
 
     // Nyitottságot jelző belső változó.
@@ -27,7 +30,7 @@ public class Door implements FieldObject {
     }
 
     /**
-     * @return Hamis, az ajt�ba l�p�s nem hal�los.
+     * @return Hamis, az ajtóba lépés nem halálos.
      */
     @Override
     public boolean IsMortal() {
@@ -35,7 +38,7 @@ public class Door implements FieldObject {
     }
 
     /**
-     * @return Hamis, az ajt�ra nem l�het� csillagkapu.
+     * @return Hamis, az ajtóra nem lőhető csillagkapu.
      */
     @Override
     public boolean Shootable() {
@@ -43,13 +46,16 @@ public class Door implements FieldObject {
     }
 
     /**
-     * @return Att�l f�gg�en igaz/hamis, hogy az ajto nyitott vagy z�rt �llapotban van.
+     * @return Attól függően igaz/hamis, hogy az ajto nyitott vagy zárt állapotban van.
      */
     @Override
     public boolean Steppable() {
         return open;
     }
 
+    /**
+     * @return Igaz, csak az ajtóra.
+     */
     @Override
     public boolean isDoor() {
         return true;

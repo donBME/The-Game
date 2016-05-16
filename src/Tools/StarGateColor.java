@@ -1,10 +1,8 @@
 package Tools;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * Csillagkapu színek
  */
-
 public enum StarGateColor {
     Yellow, Blue, Red, Green
 }

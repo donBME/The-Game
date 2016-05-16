@@ -9,10 +9,8 @@ import Tools.Direction;
 import java.util.Random;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * Replikátor osztály
  */
-
 public class Replicator extends Player {
 
     /**
@@ -34,55 +32,46 @@ public class Replicator extends Player {
      * @param fromThisPosition Erröl a pozícióról akarunk müveletet végrehajtani.
      */
 
-    public void Interact(CVector fromThisPosition) {
+    public void interact(CVector fromThisPosition) {
         // nem mozgat semmit
     }
 
     /**
      * Felüldefiniált lépés fgv.
      *
-     * @param toDir a l?p?s ir?nya
+     * @param toDir a lépés iránya
      */
-    public void Step(Direction toDir) {
+    public void step(Direction toDir) {
         System.out.print("Replicator ");
 
-        super.Step(toDir);
-        if (pos == null) {
-        }
-    }
-
-    public void randomMove() {
-                Random rn = new Random();
-                int answer = rn.nextInt(4);
-        switch (answer) {
-            case 0:
-                Step(Direction.East);
-                Step(Direction.East);
-                break;
-            case 1:
-                Step(Direction.North);
-                Step(Direction.North);
-                break;
-            case 2:
-                Step(Direction.West);
-                Step(Direction.West);
-                break;
-            case 3:
-                Step(Direction.South);
-                Step(Direction.South);break;
-        }
-
-    }
-
-    public boolean Shootable() {
-        return true;
+        super.step(toDir);
     }
 
     /**
-     * Visszaadja a j�t�kos nev�t
+     * Replikátor léptetése random irányba
      */
-    @Override
-    public String whichPlayer() {
-        return "Replicator";
+    public void randomMove() {
+        Random rn = new Random();
+        int answer = rn.nextInt(4);
+        switch (answer) {
+            case 0:
+                step(Direction.East);
+                step(Direction.East);
+                break;
+            case 1:
+                step(Direction.North);
+                step(Direction.North);
+                break;
+            case 2:
+                step(Direction.West);
+                step(Direction.West);
+                break;
+            case 3:
+                step(Direction.South);
+                step(Direction.South);
+                break;
+        }
+
     }
+
 }

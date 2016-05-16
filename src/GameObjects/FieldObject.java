@@ -1,5 +1,8 @@
 package GameObjects;
 
+/**
+ * Pálya elem
+ */
 public interface FieldObject {
 
     /**

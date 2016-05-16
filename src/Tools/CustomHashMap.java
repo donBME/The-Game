@@ -3,10 +3,8 @@ package Tools;
 import java.util.HashMap;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * Egyedi HashMap osztály a referencia szerinti kulcstárolás elkerülésére
  */
-
 public class CustomHashMap extends HashMap {
 
     /**

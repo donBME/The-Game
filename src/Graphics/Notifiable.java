@@ -3,13 +3,19 @@ package Graphics;
 import Inventories.DataAccessPoint;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * A nézetekhez szükséges interface
  */
-
 public interface Notifiable {
 
+    /**
+     * Nézet értesítése a belső állapot megváltozásáról
+     */
     void notifyView();
 
+    /**
+     * Az adattároló referencia beállítása
+     *
+     * @param dataAccessPoint adattároló referencia
+     */
     void setData(DataAccessPoint dataAccessPoint);
 }

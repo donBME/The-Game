@@ -1,8 +1,8 @@
 package GameObjects;
 
 public class Button {
-    private Door wire;
-    private int requiredWeight;
+    private final Door wire;
+    private final int requiredWeight;
 
     /**
      * Gomb konstruktor.
@@ -15,13 +15,6 @@ public class Button {
         // Belsö változók inicializálása.
         wire = door;
         requiredWeight = requiredWeightToOpen;
-    }
-
-    /**
-     * Gombnyomáskor lefutó függvény.
-     */
-    public void Action() {
-        wire.Statechanged();
     }
 
     /**

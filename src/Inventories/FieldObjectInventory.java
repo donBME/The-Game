@@ -7,12 +7,12 @@ import Tools.CustomHashMap;
 import java.util.Map;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * Fieldobject tároló osztály
  */
+@SuppressWarnings("unchecked")
 public class FieldObjectInventory {
 
-    private Map<Coordinate, FieldObject> fieldObjects;
+    private final Map<Coordinate, FieldObject> fieldObjects;
 
     /**
      * Konstruktor
@@ -22,30 +22,33 @@ public class FieldObjectInventory {
     }
 
     /**
-     * @param coord ahonnan la a karjuk k�rni, hogy ott van-e FeildObject
-     * @return A koordin�t�n tal�lhat� GameObjects.FieldObject
+     * @param coordinate ahonnan la a karjuk kérni, hogy ott van-e FieldObject
+     * @return A koordinátán található GameObjects.FieldObject
      */
-    public FieldObject GetFieldObject(Coordinate coord) {
-        return fieldObjects.get(coord);
+    public FieldObject GetFieldObject(Coordinate coordinate) {
+        return fieldObjects.get(coordinate);
     }
 
     /**
-     * @param newFieldObject �j GameObjects.FieldObject
-     */
-    public void addFieldObject(Coordinate coord, FieldObject newFieldObject) {
-        fieldObjects.remove(coord);
-        fieldObjects.put(coord, newFieldObject);
-    }
-
-    /**
-     * P�lya maxim�lis m�ret�t megad� f�ggv�ny
+     * Új FieldObject hozzáadása
      *
-     * @return P�lya max m�rete
+     * @param coordinate     Hozzáadni kivánt fieldobject koordinátái
+     * @param newFieldObject fieldobject referencia
      */
-    public Coordinate getMaxCoords() {
+    public void addFieldObject(Coordinate coordinate, FieldObject newFieldObject) {
+        fieldObjects.remove(coordinate);
+        fieldObjects.put(coordinate, newFieldObject);
+    }
+
+    /**
+     * Pálya maximális méretét megadó függvény
+     *
+     * @return Pálya max mérete
+     */
+    public Coordinate getMaxCoordinates() {
         int tmpMaxX = 0, tmpMaxY = 0;
 
-        // Megkeresi a p�lya lehet� legsz�ls� pontj�t.
+        // Megkeresi a pálya lehető legszélső pontját.
         for (Coordinate key : fieldObjects.keySet()) {
             if (key.GetX() > tmpMaxX) {
                 tmpMaxX = key.GetX();

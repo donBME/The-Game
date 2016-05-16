@@ -1,8 +1,7 @@
 package GameObjects;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * Speciális fal objektum, melyre csillagkapu lőhető
  */
 public class SpecialWall extends Wall {
 
@@ -22,6 +21,11 @@ public class SpecialWall extends Wall {
         return true;
     }
 
+    /**
+     * Ajtó-e az objektum
+     *
+     * @return hamis, a speciális fal nem ajtó
+     */
     @Override
     public boolean isDoor() {
         return false;

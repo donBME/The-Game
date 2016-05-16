@@ -7,21 +7,18 @@ import Tools.CVector;
 import Tools.Direction;
 
 /**
- * @author Laszlo
- * @version 1.0
+ * Lépést vezérlő osztály
  */
 public class StepHandler {
 
-    // Belső változók
-    private boolean pushed;
+    private final DataAccessPoint data;
+    private final boolean canCollect;//a replikátor nem vehet fel zpm-t Albert
     private boolean isCollected;
-    private DataAccessPoint data;
-    private boolean canCollect;//a replikátor nem vehet fel zpm-t Albert
 
     /**
      * Konstrukor
      *
-     * @param data Ahonan el?ri a t?bbi adatot.
+     * @param data Ahonan eléri a többi adatot.
      */
     public StepHandler(DataAccessPoint data, boolean canCollect) {
         this.data = data;
@@ -33,12 +30,12 @@ public class StepHandler {
     /**
      * Lépés ellenőrző fgv.
      *
-     * @param where Ahova a j?t?kos szeretne l?pni
-     * @return R?l?phet-e az adott koordin?t?ra
+     * @param where Ahova a játékos szeretne lépni
+     * @return Ráléphet-e az adott koordinátára
      */
     private boolean CanStep(CVector where) {
         FieldObject fieldObject = data.fields.GetFieldObject(where);
-        if (fieldObject != null && fieldObject.Steppable() && !data.isPlayerAtCoord(where.toCoord())) {
+        if (fieldObject != null && fieldObject.Steppable() && !data.isPlayerAtCoordinate(where.toCoordinate())) {
             if (!data.boxes.IsThere(where)) {
                 return true;
             }
@@ -47,47 +44,47 @@ public class StepHandler {
     }
 
     /**
-     * @param playerpos      A j?t?kos poz?ci?ja
-     * @param dir            A l?p?s ir?nya
-     * @param canGenerateZPM kiv?lthat-e a l?p?ssel ?j GameObjects.ZPM l?trej?tt?t
-     * @return A l?p?s ut?nai poz?ci?
+     * @param playerpos      A játékos pozíciója
+     * @param dir            A lápás iránya
+     * @param canGenerateZPM kiválthat-e a lépéssel új GameObjects.ZPM létrejöttét
+     * @return A lépés utáni pozíció
      */
     public CVector NextStep(CVector playerpos, Direction dir, boolean canGenerateZPM, int ZPMs, boolean canFillAbyss) {
         if (playerpos.GetDir() != dir) {
 
-            // Ha nem a l?p?s ir?ny?ba n?z a palyer, akkor arra fordul
+            // Ha nem a lépés irányába néz a player, akkor arra fordul
             System.out.print("new position: " + playerpos.GetX() + "," + playerpos.GetY() + " ");
             return new CVector(playerpos.GetX(), playerpos.GetY(), dir);
         }
 
-        CVector nextpos = playerpos.toNextCoord();
+        CVector nextpos = playerpos.toNextCoordinate();
 
-        if (data.stargates.IsThere(nextpos)) {
-            nextpos = data.stargates.StepIn(nextpos);
+        if (data.stargates.isThere(nextpos)) {
+            nextpos = data.stargates.stepIn(nextpos);
         }
 
         if (CanStep(nextpos)) {
 
             System.out.print("new position: " + nextpos.GetX() + "," + nextpos.GetY() + " ");
 
-            // Gombr?l val? lel?p?s figyel?se
+            // Gombról való lelépés figyelése
             data.buttons.EventOn(playerpos, 0);
             if (data.fields.GetFieldObject(nextpos).IsMortal()) {
 
                 if (canFillAbyss) {
-                    data.fields.addFieldObject(nextpos.toCoord(), new Way());
+                    data.fields.addFieldObject(nextpos.toCoordinate(), new Way());
                     System.out.print("way spawned ");
                 } else System.out.print("Game Over ");
                 return null;
             }
-            // GameObjects.ZPM felv?tel figyel?se
-            if (data.collectables.IsThere(nextpos) && canCollect) {
+            // GameObjects.ZPM felvétel figyelése
+            if (data.collectables.isThere(nextpos) && canCollect) {
 
-                data.collectables.GetCollectableAt(nextpos);
+                data.collectables.GetCollectibleAt(nextpos);
                 isCollected = true;
 
                 if (canGenerateZPM && (ZPMs + 1) % 2 == 0) {
-                    data.collectables.addToRandomCoord();
+                    data.collectables.addToRandomCoordinate();
                 }
             }
             data.buttons.EventOn(nextpos, 1);
