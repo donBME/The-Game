@@ -54,6 +54,6 @@ public class Button {
     }
 
     public boolean isLocked() {
-        return wire.Steppable();
+        return !wire.Steppable();
     }
 }
