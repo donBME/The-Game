@@ -425,6 +425,15 @@ public class MyView implements Notifiable{
 				img = iconBuffer.get("ColonelDown");
 				break;
 		}
+
+		if (colonel.hasBox()) {
+			JLabel boxExtension = new JLabel();
+			boxExtension.setIcon(iconBuffer.get("Box"));
+			boxExtension.setBounds(OBJECT_WIDTH * pos.GetX() + OBJECT_WIDTH / 4, jFrame.getHeight() - OBJECT_HEIGHT * (pos.GetY() + 1),
+					OBJECT_WIDTH, OBJECT_HEIGHT);
+			jFrame.add(boxExtension);
+		}
+
 		label.setIcon(img);
 		label.setBounds(OBJECT_WIDTH * pos.GetX(), jFrame.getHeight() - OBJECT_HEIGHT * (pos.GetY() + 1),
 				OBJECT_WIDTH, OBJECT_HEIGHT);
