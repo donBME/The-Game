@@ -371,6 +371,11 @@ public class MyView implements Notifiable{
 				img = iconBuffer.get("JaffaDown");
 				break;
 		}
+
+		if (jaffa.hasBox()) {
+			drawBox(pos);
+		}
+
 		label.setIcon(img);
 		label.setBounds(OBJECT_WIDTH * pos.GetX(), jFrame.getHeight() - OBJECT_HEIGHT * (pos.GetY() + 1),
 				OBJECT_WIDTH, OBJECT_HEIGHT);
@@ -427,11 +432,7 @@ public class MyView implements Notifiable{
 		}
 
 		if (colonel.hasBox()) {
-			JLabel boxExtension = new JLabel();
-			boxExtension.setIcon(iconBuffer.get("Box"));
-			boxExtension.setBounds(OBJECT_WIDTH * pos.GetX() + OBJECT_WIDTH / 4, jFrame.getHeight() - OBJECT_HEIGHT * (pos.GetY() + 1),
-					OBJECT_WIDTH, OBJECT_HEIGHT);
-			jFrame.add(boxExtension);
+			drawBox(pos);
 		}
 
 		label.setIcon(img);
