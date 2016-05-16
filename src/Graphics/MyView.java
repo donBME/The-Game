@@ -42,6 +42,7 @@ public class MyView implements Notifiable{
     private JPanel ptitle;
     private JPanel maps;
     private JPanel buttonpanel;
+	private Timer replicatorTimer;
 	private HashMap<String,ImageIcon> iconBuffer;
 
     private int OBJECT_WIDTH, OBJECT_HEIGHT;
@@ -145,6 +146,7 @@ public class MyView implements Notifiable{
 				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
 		iconBuffer.put("DoorClosed",new ImageIcon(ImageIO.read(new File("Don-Graphics/DoorClosed.png")).
 				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+
 	}
     
     /* ablak inicializ�l�sa:
@@ -207,6 +209,7 @@ public class MyView implements Notifiable{
             jFrame.remove(buttonpanel);
             jFrame.setLayout(null);
             controller.loadMap(selectedmap);
+
         });
         
         //panelek ablakhoz hozz�ad�sa
@@ -275,7 +278,6 @@ public class MyView implements Notifiable{
 
     @Override
     public void notifyView() {
-        System.out.println("This view has been notified!");
 		drawAll();
     }
 
@@ -287,8 +289,15 @@ public class MyView implements Notifiable{
 		OBJECT_HEIGHT = jFrame.getHeight() / (maxCoord.GetY() + 1);
 		try {
 			loadIcons();
-		} catch (IOException ignored) {
+		} catch (IOException ignored) {}
+
+		if (data.Repli != null) {
+			replicatorTimer = new Timer(2000, e -> {
+				data.Repli.randomMove();
+			});
+			replicatorTimer.start();
 		}
+
 		drawAll();
     }
 
@@ -567,10 +576,32 @@ public class MyView implements Notifiable{
 	}
     
     private void drawWin() {
+		JLabel label = new JLabel();
 
+		label.setText("Winner");
+		label.setBounds(0, 0,
+				OBJECT_WIDTH, OBJECT_HEIGHT);
+		jFrame.add(label);
+
+		jFrame.removeKeyListener(controller);
+		if (replicatorTimer != null){
+			replicatorTimer.stop();
+		}
 	}
 
-    private void drawGameOver() {}
+    private void drawGameOver() {
+		JLabel label = new JLabel();
+
+		label.setText("Game Over");
+		label.setBounds(0, 0,
+				OBJECT_WIDTH, OBJECT_HEIGHT);
+		jFrame.add(label);
+
+		jFrame.removeKeyListener(controller);
+		if (replicatorTimer != null){
+			replicatorTimer.stop();
+		}
+	}
     
     private void drawAll() {
 		jFrame.getContentPane().removeAll();
@@ -605,6 +636,9 @@ public class MyView implements Notifiable{
 				}
 				if (data.Repli != null){
 					cv = data.Repli.getPos();
+					if (cv == null) {
+						replicatorTimer.stop();
+					}
 					if(coord.equals(cv))
 						drawPlayer((Replicator)data.Repli);
 				}

@@ -2,6 +2,7 @@ package Handlers;
 
 import GameObjects.FieldObject;
 import Inventories.DataAccessPoint;
+import Players.Colonel;
 import Tools.CVector;
 import Tools.StarGateColor;
 
@@ -33,20 +34,22 @@ public class ShotHandler {
         FieldObject fieldObject;
         CVector checkedPos = shootfrom.toNextCoord();
 
-        boolean replikatorshot = false;//löttünk le az ut során replikátort Albert
         // Becsapódás helyének szimulálása
-        while ((fieldObject = data.fields.GetFieldObject(checkedPos)).Steppable() && !data.boxes.IsThere(checkedPos) && !replikatorshot) {
+        while ((fieldObject = data.fields.GetFieldObject(checkedPos)).Steppable() && !data.boxes.IsThere(checkedPos)) {
 
             //megnézi hogy az azon mezőn le tud e lőni replikátort és le is lövi Albert
-            for (int i = 0; i < data.players.size(); i++) {
-                if (checkedPos.equals(data.players.get(i).getPos()) && data.players.get(i).Shootable()) {
-                    data.players.get(i).kill();
-                    data.players.remove(i);
-                    replikatorshot = true;
-                    System.out.println("Replicator has been shot");
-                    break;
-                }
+
+            if (checkedPos.toCoord().equals(data.Colonel.getPos().toCoord()) ||
+                    (data.Jaffa != null && checkedPos.toCoord().equals(data.Jaffa.getPos().toCoord()))) {
+                break;
             }
+            else if (data.Repli != null && data.Repli.getPos() != null &&
+                    checkedPos.toCoord().equals(data.Repli.getPos().toCoord())) {
+                data.Repli.kill();
+                System.out.println("Replicator has been shot");
+                break;
+            }
+
             checkedPos = checkedPos.toNextCoord();
         }
 

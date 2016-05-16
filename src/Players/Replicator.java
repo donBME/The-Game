@@ -13,7 +13,7 @@ import java.util.Random;
  * @version 1.0
  */
 
-public class Replicator extends Player implements Runnable {
+public class Replicator extends Player {
 
     /**
      * Replikátor konstruktora
@@ -51,39 +51,27 @@ public class Replicator extends Player implements Runnable {
         }
     }
 
-    public void run() {
-        try {
-            while (pos != null) {
+    public void randomMove() {
                 Random rn = new Random();
                 int answer = rn.nextInt(4);
-                switch (answer) {
-                    case 0:
-                        Step(Direction.East);
-                        Thread.sleep(1000);
-                        Step(Direction.East);
-                        break;
-                    case 1:
-                        Step(Direction.North);
-                        Thread.sleep(1000);
-                        Step(Direction.North);
-                        break;
-                    case 2:
-                        Step(Direction.West);
-                        Thread.sleep(1000);
-                        Step(Direction.West);
-                        break;
-                    case 3:
-                        Step(Direction.South);
-                        Thread.sleep(1000);
-                        Step(Direction.South);
-                        break;
-                }
-                Thread.sleep(2000);
-            }
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        switch (answer) {
+            case 0:
+                Step(Direction.East);
+                Step(Direction.East);
+                break;
+            case 1:
+                Step(Direction.North);
+                Step(Direction.North);
+                break;
+            case 2:
+                Step(Direction.West);
+                Step(Direction.West);
+                break;
+            case 3:
+                Step(Direction.South);
+                Step(Direction.South);break;
         }
+
     }
 
     public boolean Shootable() {

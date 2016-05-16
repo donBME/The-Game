@@ -28,15 +28,13 @@ public class LoadField {
                     case "p":
                         Player p = new Colonel(new ShotHandler(data), new GrabHandler(data), new StepHandler(data, true), Integer.parseInt(objs[2]), Integer.parseInt(objs[1]));
                         data.Colonel = p;
-                        data.players.add(data.Colonel);
                         break;
                     case "j":
                         Player j = new Jaffa(new ShotHandler(data), new GrabHandler(data), new StepHandler(data, true), Integer.parseInt(objs[2]), Integer.parseInt(objs[1]));
                         data.Jaffa = j;
-                        data.players.add(data.Jaffa);
                         break;
                     case "r":
-                        data.players.add(data.Repli = new Replicator(new ShotHandler(data), new GrabHandler(data), new StepHandler(data, false), Integer.parseInt(objs[2]), Integer.parseInt(objs[1])));
+                        data.Repli = new Replicator(new ShotHandler(data), new GrabHandler(data), new StepHandler(data, false), Integer.parseInt(objs[2]), Integer.parseInt(objs[1]));
                         break;
                     case "a":
                         data.fields.addFieldObject(new Coordinate(Integer.parseInt(objs[2]), Integer.parseInt(objs[1])), new Abyss());

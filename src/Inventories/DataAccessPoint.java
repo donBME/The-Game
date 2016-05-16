@@ -1,6 +1,7 @@
 package Inventories;
 
 import Players.Player;
+import Players.Replicator;
 import Tools.Coordinate;
 
 import java.util.ArrayList;
@@ -18,10 +19,9 @@ public class DataAccessPoint {
     public CollectableInventory collectables;
     public StarGateInventory stargates;
     public FieldObjectInventory fields;
-    public List<Player> players;
     public Player Jaffa;
     public Player Colonel;
-    public Player Repli;
+    public Replicator Repli;
 
     /**
      * �rt�kad� konstruktor.
@@ -39,7 +39,6 @@ public class DataAccessPoint {
         this.collectables = collectables;
         this.stargates = stargates;
         this.fields = fields;
-        players = new ArrayList<>();
     }
 
     /**
@@ -49,25 +48,7 @@ public class DataAccessPoint {
      * @return van j�t�kos vagy nincs
      */
     public boolean isPlayerAtCoord(Coordinate coord) {
-        boolean isThere = false;
-
-        for (int i = 0; i < players.size(); i++) {
-            Player player = players.get(i);
-            try {
-                Coordinate playerPos = new Coordinate(player.getPos().GetX(), player.getPos().GetY());
-
-                if (playerPos.equals(coord)) {
-                    isThere = true;
-                }
-            } catch (NullPointerException e) {
-                // Ha ilyen kivételt kapunk, halott a játékos
-                players.remove(i);
-
-                // Rekurzív hax
-                return isPlayerAtCoord(coord);
-            }
-        }
-
-        return isThere;
+        return Colonel.getPos().toCoord().equals(coord) || (Jaffa != null && Jaffa.getPos().toCoord().equals(coord)) ||
+                (Repli != null && Repli.getPos() != null && Repli.getPos().toCoord().equals(coord));
     }
 }
