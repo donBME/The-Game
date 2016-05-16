@@ -1,21 +1,23 @@
 package Graphics;
 
 import Inventories.DataAccessPoint;
+import Players.Colonel;
+import Players.Jaffa;
 import Players.Player;
+import Players.Replicator;
 import Tools.CVector;
 import Tools.Controller;
 import Tools.Coordinate;
 import Tools.Direction;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.util.HashMap;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 
@@ -40,14 +42,107 @@ public class MyView implements Notifiable{
     private JPanel ptitle;
     private JPanel maps;
     private JPanel buttonpanel;
+	private HashMap<String,ImageIcon> iconBuffer;
 
     private int OBJECT_WIDTH, OBJECT_HEIGHT;
+	private Coordinate maxCoord;
 
     public MyView(){
     	controller = new Controller(this);
     	initwindow();
+	}
 
-    }
+	private void loadIcons() throws IOException {
+		iconBuffer = new HashMap<>();
+
+		iconBuffer.put("ColonelUp",new ImageIcon(ImageIO.read(new File("Don-Graphics/OneilUpstep1/upOneillUpstep1.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("ColonelRight",new ImageIcon(ImageIO.read(new File("Don-Graphics/OneilUpstep1/rightOneillUpstep1.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("ColonelLeft",new ImageIcon(ImageIO.read(new File("Don-Graphics/OneilUpstep1/leftOneillUpstep1.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("ColonelDown",new ImageIcon(ImageIO.read(new File("Don-Graphics/OneilUpstep1/downOneillUpstep1.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+
+		iconBuffer.put("JaffaUp",new ImageIcon(ImageIO.read(new File("Don-Graphics/JaffaStep1/upJaffaStep1.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("JaffaRight",new ImageIcon(ImageIO.read(new File("Don-Graphics/JaffaStep1/rightJaffaStep1.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("JaffaLeft",new ImageIcon(ImageIO.read(new File("Don-Graphics/JaffaStep1/leftJaffaStep1.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("JaffaDown",new ImageIcon(ImageIO.read(new File("Don-Graphics/JaffaStep1/downJaffaStep1.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+
+		iconBuffer.put("ReplicatorUp",new ImageIcon(ImageIO.read(new File("Don-Graphics/Replicator/upReplicator.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("ReplicatorRight",new ImageIcon(ImageIO.read(new File("Don-Graphics/Replicator/rightReplicator.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("ReplicatorLeft",new ImageIcon(ImageIO.read(new File("Don-Graphics/Replicator/leftReplicator.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("ReplicatorDown",new ImageIcon(ImageIO.read(new File("Don-Graphics/Replicator/downReplicator.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+
+		iconBuffer.put("Way",new ImageIcon(ImageIO.read(new File("Don-Graphics/way.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+
+		iconBuffer.put("SpecWall",new ImageIcon(ImageIO.read(new File("Don-Graphics/SpecWall.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+
+		iconBuffer.put("Wall",new ImageIcon(ImageIO.read(new File("Don-Graphics/wall.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+
+		iconBuffer.put("ZPM",new ImageIcon(ImageIO.read(new File("Don-Graphics/menu.png")).
+				getScaledInstance(OBJECT_WIDTH / 2, OBJECT_HEIGHT / 2, Image.SCALE_SMOOTH)));
+
+		iconBuffer.put("RightYellowGate",new ImageIcon(ImageIO.read(new File("Don-Graphics/rightYellowGate.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("LeftYellowGate",new ImageIcon(ImageIO.read(new File("Don-Graphics/leftYellowGate.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("UpYellowGate",new ImageIcon(ImageIO.read(new File("Don-Graphics/upYellowGate.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("DownYellowGate",new ImageIcon(ImageIO.read(new File("Don-Graphics/downYellowGate.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+
+		iconBuffer.put("RightGreenGate",new ImageIcon(ImageIO.read(new File("Don-Graphics/rightGreenGate.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("LeftGreenGate",new ImageIcon(ImageIO.read(new File("Don-Graphics/leftGreenGate.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("UpGreenGate",new ImageIcon(ImageIO.read(new File("Don-Graphics/upGreenGate.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("DownGreenGate",new ImageIcon(ImageIO.read(new File("Don-Graphics/downGreenGate.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+
+		iconBuffer.put("RightRedGate",new ImageIcon(ImageIO.read(new File("Don-Graphics/rightRedGate.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("LeftRedGate",new ImageIcon(ImageIO.read(new File("Don-Graphics/leftRedGate.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("UpRedGate",new ImageIcon(ImageIO.read(new File("Don-Graphics/upRedGate.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("DownRedGate",new ImageIcon(ImageIO.read(new File("Don-Graphics/downRedGate.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+
+		iconBuffer.put("RightBlueGate",new ImageIcon(ImageIO.read(new File("Don-Graphics/rightBlueGate.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("LeftBlueGate",new ImageIcon(ImageIO.read(new File("Don-Graphics/leftBlueGate.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("UpBlueGate",new ImageIcon(ImageIO.read(new File("Don-Graphics/upBlueGate.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("DownBlueGate",new ImageIcon(ImageIO.read(new File("Don-Graphics/downBlueGate.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+
+		iconBuffer.put("Box",new ImageIcon(ImageIO.read(new File("Don-Graphics/box.png")).
+				getScaledInstance(OBJECT_WIDTH / 2, OBJECT_HEIGHT / 2, Image.SCALE_SMOOTH)));
+
+		iconBuffer.put("ButtonOpened",new ImageIcon(ImageIO.read(new File("Don-Graphics/ButtonOpened.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("ButtonClosed",new ImageIcon(ImageIO.read(new File("Don-Graphics/ButtonClosed.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+
+		iconBuffer.put("DoorOpened",new ImageIcon(ImageIO.read(new File("Don-Graphics/DoorOpened.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+		iconBuffer.put("DoorClosed",new ImageIcon(ImageIO.read(new File("Don-Graphics/DoorClosed.png")).
+				getScaledInstance(OBJECT_WIDTH, OBJECT_HEIGHT, Image.SCALE_SMOOTH)));
+	}
     
     /* ablak inicializ�l�sa:
      *   config bet�lt�se
@@ -178,6 +273,13 @@ public class MyView implements Notifiable{
     @Override
     public void setData(DataAccessPoint data) {
         this.data = data;
+		maxCoord = data.fields.getMaxCoords();
+		OBJECT_WIDTH = jFrame.getWidth() / (maxCoord.GetX() + 1);
+		OBJECT_HEIGHT = jFrame.getHeight() / (maxCoord.GetY() + 1);
+		try {
+			loadIcons();
+		} catch (IOException ignored) {
+		}
 		drawAll();
     }
 
@@ -185,86 +287,301 @@ public class MyView implements Notifiable{
 
     }
     
-    private void drawBox(Coordinate coord) {}
+    private void drawBox(Coordinate coord) {
+		JLabel label = new JLabel();
+
+		ImageIcon img = iconBuffer.get("Box");
+
+		label.setIcon(img);
+		label.setBounds(OBJECT_WIDTH * coord.GetX() + OBJECT_WIDTH / 4, jFrame.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1),
+				OBJECT_WIDTH, OBJECT_HEIGHT);
+		jFrame.add(label);
+	}
     
-    private void drawButton(Coordinate coord) {}
+    private void drawButton(Coordinate coord) {
+		JLabel label = new JLabel();
+		ImageIcon img;
+
+		if (data.buttons.isOpenAt(coord)) {
+			img = iconBuffer.get("ButtonOpened");
+		}
+		else {
+			img = iconBuffer.get("ButtonClosed");
+		}
+
+		label.setIcon(img);
+		label.setBounds(OBJECT_WIDTH * coord.GetX(), jFrame.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1),
+				OBJECT_WIDTH, OBJECT_HEIGHT);
+		jFrame.add(label);
+	}
     
     private void drawFieldObject(FieldObject fieldObject, Coordinate coord) {
 
+		JLabel label = new JLabel();
+		ImageIcon img = null;
+
+		//Way
+		if (fieldObject.Steppable()){
+			if (fieldObject.isDoor()) {
+				img = iconBuffer.get("DoorOpened");
+			}
+			else if (!fieldObject.IsMortal()){
+				img = iconBuffer.get("Way");
+			}
+		}
+		else {
+			if (fieldObject.isDoor()) {
+				img = iconBuffer.get("DoorClosed");
+			}
+			else if (fieldObject.Shootable()) {
+				img = iconBuffer.get("SpecWall");
+			}
+			else {
+				img = iconBuffer.get("Wall");
+			}
+		}
+
+		if (img != null){
+			label.setIcon(img);
+			label.setBounds(OBJECT_WIDTH * coord.GetX(), jFrame.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1),
+					OBJECT_WIDTH, OBJECT_HEIGHT);
+			jFrame.add(label);
+		}
+
 	}
     
-    private void drawPlayer(Player player) {
-		final int x = jFrame.getWidth() / OBJECT_WIDTH, y = jFrame.getHeight() / OBJECT_HEIGHT;
+    private void drawPlayer(Jaffa jaffa) {
 		CVector pos;
+		JLabel label = new JLabel();
+
+		// Jaffa
+		ImageIcon img = null;
+		pos = jaffa.getPos();
+		switch (pos.GetDir()){
+			case East:
+				img = iconBuffer.get("JaffaRight");
+				break;
+			case North:
+				img = iconBuffer.get("JaffaUp");
+				break;
+			case West:
+				img = iconBuffer.get("JaffaLeft");
+				break;
+			case South:
+				img = iconBuffer.get("JaffaDown");
+				break;
+		}
+		label.setIcon(img);
+		label.setBounds(OBJECT_WIDTH * pos.GetX(), jFrame.getHeight() - OBJECT_HEIGHT * (pos.GetY() + 1),
+				OBJECT_WIDTH, OBJECT_HEIGHT);
+		jFrame.add(label);
+	}
+
+	private void drawPlayer(Replicator replicator) {
+		CVector pos;
+		JLabel label = new JLabel();
+
+		// Replicator
+		ImageIcon img = null;
+		pos = replicator.getPos();
+		switch (pos.GetDir()){
+			case East:
+				img = iconBuffer.get("ReplicatorRight");
+				break;
+			case North:
+				img = iconBuffer.get("ReplicatorUp");
+				break;
+			case West:
+				img = iconBuffer.get("ReplicatorLeft");
+				break;
+			case South:
+				img = iconBuffer.get("ReplicatorDown");
+				break;
+		}
+		label.setIcon(img);
+		label.setBounds(OBJECT_WIDTH * pos.GetX(), jFrame.getHeight() - OBJECT_HEIGHT * (pos.GetY() + 1),
+				OBJECT_WIDTH, OBJECT_HEIGHT);
+		jFrame.add(label);
+	}
+
+	private void drawPlayer(Colonel colonel) {
+		CVector pos;
+		JLabel label = new JLabel();
 
 		// Colonel
-		pos = data.Colonel.getPos();
-		jFrame.add(new Kep("Don-Graphics/OneillUpstep1.png", x * pos.GetX(), y * pos.GetY(), x, y));
+		ImageIcon img = null;
+		pos = colonel.getPos();
+		switch (pos.GetDir()){
+			case East:
+				img = iconBuffer.get("ColonelRight");
+				break;
+			case North:
+				img = iconBuffer.get("ColonelUp");
+				break;
+			case West:
+				img = iconBuffer.get("ColonelLeft");
+				break;
+			case South:
+				img = iconBuffer.get("ColonelDown");
+				break;
+		}
+		label.setIcon(img);
+		label.setBounds(OBJECT_WIDTH * pos.GetX(), jFrame.getHeight() - OBJECT_HEIGHT * (pos.GetY() + 1),
+				OBJECT_WIDTH, OBJECT_HEIGHT);
+		jFrame.add(label);
+	}
+    private void drawStarGate(StarGate stargate) {
+		JLabel label = new JLabel();
+		ImageIcon img = null;
+		CVector pos = stargate.GetPos();
+
+		switch (stargate.getColor()){
+			case Yellow:
+				switch (pos.GetDir()){
+					case East:
+						img = iconBuffer.get("RightYellowGate");
+						break;
+					case North:
+						img = iconBuffer.get("UpYellowGate");
+						break;
+					case West:
+						img = iconBuffer.get("LeftYellowGate");
+						break;
+					case South:
+						img = iconBuffer.get("DownYellowGate");
+						break;
+				}
+				break;
+			case Blue:
+				switch (pos.GetDir()){
+					case East:
+						img = iconBuffer.get("RightBlueGate");
+						break;
+					case North:
+						img = iconBuffer.get("UpBlueGate");
+						break;
+					case West:
+						img = iconBuffer.get("LeftBlueGate");
+						break;
+					case South:
+						img = iconBuffer.get("DownBlueGate");
+						break;
+				}
+				break;
+			case Red:
+				switch (pos.GetDir()){
+					case East:
+						img = iconBuffer.get("RightRedGate");
+						break;
+					case North:
+						img = iconBuffer.get("UpRedGate");
+						break;
+					case West:
+						img = iconBuffer.get("LeftRedGate");
+						break;
+					case South:
+						img = iconBuffer.get("DownRedGate");
+						break;
+				}
+				break;
+			case Green:
+				switch (pos.GetDir()){
+					case East:
+						img = iconBuffer.get("RightGreenGate");
+						break;
+					case North:
+						img = iconBuffer.get("UpGreenGate");
+						break;
+					case West:
+						img = iconBuffer.get("LeftGreenGate");
+						break;
+					case South:
+						img = iconBuffer.get("DownGreenGate");
+						break;
+				}
+				break;
+		}
+
+		label.setIcon(img);
+		label.setBounds(OBJECT_WIDTH * pos.GetX(), jFrame.getHeight() - OBJECT_HEIGHT * (pos.GetY() + 1),
+				OBJECT_WIDTH, OBJECT_HEIGHT);
+		jFrame.add(label);
 	}
     
-    private void drawStarGate(StarGate stargate) {}
-    
-    private void drawZPM(Coordinate coord) {}
+    private void drawZPM(Coordinate coord) {
+		JLabel label = new JLabel();
+
+		ImageIcon img = iconBuffer.get("ZPM");
+
+		label.setIcon(img);
+		label.setBounds(OBJECT_WIDTH * coord.GetX() + OBJECT_WIDTH / 4, jFrame.getHeight() - OBJECT_HEIGHT * (coord.GetY() + 1),
+				OBJECT_WIDTH, OBJECT_HEIGHT);
+		jFrame.add(label);
+	}
     
     private void drawWin() {}
 
     private void drawGameOver() {}
     
     private void drawAll() {
-    	Coordinate maxCoord = data.fields.getMaxCoords();
-		OBJECT_WIDTH = maxCoord.GetX();
-		OBJECT_HEIGHT = maxCoord.GetY();
 		jFrame.getContentPane().removeAll();
 
-    	for(int i = 0; i < maxCoord.GetX(); i++){
-    		for(int j = 0; j < maxCoord.GetY(); j++){
+    	for(int i = 0; i <= maxCoord.GetX(); i++){
+    		for(int j = 0; j <= maxCoord.GetY(); j++){
     			Coordinate coord = new Coordinate(i, j);
     			FieldObject fo = data.fields.GetFieldObject(coord);
-    			if(fo != null)	
-    				drawFieldObject(fo, coord);
-    			boolean isThere = data.buttons.isThere(coord);
-    			if(isThere)
-    				drawButton(coord);
-    			int boxes = data.boxes.isThereV2(coord);
-    			while(boxes > 0){
-    				drawBox(coord);
-    				boxes--;
-    			}
-    			CVector cv = new CVector(i, j, Direction.North);
-    			StarGate sg = data.stargates.GetStarGate(cv);
-    			if(sg != null)
-    				drawStarGate(sg);
-    			cv = new CVector(i, j, Direction.West);
-    			sg = data.stargates.GetStarGate(cv);
-    			if(sg != null)
-    				drawStarGate(sg);
-    			cv = new CVector(i, j, Direction.East);
-    			sg = data.stargates.GetStarGate(cv);
-    			if(sg != null)
-    				drawStarGate(sg);
-    			cv = new CVector(i, j, Direction.South);
-    			sg = data.stargates.GetStarGate(cv);
-    			if(sg != null)
-    				drawStarGate(sg);
-    			isThere = data.collectables.IsThere(coord);
-    			if(isThere)
-    				drawZPM(coord);
-    			cv = data.Colonel.getPos();
-    			if(coord.equals(cv))
-    				drawPlayer(data.Colonel);
+
+				CVector cv;
+
+				cv = data.Colonel.getPos();
+				if(coord.equals(cv))
+					drawPlayer((Colonel)data.Colonel);
+
 				if (data.Jaffa != null){
 					cv = data.Jaffa.getPos();
 					if(coord.equals(cv))
-						drawPlayer(data.Jaffa);
+						drawPlayer((Jaffa)data.Jaffa);
 				}
 				if (data.Repli != null){
 					cv = data.Repli.getPos();
 					if(coord.equals(cv))
-						drawPlayer(data.Repli);
+						drawPlayer((Replicator)data.Repli);
 				}
+
+				boolean boxes = data.boxes.IsThere(coord);
+				if (boxes){
+					drawBox(coord);
+				}
+
+				boolean isThere = data.buttons.isThere(coord);
+				if(isThere)
+					drawButton(coord);
+
+				cv = new CVector(i, j, Direction.North);
+				StarGate sg = data.stargates.GetStarGate(cv);
+				if(sg != null)
+					drawStarGate(sg);
+				cv = new CVector(i, j, Direction.West);
+				sg = data.stargates.GetStarGate(cv);
+				if(sg != null)
+					drawStarGate(sg);
+				cv = new CVector(i, j, Direction.East);
+				sg = data.stargates.GetStarGate(cv);
+				if(sg != null)
+					drawStarGate(sg);
+				cv = new CVector(i, j, Direction.South);
+				sg = data.stargates.GetStarGate(cv);
+				if(sg != null)
+					drawStarGate(sg);
+				isThere = data.collectables.IsThere(coord);
+				if(isThere)
+					drawZPM(coord);
+
+    			if(fo != null)	
+    				drawFieldObject(fo, coord);
     		}
     	}
-		jFrame.setVisible(true);
+		jFrame.repaint();
     }
     
     
@@ -275,7 +592,8 @@ public class MyView implements Notifiable{
 			jFrame.remove(maps);
 			jFrame.remove(ptitle);
 			jFrame.remove(buttonpanel);
-			
+			jFrame.setLayout(null);
+
 			controller.loadMap(selectedmap);
 		}
 		

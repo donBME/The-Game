@@ -21,4 +21,9 @@ public class SpecialWall extends Wall {
     public boolean Shootable() {
         return true;
     }
+
+    @Override
+    public boolean isDoor() {
+        return false;
+    }
 }

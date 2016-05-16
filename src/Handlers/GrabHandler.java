@@ -31,11 +31,11 @@ public class GrabHandler {
     public Box Grab(CVector interactfrom) {
 
         // A felvenni kívánt doboz pozíciója
-        Coordinate checkedPos = interactfrom.toNextCoord();
+        Coordinate checkedPos = interactfrom.toNextCoord().toCoord();
 
         // Csillagkapun keresztüli dobozfelvétel lehetövé tétele
         if (data.stargates.IsThere(interactfrom.toNextCoord())) {
-            checkedPos = data.stargates.StepIn(interactfrom.toNextCoord());
+            checkedPos = data.stargates.StepIn(interactfrom.toNextCoord()).toCoord();
         }
 
         // Van doboz a kiszemelt pozíción?
@@ -92,14 +92,14 @@ public class GrabHandler {
 
         // Rakható-e a kiszemelt koordinátájú pontra doboz?
         if (CanPut(checkedPos)) {
-            data.boxes.PutBox(checkedPos, carriedobject);
+            data.boxes.PutBox(checkedPos.toCoord(), carriedobject);
 
             System.out.print("has put an item at " + checkedPos.GetX() + "," + checkedPos.GetY() + " ");
 
             // Szakadékba dobás esetén a doboz semmisüljön meg.
-            if (data.fields.GetFieldObject(checkedPos).IsMortal()) {
+            if (data.fields.GetFieldObject(checkedPos.toCoord()).IsMortal()) {
                 System.out.println("box destroyed ");
-                data.boxes.Delete(checkedPos);
+                data.boxes.Delete(checkedPos.toCoord());
             }
 
 

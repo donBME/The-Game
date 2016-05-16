@@ -54,4 +54,9 @@ public class Door implements FieldObject {
         return open;
     }
 
+    @Override
+    public boolean isDoor() {
+        return true;
+    }
+
 }

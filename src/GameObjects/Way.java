@@ -42,4 +42,9 @@ public class Way implements FieldObject {
         return true;
     }
 
+    @Override
+    public boolean isDoor() {
+        return false;
+    }
+
 }

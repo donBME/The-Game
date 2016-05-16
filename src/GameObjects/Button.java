@@ -52,4 +52,8 @@ public class Button {
     public int getRequiredWeight() {
         return requiredWeight;
     }
+
+    public boolean isLocked() {
+        return wire.Steppable();
+    }
 }

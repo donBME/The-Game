@@ -20,4 +20,6 @@ public interface FieldObject {
      * @return R� lehet-e l�pni az objektumra.
      */
     boolean Steppable();
+
+    boolean isDoor();
 }

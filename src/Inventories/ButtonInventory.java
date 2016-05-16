@@ -63,4 +63,7 @@ public class ButtonInventory {
         return buttonList.containsKey(coord);
     }
 
+    public boolean isOpenAt(Coordinate coordinate) {
+        return buttonList.containsKey(coordinate) && buttonList.get(coordinate).isLocked();
+    }
 }

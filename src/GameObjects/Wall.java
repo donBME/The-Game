@@ -42,4 +42,9 @@ public class Wall implements FieldObject {
         return false;
     }
 
+    @Override
+    public boolean isDoor() {
+        return false;
+    }
+
 }
