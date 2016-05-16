@@ -298,8 +298,6 @@ public class Basic2DView implements Notifiable {
         maxCoord = data.fields.getMaxCoordinates();
         OBJECT_WIDTH = gamePanel.getWidth() / (maxCoord.GetX() + 1);
         OBJECT_HEIGHT = gamePanel.getHeight() / (maxCoord.GetY() + 1);
-        System.out.println(maxCoord.GetX() + " " + maxCoord.GetY());
-        System.out.println(OBJECT_WIDTH + " " + OBJECT_HEIGHT);
 
         // Grafika betöltése
         try {
@@ -780,25 +778,21 @@ public class Basic2DView implements Notifiable {
                 StarGate sg = data.stargates.getStarGate(cv);
                 if (sg != null) {
                     drawStarGate(sg);
-                    continue;
                 }
                 cv = new CVector(i, j, Direction.West);
                 sg = data.stargates.getStarGate(cv);
                 if (sg != null) {
                     drawStarGate(sg);
-                    continue;
                 }
                 cv = new CVector(i, j, Direction.East);
                 sg = data.stargates.getStarGate(cv);
                 if (sg != null) {
                     drawStarGate(sg);
-                    continue;
                 }
                 cv = new CVector(i, j, Direction.South);
                 sg = data.stargates.getStarGate(cv);
                 if (sg != null) {
                     drawStarGate(sg);
-                    continue;
                 }
                 // ZPM kirajzolása
                 isThere = data.collectables.isThere(coord);

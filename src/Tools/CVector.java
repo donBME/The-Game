@@ -31,7 +31,7 @@ public class CVector extends Coordinate {
     }
 
     /**
-     * Átkonvertálja a CVectort egy sima Tools.Coordinate osztályra, irány nélkül.
+     * CVector -> solid Coordinate
      *
      * @return Egyszerűsített Tools.CVector
      */
