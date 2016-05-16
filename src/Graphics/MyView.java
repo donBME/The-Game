@@ -529,12 +529,25 @@ public class MyView implements Notifiable{
 		jFrame.add(label);
 	}
     
-    private void drawWin() {}
+    private void drawWin() {
+
+	}
 
     private void drawGameOver() {}
     
     private void drawAll() {
 		jFrame.getContentPane().removeAll();
+
+		if (data.collectables.ZPMCount() == 0) {
+			drawWin();
+			jFrame.repaint();
+			return;
+		}
+		else if (data.Colonel.getPos() == null || (data.Jaffa != null && data.Jaffa.getPos() == null)) {
+			drawGameOver();
+			jFrame.repaint();
+			return;
+		}
 
     	for(int i = 0; i <= maxCoord.GetX(); i++){
     		for(int j = 0; j <= maxCoord.GetY(); j++){

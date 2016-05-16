@@ -101,4 +101,8 @@ public class CollectableInventory {
 
         System.out.print("ZPM spawned ");
     }
+
+    public int ZPMCount() {
+        return collectables.size();
+    }
 }
