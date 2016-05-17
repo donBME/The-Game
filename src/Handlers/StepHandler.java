@@ -48,54 +48,57 @@ public class StepHandler {
     }
 
     /**
-     * @param playerpos      A játékos pozíciója
+     * @param playerPosition      A játékos pozíciója
      * @param dir            A lápás iránya
      * @param canGenerateZPM kiválthat-e a lépéssel új GameObjects.ZPM létrejöttét
      * @return A lépés utáni pozíció
      */
-    public CVector NextStep(CVector playerpos, Direction dir, boolean canGenerateZPM, int ZPMs, boolean canFillAbyss) {
-        if (playerpos.GetDir() != dir) {
+    public CVector NextStep(CVector playerPosition, Direction dir, boolean canGenerateZPM, int ZPMs, boolean canFillAbyss) {
+        if (playerPosition.GetDir() != dir) {
 
             // Ha nem a lépés irányába néz a player, akkor arra fordul
-            System.out.print("new position: " + playerpos.GetX() + "," + playerpos.GetY() + " ");
-            return new CVector(playerpos.GetX(), playerpos.GetY(), dir);
+            System.out.print("new position: " + playerPosition.GetX() + "," + playerPosition.GetY() + " ");
+            return new CVector(playerPosition.GetX(), playerPosition.GetY(), dir);
         }
 
-        CVector nextpos = playerpos.toNextCoordinate();
+        CVector nextPosition = playerPosition.toNextCoordinate();
 
-        if (data.stargates.isThere(nextpos)) {
-            nextpos = data.stargates.stepIn(nextpos);
+        if (data.stargates.isThere(nextPosition)) {
+            nextPosition = data.stargates.stepIn(nextPosition);
         }
 
-        if (CanStep(nextpos)) {
+        if (CanStep(nextPosition)) {
 
-            System.out.print("new position: " + nextpos.GetX() + "," + nextpos.GetY() + " ");
+            System.out.print("new position: " + nextPosition.GetX() + "," + nextPosition.GetY() + " ");
 
             // Gombról való lelépés figyelése
-            data.buttons.EventOn(playerpos, 0);
-            if (data.fields.GetFieldObject(nextpos).IsMortal()) {
+            data.buttons.EventOn(playerPosition, 0);
+            if (data.fields.GetFieldObject(nextPosition).IsMortal()) {
 
                 if (canFillAbyss) {
-                    data.fields.addFieldObject(nextpos.toCoordinate(), new Way());
+                    data.fields.addFieldObject(nextPosition.toCoordinate(), new Way());
                     System.out.print("way spawned ");
                 } else System.out.print("Game Over ");
                 return null;
             }
             // GameObjects.ZPM felvétel figyelése
-            if (data.collectables.isThere(nextpos) && canCollect) {
+            if (data.collectables.isThere(nextPosition) && canCollect) {
 
-                data.collectables.GetCollectibleAt(nextpos);
+                data.collectables.GetCollectibleAt(nextPosition);
                 isCollected = true;
 
                 if (canGenerateZPM && (ZPMs + 1) % 2 == 0) {
+
+                    // A random ZPM miatt már ideiglenesen itt áthelyezzük a játékost
+                    playerPosition.Set(nextPosition.GetX(), nextPosition.GetY());
                     data.collectables.addToRandomCoordinate();
                 }
             }
-            data.buttons.EventOn(nextpos, 1);
-            return nextpos;
+            data.buttons.EventOn(nextPosition, 1);
+            return nextPosition;
         } else {
-            System.out.print("new position: " + playerpos.GetX() + "," + playerpos.GetY() + " ");
-            return playerpos;
+            System.out.print("new position: " + playerPosition.GetX() + "," + playerPosition.GetY() + " ");
+            return playerPosition;
         }
     }
 
