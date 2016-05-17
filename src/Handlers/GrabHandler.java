@@ -27,7 +27,7 @@ public class GrabHandler {
      *
      * @param interactfrom Játékos helye a felvételkor
      */
-    public Box Grab(CVector interactfrom) {
+    public Box grab(CVector interactfrom) {
 
         // A felvenni kívánt doboz pozíciója
         Coordinate checkedPos = interactfrom.toNextCoordinate().toCoordinate();
@@ -42,16 +42,22 @@ public class GrabHandler {
             Box returnBox;
 
             // Felvett doboz
-            returnBox = data.boxes.GetBox(checkedPos);
+            if (data.buttons.isThere(checkedPos) &&
+                    data.buttons.getButtonAt(checkedPos).getDoor() == data.fields.GetFieldObject(interactfrom.toCoordinate())) {
+                returnBox = null;
+            }
+            else {
+                returnBox = data.boxes.GetBox(checkedPos);
+            }
 
             if (returnBox != null) {
                 System.out.print("has grabbed an item at " + checkedPos.GetX() + "," + checkedPos.GetY() + " ");
+
+                // Gomb felengedés kezelése
+                data.buttons.EventOn(checkedPos, data.boxes.isThereV2(checkedPos));
+
+                return returnBox;
             }
-
-            // Gomb felengedés kezelése
-            data.buttons.EventOn(checkedPos, data.boxes.isThereV2(checkedPos));
-
-            return returnBox;
         }
         System.out.print("can't interact at: " + checkedPos.GetX() + "," + checkedPos.GetY() + " ");
         return null;

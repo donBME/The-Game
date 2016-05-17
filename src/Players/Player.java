@@ -54,7 +54,7 @@ public abstract class Player {
     public void interact(CVector fromThisPosition) {
         if (pos != null) {
             if (handfull == null) {
-                handfull = hand.Grab(fromThisPosition);
+                handfull = hand.grab(fromThisPosition);
             } else {
                 boolean success = hand.put(fromThisPosition, handfull);
                 if (success) {
