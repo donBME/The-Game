@@ -56,7 +56,7 @@ public abstract class Player {
             if (handfull == null) {
                 handfull = hand.Grab(fromThisPosition);
             } else {
-                boolean success = hand.Put(fromThisPosition, handfull);
+                boolean success = hand.put(fromThisPosition, handfull);
                 if (success) {
                     handfull = null;
                 }

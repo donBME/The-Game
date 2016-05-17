@@ -60,11 +60,11 @@ public class GrabHandler {
     /**
      * Rakható-e a kijelölt pozícióra doboz.
      *
-     * @param interactfrom belépés iránya
+     * @param toPosition a dobozrakás pozíciója
      */
-    private boolean CanPut(Tools.CVector interactfrom) {
-        if (data.fields.GetFieldObject(interactfrom).Steppable()) {
-            if (!data.collectables.isThere(interactfrom)) {
+    private boolean canPut(Coordinate toPosition) {
+        if (data.fields.GetFieldObject(toPosition).Steppable()) {
+            if (!data.collectables.isThere(toPosition) && !data.fields.GetFieldObject(toPosition).isDoor()) {
                 return true;
             }
         }
@@ -77,7 +77,7 @@ public class GrabHandler {
      * @param interactfrom  Játékos helye a felvételkor.
      * @param carriedobject Játékos kezében lévö doboz.
      */
-    public boolean Put(CVector interactfrom, Box carriedobject) {
+    public boolean put(CVector interactfrom, Box carriedobject) {
 
         // A koordináta, melyre a játékos a dobozt tenni szeretné.
         CVector checkedPos = interactfrom.toNextCoordinate();
@@ -88,7 +88,7 @@ public class GrabHandler {
         }
 
         // Rakható-e a kiszemelt koordinátájú pontra doboz?
-        if (CanPut(checkedPos)) {
+        if (canPut(checkedPos)) {
             data.boxes.PutBox(checkedPos.toCoordinate(), carriedobject);
 
             System.out.print("has put an item at " + checkedPos.GetX() + "," + checkedPos.GetY() + " ");
