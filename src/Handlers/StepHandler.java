@@ -36,6 +36,10 @@ public class StepHandler {
     private boolean CanStep(CVector where) {
         FieldObject fieldObject = data.fields.GetFieldObject(where);
         if (fieldObject != null && fieldObject.Steppable() && !data.isPlayerAtCoordinate(where.toCoordinate())) {
+            if (data.buttons.isThere(where.toPreviousCoordinate().toCoordinate()) &&
+                    data.buttons.getButtonAt(where.toPreviousCoordinate().toCoordinate()).getDoor() == fieldObject) {
+                return false;
+            }
             if (!data.boxes.IsThere(where)) {
                 return true;
             }

@@ -1,5 +1,7 @@
 package GameObjects;
 
+import Tools.Coordinate;
+
 public class Button {
     private final Door wire;
     private final int requiredWeight;
@@ -42,7 +44,19 @@ public class Button {
         return requiredWeight;
     }
 
+    /**
+     * Az ajtó állapota
+     * @return megadja, hogy az ajtó zárt állapotban van-e
+     */
     public boolean isLocked() {
         return !wire.Steppable();
+    }
+
+    /**
+     * Visszaadja a nyomólaphoz tartozó ajtót
+     * @return az ajtó referenciája
+     */
+    public Door getDoor() {
+        return wire;
     }
 }

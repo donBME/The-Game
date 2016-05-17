@@ -40,7 +40,6 @@ public class CVector extends Coordinate {
     }
 
     /**
-     * Tools.CVector -> Tools.Coordinate átalakító
      *
      * @return az irány alapján következő koordináták
      */
@@ -57,6 +56,25 @@ public class CVector extends Coordinate {
         }
         return this;
     }
+
+    /**
+     *
+     * @return az irány alapján a megelőző koordináták
+     */
+    public CVector toPreviousCoordinate() {
+        switch (dir) {
+            case North:
+                return new CVector(GetX(), GetY() - 1, dir);
+            case South:
+                return new CVector(GetX(), GetY() + 1, dir);
+            case East:
+                return new CVector(GetX() - 1, GetY(), dir);
+            case West:
+                return new CVector(GetX() + 1, GetY(), dir);
+        }
+        return this;
+    }
+
 
     /**
      * @param obj Összehasonlítandó érték

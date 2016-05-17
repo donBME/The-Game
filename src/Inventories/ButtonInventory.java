@@ -72,4 +72,17 @@ public class ButtonInventory {
     public boolean isOpenAt(Coordinate coordinate) {
         return buttonList.containsKey(coordinate) && !buttonList.get(coordinate).isLocked();
     }
+
+    /**
+     * Visszaad egy megadott koordináátán lévő nyomólapot
+     * @param coordinate keresett koordináta
+     * @return keresett nyomólap
+     */
+    public Button getButtonAt(Coordinate coordinate) {
+        if (buttonList.containsKey(coordinate)) {
+            return buttonList.get(coordinate);
+        }
+
+        return null;
+    }
 }
